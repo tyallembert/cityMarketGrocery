@@ -1,0 +1,29 @@
+[
+  {
+    "liveFreight": {
+      "w71m7nof": {
+        "name": "ty",
+        "aisle": "2",
+        "boxes": "22",
+        "start": "11:06pm",
+        "end": "",
+        "status": "In Progress"
+      },
+      "smjvbnln": {
+        "name": "ty",
+        "aisle": "3",
+        "boxes": "45",
+        "start": "10:21 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "upstock": {},
+    "backstock": {},
+    "sectors": {},
+    "bulk": {},
+    "peri": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]

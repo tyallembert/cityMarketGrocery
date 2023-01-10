@@ -1,0 +1,30 @@
+[
+  {
+    "liveFreight": {
+      "lducmcx2": {
+        "name": "ty",
+        "aisle": "3",
+        "boxes": "33",
+        "start": "7:37 PM",
+        "end": "7:37 PM",
+        "status": "Finished"
+      },
+      "fxh03mbe": {
+        "name": "issy",
+        "aisle": "2",
+        "boxes": "76",
+        "start": "7:37 PM",
+        "end": "7:37 PM",
+        "status": "Finished"
+      }
+    },
+    "upstock": {},
+    "backstock": {},
+    "sectors": {},
+    "rounding": {},
+    "bulk": {},
+    "peri": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]

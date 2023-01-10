@@ -1,0 +1,31 @@
+
+.allToDoContainer{
+    display: flex;
+    flex-direction: column;
+    border: solid 2px black;
+    border-radius: 20px;
+    .headerRow{
+        display: flex;
+        justify-content: space-around;
+        border-bottom: solid 1px black;
+        div{
+            padding: 2%;
+            p{
+                font-weight: 600;
+            }
+        }
+    }
+    .tableColumns{
+        display: flex;
+        flex-wrap: wrap;
+        .emptyMessage{
+            width: 100%;
+            margin: auto;
+            color: rgba(0,0,0,0.5);
+        }
+        .column{
+            width: calc((100%/3) - 4%);
+            padding: 1% 2%;
+        }
+    }
+}

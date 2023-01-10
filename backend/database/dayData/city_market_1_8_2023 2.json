@@ -1,0 +1,31 @@
+[
+  {
+    "liveFreight": {},
+    "upstock": {
+      "9wdwgppc": {
+        "name": "",
+        "aisle": "1",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "backstock": {
+      "r1nrttru": {
+        "name": "",
+        "aisle": "2",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "sectors": {},
+    "rounding": {},
+    "bulk": {},
+    "peri": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]

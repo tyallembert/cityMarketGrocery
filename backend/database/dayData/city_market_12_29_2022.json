@@ -1,0 +1,56 @@
+[
+  {
+    "liveFreight": {},
+    "upstock": {
+      "uwvhdso1": {
+        "name": "",
+        "aisle": "4",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      },
+      "xjpmkouw": {
+        "name": "",
+        "aisle": "1",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "backstock": {
+      "pefe17ri": {
+        "name": "",
+        "aisle": "7",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "sectors": {},
+    "rounding": {
+      "hh325s9j": {
+        "name": "",
+        "aisle": "Polar",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      },
+      "n0e8mxhx": {
+        "name": "",
+        "aisle": "Water well",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "bulk": {},
+    "peri": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]

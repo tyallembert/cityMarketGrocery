@@ -1,0 +1,156 @@
+@import '../../variables.scss';
+.addTaskContainer{
+    display: flex;
+    align-items: flex-end;
+    width: 12%;
+    min-width: 130px;
+    margin-right: 3%;
+    .addButton{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // border: solid 2px black;
+        border: none;
+        box-shadow: 0px 3px 5px rgba(0,0,0,0.4);
+        background-color: white;
+        height: 40px;
+        width: 100%;
+        border-radius: 100px;
+        font-size: 1em;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all ease 200ms;
+        p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            span{
+                font-size: 1.5em;
+                margin-right: 5px;
+            }
+        }
+    }
+    .addButton:hover{
+        transform: scale(1.1);
+    }
+    .background{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 1;
+    }
+    .popUpContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        overflow: hidden;
+        top: 100px;
+        left: 40%;
+        width: 40%;
+        color: black;
+        box-shadow: 0px 0px 20px rgba(0,0,0,1);
+        background-color: $grayBackground;
+        border-radius: 20px;
+        z-index: 2;
+        h2{
+            width: 100%;
+            text-align: left;
+            font-size: 30pt;
+            margin: 0;
+            padding: 2%;
+            text-indent: 2%;
+            margin-bottom: 30px;
+            background-color: $headerGray;
+            color: white;
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+        }
+        .customSelect{
+            position: relative;
+            width: 70%;
+            select{
+                appearance: none;
+                font-size: 1.2rem;
+                font-weight: 700;
+                box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+                border: none;
+                color: rgba(0,0,0,0.5);
+                border-radius: 10px;
+                padding: 10px;
+                width: 100%;
+            }
+            .iconContainer{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: 15%;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                pointer-events: none;
+                div{
+                    width: 40%;
+                    height: 2px;
+                    background-color: rgba(0,0,0,0.5);
+                    border-radius: 5px;
+                }
+                .line1{
+                    margin-top: 10px;
+                }
+                .line3{
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        .moreInfoContainer{
+            display: flex;
+            flex-wrap: wrap;
+            width: 60%;
+            .radioContainer{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                padding: 0.5em 1em;
+                margin: 10px;
+                background-color: $radioBackground;
+                border-radius: 50px;
+            }
+            .activeRadio{
+                background-color: $radioActive;
+                border: solid 2px white;
+                color: white;
+            }
+            .customTask{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                p{
+                    margin: 0;
+                }
+            }
+            .customContainer{
+                border-radius: 10px;
+                border: solid 2px rgba(255,255,255,0.5);
+                padding: 10px;
+                margin-top: 10px;
+                background-color: white;
+                box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+                h3{
+                    margin: 0;
+                }
+            }
+        }
+        .buttonsContainer{
+            display: flex;
+            margin: 2% auto;
+        }
+    }
+}

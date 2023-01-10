@@ -1,0 +1,22 @@
+[
+  {
+    "liveFreight": {
+      "6cv5esds": {
+        "name": "ty",
+        "aisle": "2",
+        "boxes": "22",
+        "start": "10:53 AM",
+        "end": "10:56 AM",
+        "status": "Finished"
+      }
+    },
+    "upstock": {},
+    "backstock": {},
+    "sectors": {},
+    "rounding": {},
+    "bulk": {},
+    "peri": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]

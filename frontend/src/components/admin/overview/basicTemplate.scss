@@ -1,0 +1,22 @@
+@import "../../../variables.scss";
+.basicTemplateContainer{
+    display: flex;
+    width: 100%;
+    .singleElement{
+        flex: 0 0 calc(100%/5);
+        padding: 20px 0;
+    }
+    &:nth-child(even){
+        background-color: rgba(0,0,0,0.1);
+    }
+    &:nth-child(odd){
+        background-color: white;
+    }
+}
+.dataContainer.all{
+    @each $themeColour, $i in $mainColors {
+        .#{$themeColour} {
+            background-color: rgba($i, 0.5);
+        }
+    }
+}

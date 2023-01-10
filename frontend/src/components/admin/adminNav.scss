@@ -1,0 +1,21 @@
+@import '../../variables.scss';
+.adminNavContainer{
+    display: flex;
+    justify-content: space-around;
+    padding: 1em 20%;
+    background-color: $adminLight;
+    .navChild{
+        color: $adminDark;
+        font-weight: 600;
+        padding:  0.8rem 1rem;
+        border-radius: 100px;
+        cursor: point;
+        p{
+            cursor: pointer;
+        }
+    }
+    .activeNav{
+        background-color: $adminDark;
+        color: $adminLight;
+    }
+}

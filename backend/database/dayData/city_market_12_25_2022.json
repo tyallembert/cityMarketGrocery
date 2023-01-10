@@ -1,0 +1,29 @@
+[
+  {
+    "liveFreight": {
+      "p5sg9fbu": {
+        "name": "ty",
+        "aisle": "2",
+        "boxes": "22",
+        "start": "10:40 AM",
+        "end": "10:40 AM",
+        "status": "Finished"
+      },
+      "2zhkt20e": {
+        "name": "ty",
+        "aisle": "3",
+        "boxes": "33",
+        "start": "10:40 AM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "upstock": {},
+    "backstock": {},
+    "sectors": {},
+    "bulk": {},
+    "peri": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]

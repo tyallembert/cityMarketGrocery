@@ -1,0 +1,56 @@
+@import '../../variables.scss';
+.objectPreviewContainer{
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    width: 100%;
+    padding: 4% 0;
+    margin: 1em auto;
+    border-radius: 10px;
+    border: solid 2px rgba(0,0,0,0.2);
+    @each $page, $color in $mainColors {
+        &.#{$page}{
+            border: solid 1px $color;
+            background-color: rgba($color, 0.3);
+            box-shadow: inset 0px 0px 4px $color;
+        }
+    }
+    .type{
+        position: absolute;
+        top: -13px;
+        left: 20px;
+        padding: 2px 3px;
+        font-size: 10pt;
+        background-color: white;
+        border-radius: 3px;
+        border: solid 1px rgba(0,0,0,0.2);
+    }
+    .elementContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        &.aisle{
+            width: 30%;
+            .aisleInput{
+                width: 100%;
+                border: solid 2px rgba(0,0,0,0.3);
+                border-radius: 5px;
+                text-overflow: wrap;
+            }
+        }
+        &.name{
+            width: 30%;
+            .nameInput{
+                width: 100%;
+                border: solid 2px rgba(0,0,0,0.3);
+                border-radius: 5px;
+            }
+        }
+        .title{
+            font-size: 8pt;
+            color: rgba(0,0,0,0.6);
+        }
+    }
+}

@@ -1,0 +1,21 @@
+[
+  {
+    "liveFreight": {
+      "bmcrrf1l": {
+        "name": "ty",
+        "aisle": "2",
+        "boxes": "22",
+        "start": "6:12 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "upstock": {},
+    "backstock": {},
+    "sectors": {},
+    "bulk": {},
+    "peri": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]

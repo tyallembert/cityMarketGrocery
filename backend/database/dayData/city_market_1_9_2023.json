@@ -1,0 +1,56 @@
+[
+  {
+    "liveFreight": {},
+    "upstock": {
+      "m84ms32a": {
+        "name": "ty",
+        "aisle": "1",
+        "boats": "",
+        "start": "12:00 AM",
+        "end": "12:03 AM",
+        "status": "Finished"
+      },
+      "j30niiah": {
+        "name": "",
+        "aisle": "1",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      },
+      "2k35sqrp": {
+        "name": "",
+        "aisle": "custom",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "backstock": {
+      "50blc15r": {
+        "name": "",
+        "aisle": "3",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "sectors": {},
+    "rounding": {
+      "m9xmh1cj": {
+        "name": "",
+        "aisle": "custom",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "bulk": {},
+    "peri": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]

@@ -1,0 +1,73 @@
+[
+  {
+    "liveFreight": {
+      "mu9shog7": {
+        "name": "ty",
+        "aisle": "1",
+        "boxes": "11",
+        "start": "11:34 AM",
+        "end": "11:36 AM",
+        "status": "Finished"
+      },
+      "p8dga5g5": {
+        "name": "Ben",
+        "aisle": "2",
+        "boxes": "22",
+        "start": "11:35 AM",
+        "end": "11:36 AM",
+        "status": "Finished"
+      },
+      "v9y91127": {
+        "name": "Dan",
+        "aisle": "3",
+        "boxes": "33",
+        "start": "11:35 AM",
+        "end": "11:36 AM",
+        "status": "Finished"
+      }
+    },
+    "upstock": {
+      "wt925lzx": {
+        "name": "ty",
+        "aisle": "1",
+        "boats": "",
+        "start": "11:35 AM",
+        "end": "11:35 AM",
+        "status": "Finished"
+      },
+      "hxwfi4i8": {
+        "name": "ty",
+        "aisle": "3",
+        "boats": "",
+        "start": "4:47 PM",
+        "end": "4:47 PM",
+        "status": "Finished"
+      }
+    },
+    "backstock": {
+      "pisncpvr": {
+        "name": "Ty",
+        "aisle": "5",
+        "boats": "",
+        "start": "11:36 AM",
+        "end": "11:36 AM",
+        "status": "Finished"
+      }
+    },
+    "sectors": {},
+    "rounding": {
+      "3tpfhh63": {
+        "name": "Ben",
+        "aisle": "Polar Cooler",
+        "boats": "",
+        "start": "11:35 AM",
+        "end": "11:36 AM",
+        "status": "Finished"
+      }
+    },
+    "bulk": {},
+    "peri": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]

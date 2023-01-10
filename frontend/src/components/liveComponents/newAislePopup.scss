@@ -1,0 +1,68 @@
+@import '../../variables.scss';
+
+.newAislePopupContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    .formContainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 70%;
+        padding: 1em;
+        background-color: $grayBackground;
+        border-radius: 20px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.7),
+        inset 0px 0px 1px white;
+        z-index: 2;
+        .formTitle{
+            text-align: left;
+            margin: 0;
+            width: 100%;
+            color: white;
+            font-weight: 900;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+        }
+        label{
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            width: 20%;
+            font-size: 13px;
+            font-weight: 500;
+            input{
+                border-radius: 5px;
+                border: none;
+                padding: 5px;
+                margin-top: 2px;
+            }
+        }
+        button[type=submit]{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            width: 50px;
+            border-radius: 100px;
+            border: solid 3px white;
+            font-size: 25px;
+            color: white;
+            background-color: $buttonGreen;
+        }
+        button[type=button]{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            width: 50px;
+            border-radius: 100px;
+            border: solid 3px white;
+            font-size: 25px;
+            color: white;
+            background-color: $buttonRed;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+[
+  {
+    "liveFreight": {},
+    "upstock": {
+      "yh1c07l2": {
+        "name": "",
+        "aisle": "2",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "backstock": {},
+    "sectors": {},
+    "bulk": {},
+    "peri": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]

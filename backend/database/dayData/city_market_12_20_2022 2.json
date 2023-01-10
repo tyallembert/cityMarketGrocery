@@ -1,0 +1,45 @@
+[
+  {
+    "liveFreight": {
+      "w71m7nof": {
+        "name": "ty",
+        "aisle": "2",
+        "boxes": "22",
+        "start": "11:6pm",
+        "end": "",
+        "status": "In Progress"
+      },
+      "ygqv6rnz": {
+        "name": "fgsd",
+        "aisle": "3",
+        "boxes": "12",
+        "start": "11:7pm",
+        "end": "",
+        "status": "In Progress"
+      },
+      "pced7jew": {
+        "name": "ded",
+        "aisle": "1",
+        "boxes": "34",
+        "start": "11:13pm",
+        "end": "",
+        "status": "In Progress"
+      },
+      "shs8oy40": {
+        "name": "kbfb",
+        "aisle": "1",
+        "boxes": "11",
+        "start": "11:26pm",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "upstock": {},
+    "backstock": {},
+    "sectors": {},
+    "bulk": {},
+    "peri": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]
