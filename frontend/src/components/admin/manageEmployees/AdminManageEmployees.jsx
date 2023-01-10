@@ -10,6 +10,9 @@ function AdminManageEmployees(props) {
     useEffect(() => {
         fetchCurrentEmployees();
     }, [])
+    useEffect(() => {
+
+    }, [currentEmployees])
     const fetchCurrentEmployees = async() => {
         const data = await fetch('/getCurrentEmployees');
         const employees = await data.json();
@@ -19,9 +22,15 @@ function AdminManageEmployees(props) {
         showingPopup ? setShowingPopup(false): setShowingPopup(true);
     }
     const updateCurrentEmployees = (res) => {
-        var newEmployee = res.employee;
         var id = res.id;
-        setCurrentEmployees(...currentEmployees, id, newEmployee);
+        if(res.type === "add"){
+            var newEmployee = res.employee;
+            currentEmployees[id] = newEmployee;
+            setCurrentEmployees({...currentEmployees});
+        }else{
+            delete currentEmployees[id];
+            setCurrentEmployees({...currentEmployees});
+        }
     }
     const saveNewEmployee = async(res) => {
         var newEmployee = res.employee;
@@ -33,14 +42,21 @@ function AdminManageEmployees(props) {
             body: JSON.stringify({employee: newEmployee})
         });
         const id = response;
-        console.log("RESPONSE"+id)
-        updateCurrentEmployees({id: id, employee: newEmployee});
-        console.log("--------------------");
-        console.log(currentEmployees);
+        updateCurrentEmployees({type: "add", id: id, employee: newEmployee});
         toggleNewEmployeePopup();
     }
-    const deleteEmployee = () => {
-
+    const deleteEmployee = async(e) => {
+        var id = e.target.parentNode.getAttribute("id");
+        const response = await fetch("/deleteEmployee", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id: id})
+        });
+        const resID = response;
+        updateCurrentEmployees({type: "delete", id: id});
+        // toggleNewEmployeePopup();
     }
 
     return (
@@ -56,7 +72,7 @@ function AdminManageEmployees(props) {
                 {
                     Object.keys(currentEmployees).map((value, index) => {
                         return (
-                            <div className="employee" key={index}>
+                            <div className="employee" id={value} key={index}>
                                 <p>{currentEmployees[value].firstName} {currentEmployees[value].lastName}</p>
                                 <button className="deleteUserButton" onClick={deleteEmployee}>x</button>
                             </div>

@@ -80,22 +80,24 @@ class Database {
     */
     updateData(allData, taskType, newData, id){
         if(id !== ""){
-            if(taskType === ""){
-                allData[0][id] = (newData);
+            if(newData === "delete"){
+                delete allData[0][id];
             }else{
-                allData[0][taskType][id] = (newData);
+                if(taskType === ""){
+                    allData[0][id] = (newData);
+                }else{
+                    allData[0][taskType][id] = (newData);
+                }
             }
         }else{
             let r = (Math.random() + 1).toString(36).slice(2,10);
             id = r;
-            allData[0][taskType][r] = (newData);
-            // if(taskType === "liveFreight"){
-            //     allData[0][taskType][r] = (newData);
-            // }else{
-            //     allData[0][taskType][r] = (JSON.parse(newData));
-            // }
+            if(taskType === ""){
+                allData[0][r] = (newData);
+            }else{
+                allData[0][taskType][r] = (newData);
+            }
         }
-        console.log(allData)
         return [allData, id];
     }
     /* 
