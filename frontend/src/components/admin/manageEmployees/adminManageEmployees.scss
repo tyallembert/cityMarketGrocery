@@ -1,29 +1,73 @@
+@import "../../../variables.scss";
 .manageEmployeesContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
     .addEmployeeContainer{
-
+        width: 25%;
+        min-width: 280px;
+        .button{
+            color: white;
+            width: 80%;
+            padding: 20px;
+            margin: 10px 0;
+            font-size: 20pt;
+            font-weight: 700;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            transition: all 150ms ease;
+            &:hover{
+                font-size: 22pt;
+                width: 85%;
+                box-shadow: 2px 5px 5px rgba(0,0,0,0.6);
+                cursor: pointer;
+            }
+        }
+        .addEmployeeButton{
+            background-color: $buttonGreen;
+        }
+        .cancelButton{
+            background-color: $buttonRed;
+        }
     }
     .displayContainer{
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         width: 40%;
         min-width: 300px;
         .employee{
             display: flex;
             justify-content: space-between;
+            align-items: center;
             width: 100%;
             margin: 5px 0;
             background-color: rgba(0,0,0,0.1);
             border-radius: 10px;
-            padding: 10px;
             .deleteUserButton{
-                width: 30%;
+                width: 20%;
+                min-width: 50px;
+                font-weight: 800;
+                color: white;
+                background-color: $buttonRed;
+                padding: 10px;
+                font-size: 12pt;
+                font-weight: 700;
+                border: none;
+                border-radius: 5px;
+                box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+                transition: all 300ms ease;
+                &:hover{
+                    width: 25%;
+                    cursor: pointer;
+                }
             }
             p{
                 font-weight: 800;
+                text-align: center;
+                margin-left: 10px;
             }
         }
     }

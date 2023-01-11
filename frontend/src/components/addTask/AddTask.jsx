@@ -47,13 +47,6 @@ function AddTask(props) {
     }
     const handleSubmit = async(e) => {
         e.preventDefault()
-        // var tempTask = {...newTask};
-        // tempTask.aisle = activeRadio;
-        // setNewTask(tempTask);
-
-        console.log("=====================");
-        console.log(taskType);
-        console.log(newTask);
         var type = (taskType === "custom") ? customType: taskType;
         const response = await fetch("/saveNewTask", {
             method: 'POST',
@@ -146,10 +139,10 @@ function AddTask(props) {
                                 {moreInfo}
                             </div>
                             <div className='buttonsContainer'>
-                                <button type='submit' className="submitButton" onClick={handleSubmit}>
+                                <button type='submit' className="button submitButton" onClick={handleSubmit}>
                                     <p>Submit</p>
                                 </button>
-                                <button className="cancelButton" onClick={handleClosePopup}>
+                                <button className="button cancelButton" onClick={handleClosePopup}>
                                     <p>Cancel</p>
                                 </button>
                             </div>

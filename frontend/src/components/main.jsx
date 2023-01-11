@@ -19,10 +19,9 @@ function Main(props) {
         backstock: <AllToDo tasks={tasks} activePage={activePage}/>,
         sectors: <AllToDo tasks={tasks} activePage={activePage}/>,
         rounding: <AllToDo tasks={tasks} activePage={activePage}/>,
-        bulk: <OneToDo tasks={tasks[activePage]}/>,
-        peri: <OneToDo tasks={tasks[activePage]}/>,
-        beerWine: <OneToDo tasks={tasks[activePage]}/>
-        // backstock: <Backstock tasks={tasks.backstock}/>
+        bulk: <AllToDo tasks={tasks} activePage={activePage}/>,
+        peri: <AllToDo tasks={tasks} activePage={activePage}/>,
+        beerWine: <AllToDo tasks={tasks} activePage={activePage}/>
     }
     
 

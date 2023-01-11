@@ -4,7 +4,6 @@ import "./taskObject.scss";
 function TaskObject(props) {
     const [task, setTask] = useState(props.task);
     const [type, setType] = useState(props.type);
-    const [editable, setEditable] = useState(props.editable);
 
     const [classes, setClasses] = useState("");
     const [infoObject, setInfoObject] = useState([]);
@@ -13,7 +12,6 @@ function TaskObject(props) {
     useEffect(() => {
         setTask(props.task);
         setType(props.type);
-        setEditable(props.editable);
     },[])
     useEffect(() => {
        createObject();
@@ -25,31 +23,13 @@ function TaskObject(props) {
             case 'To Do':
                 setInfoObject(
                     <>
-                        {
-                            editable ? 
-                            (
-                            <>
-                                <input type='text'
-                                    name="name"
-                                    className="nameInput"
-                                    placeholder="Name" 
-                                    disabled
-                                />
-                                <button className="startButton" onClick={handleStartTask} disabled>Start</button>
-                            </>
-                            )
-                            : (
-                                <>
-                                <input type='text'
-                                    name="name"
-                                    className="nameInput"
-                                    placeholder="Name" 
-                                    onChange={handleChange}
-                                />
-                                <button className="startButton" onClick={handleStartTask}  {...buttonEnabled ? '':'disabled'}>Start</button>
-                            </>
-                            )
-                        }
+                        <input type='text'
+                            name="name"
+                            className="nameInput"
+                            placeholder="Name" 
+                            onChange={handleChange}
+                        />
+                        <button className="button startButton" onClick={handleStartTask}  {...buttonEnabled ? '':'disabled'}>Start</button> 
                     </>
                     )
                 break;
@@ -64,7 +44,7 @@ function TaskObject(props) {
                             <p>{task.start}</p>
                             <p className="title">Start time</p>
                         </div>
-                        <button className="startButton" onClick={handleFinishTask}>Done</button>
+                        <button className="button doneButton" onClick={handleFinishTask}>Done</button>
                     </>
                     )
                 break;
@@ -100,7 +80,6 @@ function TaskObject(props) {
     }
     const handleChange = (event) => {
         var classes = event.target.className.split(" ");
-        editable ? setTask({ ...task, [classes[1]]: event.target.innerText.replace(/(\r\n|\n|\r)/gm, "") }) :
         setTask({ ...task, [event.target.name]: event.target.value });
         console.log(buttonEnabled)
         if(task.name.length > 0){
@@ -139,12 +118,7 @@ function TaskObject(props) {
         <div className={classes}>
             <p className="type">{type}</p>
             <div className="elementContainer aisle">
-                { editable ? (
-                    <p className="editable aisle" 
-                    contentEditable="true"
-                    suppressContentEditableWarning={true}
-                    onInput={handleChange}>Edit This</p>
-                        ): (<p>{task.aisle}</p>)}
+                <p>{task.aisle}</p>
                 <p className="title">Aisle</p>
             </div>
             {infoObject}

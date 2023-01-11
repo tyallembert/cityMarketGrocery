@@ -56,13 +56,15 @@ function AdminManageEmployees(props) {
         });
         const resID = response;
         updateCurrentEmployees({type: "delete", id: id});
-        // toggleNewEmployeePopup();
     }
 
     return (
         <div className="manageEmployeesContainer">
-            <div className="addEmployeeButtonContainer">
-                <button onClick={toggleNewEmployeePopup}>Add Employee</button>
+            <div className="addEmployeeContainer">
+                {
+                    showingPopup ? (<button className="button cancelButton" onClick={toggleNewEmployeePopup}>Cancel</button>)
+                    : (<button className="button addEmployeeButton" onClick={toggleNewEmployeePopup}>Add Employee</button>)
+                }
                 {showingPopup ? (
                     <AddEmployee saveNewEmployee={saveNewEmployee}/>
                 ) : null

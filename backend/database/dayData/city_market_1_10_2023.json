@@ -11,7 +11,16 @@
       }
     },
     "upstock": {},
-    "backstock": {},
+    "backstock": {
+      "fpadrb7g": {
+        "name": "",
+        "aisle": "2",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
     "sectors": {},
     "rounding": {},
     "bulk": {},

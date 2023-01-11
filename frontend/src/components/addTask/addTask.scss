@@ -52,6 +52,7 @@
         top: 100px;
         left: 40%;
         width: 40%;
+        min-width: 280px;
         color: black;
         box-shadow: 0px 0px 20px rgba(0,0,0,1);
         background-color: $grayBackground;
@@ -112,14 +113,16 @@
         }
         .moreInfoContainer{
             display: flex;
+            justify-content: space-around;
             flex-wrap: wrap;
-            width: 60%;
+            width: 90%;
             .radioContainer{
                 display: flex;
                 justify-content: space-between;
-                width: 100%;
+                width: 37%;
+                min-width: 150px;
                 padding: 0.5em 1em;
-                margin: 10px;
+                margin: 10px 0;
                 background-color: $radioBackground;
                 border-radius: 50px;
             }
@@ -150,7 +153,30 @@
         }
         .buttonsContainer{
             display: flex;
+            justify-content: space-between;
+            width: 50%;
             margin: 2% auto;
+            .button{
+                color: white;
+                width: 45%;
+                padding: 15px;
+                font-weight: 600;
+                border: solid 1px white;
+                border-radius: 5px;
+                transition: all 200ms ease;
+                &:hover{
+                    width: 50%;
+                    box-shadow: -2px 2px 5px rgba(0,0,0,0.6);
+                    filter: brightness(90%);
+                    cursor: pointer;
+                }
+                &.submitButton{
+                    background-color: $buttonGreen;
+                }
+                &.cancelButton{
+                    background-color: $buttonRed;
+                }
+            }
         }
     }
 }

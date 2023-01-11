@@ -62,9 +62,9 @@ function AllToDo(props) {
         var tempFinished = [];
         var taskProps = {updateTasks: updateTasks, type: "", task: "", id: "000000"}
         for (var type in tasks){
-            if(Object.keys(tasks[type]).length !== 0){
-                isEmpty = false;
+            if(activePage === 'all' || Object.keys(tasks[activePage]).length !== 0){
                 taskProps.type = type;
+                isEmpty = false;
                 if(taskSettings.includes(type)){
                     if(activePage === type || activePage === 'all'){ //this line checks if its a specific page
                         for (var task in tasks[type]){
@@ -105,11 +105,11 @@ function AllToDo(props) {
             )
             setEmptyMessage(message)
         }else{
-            setToDoObjects(tempToDo);
-            setInProgressObjects(tempProgress);
-            setFinishedObjects(tempFinished);
             setEmptyMessage(null);
         }
+        setToDoObjects(tempToDo);
+        setInProgressObjects(tempProgress);
+        setFinishedObjects(tempFinished);
     }
     return (
         <div className="allToDoContainer">

@@ -21,10 +21,10 @@ function AddEmployee(props) {
 
     return (
         <div className="addNewEmployeeContainer">
-            <h2 className="formTitle">Add New Employee</h2>
+            <h2 className="formTitle">New Employee</h2>
             <form className='formContainer' onSubmit={handleSubmit}>
                 <label>
-                    First Name:
+                    <p>First Name</p>
                     <input type="text" 
                     name="firstName"
                     value={newEmployee.firstName} 
@@ -32,7 +32,7 @@ function AddEmployee(props) {
                     maxLength={20}/>
                 </label>
                 <label>
-                    Last Name:
+                    <p>Last Name</p>
                     <input type="text" 
                     name="lastName"
                     value={newEmployee.lastName} 
@@ -41,6 +41,7 @@ function AddEmployee(props) {
                 </label>
                 <input type="submit" 
                     name="submit"
+                    className="submitButton"
                     value="Add" />
             </form>
         </div>

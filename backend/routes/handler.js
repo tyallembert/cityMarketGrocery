@@ -55,13 +55,14 @@ router.get("/currentLiveAisles", (req, res) => {
 });
 router.post('/saveLiveData', async(req, res) => {
     console.log("HANDLER: saveLiveData")
-    var body = JSON.parse(req.body);
+    console.log(typeof req.body)
+    var body = req.body;
     const type = "liveFreight";
     var date = new Date();
     var dateString = date.toLocaleDateString('en-us');
     var filename = dateString.replace(/\//g, "_");
     var destination = "daysData";
-    var newId = await database.writeJSON(filename, type, body, "");
+    var newId = await database.writeJSON(filename, destination, type, body, "");
     res.send(JSON.stringify(newId));
 });
 router.post('/saveFinishedLive', (req, res) => {
@@ -73,7 +74,7 @@ router.post('/saveFinishedLive', (req, res) => {
     var dateString = date.toLocaleDateString('en-us');
     var filename = dateString.replace(/\//g, "_");
     var destination = "daysData";
-    var newId = database.writeJSON(filename, type, information, id);
+    var newId = database.writeJSON(filename, destination, type, information, id);
     res.send(newId);
 });
 //-------------------------------------------
@@ -94,7 +95,8 @@ router.post('/saveTask', async(req, res) => {
     console.log("HANDLER: saveTask"); 
     const type = req.body.type;
     const id = req.body.id;
-    var task = JSON.parse(req.body.task);
+    var task = req.body.task;
+    var destination = "daysData";
     // console.log(task)
     var date = new Date();
     var dateString = date.toLocaleDateString('en-us');

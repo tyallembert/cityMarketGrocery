@@ -14,6 +14,6 @@ app.use(bodyParser.json());
 
 const PORT = 4000;
 
-app.listen(PORT, () => {
-  console.log(`Server listening on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server listening on http://localhost:${PORT} or http://0.0.0.0:${PORT}`);
 });
