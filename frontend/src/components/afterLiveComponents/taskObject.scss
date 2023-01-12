@@ -38,6 +38,9 @@
             font-size: 8pt;
             color: rgba(0,0,0,0.6);
         }
+        &.aisle{
+            max-width: 80px;
+        }
     }
     .button{
         color: white;
@@ -59,17 +62,5 @@
     }
     .doneButton{
         background-color: $buttonRed;
-    }
-    //CUSTOM Preview
-    .elementContainer.aisle{
-        min-width: 30px;
-        .editable{
-            min-width: 30px;
-            outline: solid 2px rgba(255,255,255,0.2);
-            border-radius: 3px;
-        }
-        .editable:focus{
-            outline: solid 2px rgba(255,255,255,0.7);
-        }
     }
 }

@@ -68,7 +68,7 @@ function AddTask(props) {
     const setupWindow = () => {
         var tempList = [];
         tempList.push(
-            <option value='none' selected hidden disabled>Choose an option</option>
+            <option value='none' >Choose an option</option>
         )
         for(var page in props.navSettings){
             if(Object.keys(settings).includes(page)){

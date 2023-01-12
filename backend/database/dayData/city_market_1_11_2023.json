@@ -14,8 +14,8 @@
         "aisle": "2",
         "boxes": "33",
         "start": "12:04 PM",
-        "end": "",
-        "status": "In Progress"
+        "end": "1:51 PM",
+        "status": "Finished"
       }
     },
     "upstock": {
@@ -83,7 +83,26 @@
         "status": "To Do"
       }
     },
-    "peri": {},
+    "periCastors": {
+      "xcxo25po": {
+        "name": "",
+        "aisle": "Back-fill (1-8)",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "periBackstock": {
+      "a0cuwd3x": {
+        "name": "Ty",
+        "aisle": "Back-fill Milk/Juice (1-4)",
+        "boats": "",
+        "start": "1:51 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
     "beerWine": {},
     "extraNotes": {}
   }

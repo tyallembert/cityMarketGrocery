@@ -5,7 +5,8 @@
       "sectors": ["Honey", "Coffee", "Boves", "Jerky", "Seasonal", "Local Chocolates", "Teddys PB", "Vinegar", "Hot Sauce"],
       "rounding": ["Beverages", "Polar", "Polar Cooler", "Polar Endcap", "Grab 'n Go", "Water well"],
       "bulk": ["Granola", "Flour", "Nuts", "Dried Fruit", "Candy", "Baking", "Spices", "Rice", "Coffee", "Grains"],
-      "peri": {},
+      "periCastors": ["Back-fill (1-8)", "Crated Milk", "Hippie Cooler", "Beverage Cooler", "Butter Cheese", "Eggs"],
+      "periBackstock": ["Back-fill Milk/Juice (1-4)", "Backfill Yogurt (5-7)", "Soft Cheese (8)", "Packages Cheese", "Butter/Desserts", "Eggs", "Hummus Cooler", "Hippie Cooler", "Beverages", "Kegs"],
       "beerWine": ["Baker", "Calmont", "Craft", "Cider", "12 Packs", "Independents", "Satellite Stands", "Red Wine", "White Wine", "Full Cases"],
       "custom": ["upstock", "backstock", "sectors", "rounding", "bulk", "perishables", "beer & wine", "other"]
     }

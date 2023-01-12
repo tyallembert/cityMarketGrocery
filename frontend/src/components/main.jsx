@@ -20,7 +20,8 @@ function Main(props) {
         sectors: <AllToDo tasks={tasks} activePage={activePage}/>,
         rounding: <AllToDo tasks={tasks} activePage={activePage}/>,
         bulk: <AllToDo tasks={tasks} activePage={activePage}/>,
-        peri: <AllToDo tasks={tasks} activePage={activePage}/>,
+        periCastors: <AllToDo tasks={tasks} activePage={activePage}/>,
+        periBackstock: <AllToDo tasks={tasks} activePage={activePage}/>,
         beerWine: <AllToDo tasks={tasks} activePage={activePage}/>
     }
     

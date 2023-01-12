@@ -136,6 +136,7 @@ router.post("/saveNewEmployee", async (req, res) => {
     var destination = "settingsFile";
     var filename = "currentEmployees";
     var newId = await database.writeJSON(filename, destination, type, body, "");
+    console.log("ID: "+newId)
     res.send(JSON.stringify(newId));
 });
 router.post("/deleteEmployee", async (req, res) => {

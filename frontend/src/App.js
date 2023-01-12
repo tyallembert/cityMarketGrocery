@@ -14,6 +14,7 @@ function App() {
 
   const [activePage, setActivePage] = useState("liveFreight");
   const [currentTasks, setCurrentTasks] = useState([]);
+  const [employees, setEmployees] = useState([]);
   const [dataFetched, setDataFetched] = useState(false);
   const [navSettings, setNavSettings] = useState({});
 
@@ -24,6 +25,7 @@ function App() {
 
   useEffect(() => {
     fetchNavSettings();
+    fetchEmployees();
   }, []);
   useEffect(() => {
     fetchCurrentTasks();
@@ -52,6 +54,11 @@ function App() {
     const tasks = await data.json();
     setCurrentTasks(tasks);
     setDataFetched(true);
+  }
+  const fetchEmployees = async() => {
+    const data = await fetch('/getCurrentEmployees');
+    const tempEmployees = await data.json();
+    setEmployees(tempEmployees);
   }
   const fetchNavSettings = async() => {
     const data = await fetch('/getNavSettings');
@@ -89,7 +96,7 @@ function App() {
             <>
             <Header activePage={activePage} navSettings={navSettings} updateCurrentTasks={updateCurrentTasks}/>
             <div className="contentContainer">
-              <LeftNav updateActivePage={updateActivePage}/>
+              <LeftNav navSettings={navSettings} updateActivePage={updateActivePage}/>
               <Main activePage={activePage} tasks={currentTasks}/>
             </div>
             </>

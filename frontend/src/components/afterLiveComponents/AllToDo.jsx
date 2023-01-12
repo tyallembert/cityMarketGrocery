@@ -61,8 +61,12 @@ function AllToDo(props) {
         var tempProgress = [];
         var tempFinished = [];
         var taskProps = {updateTasks: updateTasks, type: "", task: "", id: "000000"}
+        var emptyTasks = 0;
         for (var type in tasks){
             if(activePage === 'all' || Object.keys(tasks[activePage]).length !== 0){
+                if(Object.keys(tasks[type]).length === 0){
+                    emptyTasks++;
+                }
                 taskProps.type = type;
                 isEmpty = false;
                 if(taskSettings.includes(type)){
@@ -97,7 +101,7 @@ function AllToDo(props) {
                 }
             }
         }
-        if(isEmpty){
+        if(isEmpty || Object.keys(tasks).length === emptyTasks){
             var message = (
             <div className="emptyMessage">
                 <h2>No tasks yet for today</h2>

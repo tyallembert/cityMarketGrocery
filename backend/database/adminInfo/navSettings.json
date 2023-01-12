@@ -13,37 +13,42 @@
         "upstock": {
             "title": "Upstock",
             "color": "#EB3636",
-            "classes": "upstock navChild"
+            "classes": "upstock navChild small"
         },
         "backstock": {
             "title": "Backstock",
             "color": "#31B94F",
-            "classes": "backstock navChild"
+            "classes": "backstock navChild small"
         },
         "sectors": {
             "title": "Sectors",
             "color": "#D9D11E",
-            "classes": "sectors navChild"
+            "classes": "sectors navChild small"
         },
         "rounding": {
             "title": "Rounding",
             "color": "#cd50d9",
-            "classes": "rounding navChild"
+            "classes": "rounding navChild small"
         },
         "bulk": {
             "title": "Bulk",
             "color": "#806021",
-            "classes": "bulk navChild"
+            "classes": "bulk navChild small"
         },
-        "peri": {
-            "title": "Perishables",
+        "periCastors": {
+            "title": "Peri Castors",
             "color": "#1E8AD9",
-            "classes": "peri navChild"
+            "classes": "periCastors navChild small"
+        },
+        "periBackstock": {
+            "title": "Peri Backstock",
+            "color": "#1E8AD9",
+            "classes": "periBackstock navChild small"
         },
         "beerWine": {
             "title": "Beer & Wine",
             "color": "#8E4DC1",
-            "classes": "beerWine navChild"
+            "classes": "beerWine navChild small"
         }
     }
 ]

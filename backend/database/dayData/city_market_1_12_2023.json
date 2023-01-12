@@ -1,0 +1,23 @@
+[
+  {
+    "liveFreight": {},
+    "upstock": {
+      "8ocifn3o": {
+        "name": "",
+        "aisle": "1",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "backstock": {},
+    "sectors": {},
+    "rounding": {},
+    "bulk": {},
+    "periCastors": {},
+    "periBackstock": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]

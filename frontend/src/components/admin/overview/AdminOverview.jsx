@@ -26,7 +26,6 @@ function AdminOverview(props) {
     }, [daysData, activeTask])
 
     const fetchDaysData = async() => {
-        console.log("fetching days")
         var formattedStart = date.toLocaleDateString('en-us');
         const data = await fetch("/daysData", {
             method: 'POST',
@@ -39,7 +38,6 @@ function AdminOverview(props) {
         setDaysData(tasks);
     }
     const createInfoObjects = () => {
-        console.log(activeTask)
         var tempObjects = []
         for(var x in daysData){
             if(activeTask === "all"){

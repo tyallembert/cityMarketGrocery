@@ -13,6 +13,11 @@ function LeftNav(props) {
         peri: "peri navChild small",
         beerWine: "beerWine navChild small"
     };
+    const [navSettings, setNavSettings] = useState(props.navSettings);
+    useEffect(() => {
+        setNavSettings(props.navSettings)
+    }, [])
+
     const setActivePage = (e) => {
         var page = e.currentTarget.className.split(" ");
         props.updateActivePage(page[0]);
@@ -22,6 +27,16 @@ function LeftNav(props) {
     }
     return (
         <div className="leftNavContainer" onClick={toggleNav}>
+            {/* {
+                Object.keys(navSettings).map((value, index) => {
+                    return (
+                        <div key={index} className={navSettings[value].className} onClick={setActivePage}>
+                            <p>{navSettings[value].title}</p>
+                            <div className="arrow"></div>
+                        </div>
+                    )
+                })
+            } */}
             <div className={navClasses.liveFreight} onClick={setActivePage}>
                 <p>Live Freight</p>
                 <div className="arrow"></div>
@@ -32,34 +47,20 @@ function LeftNav(props) {
             </div>
 
             <div className="afterLive">
-                <div className={navClasses.upstock} onClick={setActivePage}>
-                    <p>Upstock</p>
-                    <div className="arrow"></div>
-                </div>
-                <div className={navClasses.backstock} onClick={setActivePage}>
-                    <p>Backstock</p>
-                    <div className="arrow"></div>
-                </div>
-                <div className={navClasses.sectors} onClick={setActivePage}>
-                    <p>Sectors</p>
-                    <div className="arrow"></div>
-                </div>
-                <div className={navClasses.rounding} onClick={setActivePage}>
-                    <p>Rounding</p>
-                    <div className="arrow"></div>
-                </div>
-                <div className={navClasses.bulk} onClick={setActivePage}>
-                    <p>Bulk</p>
-                    <div className="arrow"></div>
-                </div>
-                <div className={navClasses.peri} onClick={setActivePage}>
-                    <p>Peri</p>
-                    <div className="arrow"></div>
-                </div>
-                <div className={navClasses.beerWine} onClick={setActivePage}>
-                    <p>B/W</p>
-                    <div className="arrow"></div>
-                </div>
+            {
+                Object.keys(navSettings).map((value, index) => {
+                    if(navSettings[value].classes.includes("small")){
+                        return (
+                            <div key={index} className={navSettings[value].classes} onClick={setActivePage}>
+                                <p>{navSettings[value].title}</p>
+                                <div className="arrow"></div>
+                            </div>
+                        );
+                    }else{
+                        return;
+                    }
+                })
+            }
             </div>
         </div>
     )

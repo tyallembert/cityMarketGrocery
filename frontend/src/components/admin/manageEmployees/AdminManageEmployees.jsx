@@ -41,7 +41,8 @@ function AdminManageEmployees(props) {
             },
             body: JSON.stringify({employee: newEmployee})
         });
-        const id = response;
+        var id = await response.json();
+        console.log(id);
         updateCurrentEmployees({type: "add", id: id, employee: newEmployee});
         toggleNewEmployeePopup();
     }
@@ -54,7 +55,7 @@ function AdminManageEmployees(props) {
             },
             body: JSON.stringify({id: id})
         });
-        const resID = response;
+        const resID = await response.json();
         updateCurrentEmployees({type: "delete", id: id});
     }
 

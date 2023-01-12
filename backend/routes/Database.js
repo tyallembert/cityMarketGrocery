@@ -81,6 +81,8 @@ class Database {
     updateData(allData, taskType, newData, id){
         if(id !== ""){
             if(newData === "delete"){
+                console.log("DELETED EMPLOYEE");
+                console.log(id);
                 delete allData[0][id];
             }else{
                 if(taskType === ""){
@@ -113,7 +115,8 @@ class Database {
                 sectors: {},
                 rounding: {},
                 bulk: {},
-                peri: {},
+                periCastors: {},
+                periBackstock: {},
                 beerWine: {},
                 extraNotes: {}
             }];
