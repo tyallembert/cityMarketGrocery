@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { IoCheckmarkDoneSharp, IoCloseSharp } from "react-icons/io5";
 import "./newAislePopup.scss";
 
 function NewAislePopup(props) {
 
+    const [employees, setEmployees] = useState(props.employees);
+    const [employeeOptionObjects, setEmployeeOptionObjects] = useState([]);
     const [taskInfo, setTaskInfo] = useState({
         name: "",
         aisle: "",
@@ -12,9 +14,27 @@ function NewAislePopup(props) {
         end: "",
         status: "In Progress"
     });
+    useEffect(() => {
+        setEmployees(props.employees);
+    }, [])
+    useEffect(() => {
+        createEmployeeOptions();
+    }, [employees])
     const handleChange = (event) => {
         setTaskInfo({ ...taskInfo, [event.target.name]: event.target.value });
     };
+    const createEmployeeOptions = () => {
+        console.log(employees);
+        var tempObjects = [];
+        tempObjects.push(<option key={0} value="choose">Choose</option>);
+        for(var id in employees){
+            var firstLastInit = employees[id].firstName + " "+ employees[id].lastName[0];
+            tempObjects.push(
+                <option key={id} value={firstLastInit}>{firstLastInit}</option>
+            )
+        }
+        setEmployeeOptionObjects(tempObjects);
+    }
     const handleSubmit = async(e) => {
         e.preventDefault();
         var today = new Date();
@@ -23,26 +43,22 @@ function NewAislePopup(props) {
             minute: 'numeric',
             hour12: true,
         })
-        taskInfo.start = time;
+        var tempTask = {...taskInfo};
+        tempTask.start = time;
 
         const response = await fetch("/saveLiveData", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(taskInfo)
+            body: JSON.stringify(tempTask)
         });
-        const id = await response.json()
-        for(var i in id){
-            console.log(id[i]);
-        }
-        console.log("RESPONSE"+id)
-        await props.updateTasks([id, taskInfo]);
+        const id = await response.json();
+        props.updateTasks([id, tempTask]);
 
         closePopUp();
     };
     const closePopUp = () => {
-        console.log("going through here")
         props.handleClick(false);
     };
 
@@ -53,11 +69,14 @@ function NewAislePopup(props) {
                 <h1 className='formTitle'>New Aisle</h1>
                 <label>
                     Name:
-                    <input type="text" 
+                    {/* <input type="text" 
                     name="name"
                     value={taskInfo.name} 
                     onChange={handleChange} 
-                    maxLength={10}/>
+                    maxLength={10}/> */}
+                    <select name="name" onChange={handleChange}>
+                        {employeeOptionObjects}
+                    </select>
                 </label>
 
                 <label>

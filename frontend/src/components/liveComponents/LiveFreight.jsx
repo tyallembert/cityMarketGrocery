@@ -7,6 +7,7 @@ import NewAislePopup from './NewAislePopup';
 function LiveFreight(props) {
     const [showingPopUp, setShowingPopUp] = useState(false);
     const [tasks, setTasks] = useState(props.tasks);
+    const [employees, setEmployees] = useState(props.employees);
 
     const updateTasks = (res) => {
         let r = res[0];
@@ -21,7 +22,7 @@ function LiveFreight(props) {
         <div className="liveFreightContainer">
             <StartButton handleClick={handleClick}/>
             {showingPopUp ? (
-                <NewAislePopup handleClick={handleClick} updateTasks={updateTasks} />
+                <NewAislePopup handleClick={handleClick} updateTasks={updateTasks} employees={employees} />
             ) : (null)
             }
             <GridTable newAisleActive={showingPopUp} tasks={tasks}/>

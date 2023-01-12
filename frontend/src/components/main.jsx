@@ -7,28 +7,25 @@ import OneToDo from "./afterLiveComponents/OneToDo";
 function Main(props) {
     const [activePage, setActivePage] = useState(props.activePage);
     const [tasks, setTasks] = useState(props.tasks);
+    const [employees, setEmployees] = useState(props.employees);
     useEffect(() => {
         setActivePage(props.activePage);
-        setTasks(props.tasks)
+        setTasks(props.tasks);
+        setEmployees(props.employees);
     }, [props.activePage, props.tasks])
-
-    const pages = {
-        liveFreight: <LiveFreight tasks={tasks.liveFreight}/>,
-        all: <AllToDo tasks={tasks} activePage={activePage}/>,
-        upstock: <AllToDo tasks={tasks} activePage={activePage}/>,
-        backstock: <AllToDo tasks={tasks} activePage={activePage}/>,
-        sectors: <AllToDo tasks={tasks} activePage={activePage}/>,
-        rounding: <AllToDo tasks={tasks} activePage={activePage}/>,
-        bulk: <AllToDo tasks={tasks} activePage={activePage}/>,
-        periCastors: <AllToDo tasks={tasks} activePage={activePage}/>,
-        periBackstock: <AllToDo tasks={tasks} activePage={activePage}/>,
-        beerWine: <AllToDo tasks={tasks} activePage={activePage}/>
-    }
     
 
     return (
         <div className="mainContainer">
-            {pages[activePage]}
+            {
+                (activePage === "liveFreight") ? 
+                (
+                    <LiveFreight tasks={tasks.liveFreight} employees={employees}/>
+                ): 
+                (
+                    <AllToDo tasks={tasks} activePage={activePage}/>
+                )
+            }
         </div>
     )
 }

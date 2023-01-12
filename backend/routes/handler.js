@@ -57,6 +57,7 @@ router.post('/saveLiveData', async(req, res) => {
     console.log("HANDLER: saveLiveData")
     console.log(typeof req.body)
     var body = req.body;
+    console.log(body);
     const type = "liveFreight";
     var date = new Date();
     var dateString = date.toLocaleDateString('en-us');

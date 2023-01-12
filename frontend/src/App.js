@@ -97,7 +97,7 @@ function App() {
             <Header activePage={activePage} navSettings={navSettings} updateCurrentTasks={updateCurrentTasks}/>
             <div className="contentContainer">
               <LeftNav navSettings={navSettings} updateActivePage={updateActivePage}/>
-              <Main activePage={activePage} tasks={currentTasks}/>
+              <Main activePage={activePage} tasks={currentTasks} employees={employees}/>
             </div>
             </>
           ) : (<Admin navSettings={navSettings}/>)

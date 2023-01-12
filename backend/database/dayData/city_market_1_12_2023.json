@@ -1,6 +1,15 @@
 [
   {
-    "liveFreight": {},
+    "liveFreight": {
+      "th87ose8": {
+        "name": "Ty A",
+        "aisle": "2",
+        "boxes": "22",
+        "start": "12:00 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
     "upstock": {
       "8ocifn3o": {
         "name": "",
