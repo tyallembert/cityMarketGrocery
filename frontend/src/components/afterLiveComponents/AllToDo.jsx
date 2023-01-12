@@ -18,7 +18,7 @@ function AllToDo(props) {
         fetchSettings()
     },[props.tasks])
     useEffect(() => {
-        createTaskObjects()
+        createTaskObjects();
     },[tasks, taskSettings])
     useEffect(() => {
 
@@ -60,7 +60,7 @@ function AllToDo(props) {
         var tempToDo = [];
         var tempProgress = [];
         var tempFinished = [];
-        var taskProps = {updateTasks: updateTasks, type: "", task: "", id: "000000"}
+        var taskProps = {updateTasks: updateTasks, employees: props.employees, type: "", task: "", id: "000000"}
         var emptyTasks = 0;
         for (var type in tasks){
             if(activePage === 'all' || Object.keys(tasks[activePage]).length !== 0){

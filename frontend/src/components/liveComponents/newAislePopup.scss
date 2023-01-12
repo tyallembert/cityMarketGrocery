@@ -39,8 +39,15 @@
                 padding: 5px;
                 margin-top: 2px;
             }
+            .nameInput{
+                width: 100%;
+                padding: 5px;
+                background-color: rgba(255,255,255,1);
+                border: solid 2px rgba(255,255,255,0.6);
+                border-radius: 5px;
+            }
         }
-        button[type=submit]{
+        button{
             display: flex;
             align-items: center;
             justify-content: center;
@@ -50,19 +57,19 @@
             border: solid 3px white;
             font-size: 25px;
             color: white;
-            background-color: $buttonGreen;
-        }
-        button[type=button]{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 50px;
-            width: 50px;
-            border-radius: 100px;
-            border: solid 3px white;
-            font-size: 25px;
-            color: white;
-            background-color: $buttonRed;
+            transition: all 200ms ease;
+            &:hover{
+                box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+                transform: translateY(-2px);
+                font-size: 24pt;
+                cursor: pointer;
+            }
+            &[type=submit]{
+                background-color: $buttonGreen;
+            }
+            &[type=button]{
+                background-color: $buttonRed;
+            }
         }
     }
 }

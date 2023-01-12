@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./main.scss";
 import LiveFreight from "./liveComponents/LiveFreight.jsx";
 import AllToDo from "./afterLiveComponents/AllToDo.jsx";
-import OneToDo from "./afterLiveComponents/OneToDo";
 
 function Main(props) {
     const [activePage, setActivePage] = useState(props.activePage);
@@ -23,7 +22,7 @@ function Main(props) {
                     <LiveFreight tasks={tasks.liveFreight} employees={employees}/>
                 ): 
                 (
-                    <AllToDo tasks={tasks} activePage={activePage}/>
+                    <AllToDo tasks={tasks} activePage={activePage} employees={employees}/>
                 )
             }
         </div>

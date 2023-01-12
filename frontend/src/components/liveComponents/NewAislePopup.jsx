@@ -69,12 +69,7 @@ function NewAislePopup(props) {
                 <h1 className='formTitle'>New Aisle</h1>
                 <label>
                     Name:
-                    {/* <input type="text" 
-                    name="name"
-                    value={taskInfo.name} 
-                    onChange={handleChange} 
-                    maxLength={10}/> */}
-                    <select name="name" onChange={handleChange}>
+                    <select className="nameInput" name="name" onChange={handleChange}>
                         {employeeOptionObjects}
                     </select>
                 </label>

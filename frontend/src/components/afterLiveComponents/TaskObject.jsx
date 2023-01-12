@@ -4,6 +4,8 @@ import "./taskObject.scss";
 function TaskObject(props) {
     const [task, setTask] = useState(props.task);
     const [type, setType] = useState(props.type);
+    const [employees, setEmployees] = useState(props.employees);
+    const [employeeOptionObjects, setEmployeeOptionObjects] = useState([]);
 
     const [classes, setClasses] = useState("");
     const [infoObject, setInfoObject] = useState([]);
@@ -12,23 +14,34 @@ function TaskObject(props) {
     useEffect(() => {
         setTask(props.task);
         setType(props.type);
+        setEmployees(props.employees);
     },[])
     useEffect(() => {
+        createEmployeeOptions();
        createObject();
-    },[task])
+    },[task, employees])
 
+    const createEmployeeOptions = () => {
+        console.log(employees);
+        var tempObjects = [];
+        tempObjects.push(<option key={0} value="choose">Choose</option>);
+        for(var id in employees){
+            var firstLastInit = employees[id].firstName + " "+ employees[id].lastName[0];
+            tempObjects.push(
+                <option key={id} value={firstLastInit}>{firstLastInit}</option>
+            )
+        }
+        setEmployeeOptionObjects(tempObjects);
+    }
     const createObject = () => {
         setClasses("taskObjectContainer " + type)
         switch(task.status){
             case 'To Do':
                 setInfoObject(
                     <>
-                        <input type='text'
-                            name="name"
-                            className="nameInput"
-                            placeholder="Name" 
-                            onChange={handleChange}
-                        />
+                        <select className="nameInput" name="name" onChange={handleChange}>
+                            {employeeOptionObjects}
+                        </select>
                         <button className="button startButton" onClick={handleStartTask}  {...buttonEnabled ? '':'disabled'}>Start</button> 
                     </>
                     )
@@ -69,23 +82,16 @@ function TaskObject(props) {
             default:
                 setInfoObject(
                 <>
-                    <input type='text'
-                    className="nameInput"
-                    placeholder="Name" 
-                    onChange={handleChange}/>
+                    <select className="nameInput" name="name" onChange={handleChange}>
+                        {employeeOptionObjects}
+                    </select>
                     <button className="startButton" onClick={handleStartTask}>Start</button>
                 </>
                 )
         }
     }
     const handleChange = (event) => {
-        var classes = event.target.className.split(" ");
         setTask({ ...task, [event.target.name]: event.target.value });
-        console.log(buttonEnabled)
-        if(task.name.length > 0){
-            setButtonEnabled(true);
-        }
-        console.log(task)
     }
     const handleStartTask = (e) => {
         var tempTask = task;
@@ -98,7 +104,6 @@ function TaskObject(props) {
         tempTask.start = time;
         tempTask.status = "In Progress";
         setTask(tempTask);
-        console.log(tempTask)
         props.updateTasks({type: type, id: props.id, task: tempTask});
     }
     const handleFinishTask = () => {

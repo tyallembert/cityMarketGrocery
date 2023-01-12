@@ -6,6 +6,14 @@
         "aisle": "2",
         "boxes": "22",
         "start": "12:00 PM",
+        "end": "12:34 PM",
+        "status": "Finished"
+      },
+      "vr3pr8pt": {
+        "name": "Colin G",
+        "aisle": "4",
+        "boxes": "26",
+        "start": "1:02 PM",
         "end": "",
         "status": "In Progress"
       }
@@ -20,7 +28,16 @@
         "status": "To Do"
       }
     },
-    "backstock": {},
+    "backstock": {
+      "829z3oiw": {
+        "name": "",
+        "aisle": "3",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
     "sectors": {},
     "rounding": {},
     "bulk": {},
