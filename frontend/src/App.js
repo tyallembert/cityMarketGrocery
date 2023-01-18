@@ -7,7 +7,7 @@ import Main from "./components/main";
 import Admin from "./components/admin/Admin";
 
 function App() {
-  const [adminActive, setAdminActive] = useState(false);
+  const [adminActive, setAdminActive] = useState(true);
 
 
   // SEND THE PAGES VARIABLES OVER TO ALL PAGES THAT NEED IT
@@ -71,7 +71,6 @@ function App() {
     var data = res.task;
     var id = res.id;
     var tempTasks = {...currentTasks};
-    console.log("TYPE: "+type);
     tempTasks[type][id] = await {...data};
     setCurrentTasks(tempTasks);
   }

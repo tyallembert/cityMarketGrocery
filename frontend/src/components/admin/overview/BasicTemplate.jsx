@@ -10,7 +10,11 @@ function BasicTemplate(props) {
         setActiveTask(props.activeTask);
         setTask(props.task);
         setIsAll(props.isAll);
+        fillEmptyFields();
     }, [])
+    // useEffect(() => {
+    //     fillEmptyFields();
+    // }, [task])
     const setContainerClass = () => {
         var theClass = "";
         if(isAll){
@@ -19,6 +23,19 @@ function BasicTemplate(props) {
             theClass = "basicTemplateContainer";
         }
         return theClass; 
+    }
+    const fillEmptyFields = () => {
+        var tempTask = {...task};
+        if(task.name === ""){
+            tempTask.name = "Not Started";
+            tempTask.boxes = "Not Started";
+            tempTask.start = "Not Started";
+            tempTask.end = "Not Started";
+        }
+        if(task.end === ""){
+            tempTask.end = "Not Finished"
+        }
+        setTask(tempTask);
     }
     return (
         <div className={setContainerClass()}>

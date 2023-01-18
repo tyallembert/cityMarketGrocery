@@ -1,0 +1,41 @@
+[
+  {
+    "liveFreight": {
+      "ihpbllah": {
+        "name": "Colin G",
+        "aisle": "4",
+        "boxes": "45",
+        "start": "8:20 AM",
+        "end": "8:20 AM",
+        "status": "Finished"
+      }
+    },
+    "upstock": {
+      "0n62hxkr": {
+        "name": "",
+        "aisle": "1",
+        "boats": "",
+        "start": "8:20 AM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "backstock": {
+      "8nso5hxt": {
+        "name": "",
+        "aisle": "5",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "sectors": {},
+    "rounding": {},
+    "bulk": {},
+    "periCastors": {},
+    "periBackstock": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]

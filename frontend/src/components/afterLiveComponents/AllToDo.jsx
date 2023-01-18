@@ -6,6 +6,7 @@ function AllToDo(props) {
     const [taskSettings, setTaskSettings] = useState([])
     const [tasks, setTasks] = useState(props.tasks);
     const [activePage, setActivePage] = useState(props.tasks);
+    const [employees, setEmployees] = useState(props.tasks);
 
     const [toDoObjects, setToDoObjects] = useState([]);
     const [inProgressObjects, setInProgressObjects] = useState([]);
@@ -15,6 +16,7 @@ function AllToDo(props) {
     useEffect(() => {
         setTasks(props.tasks)
         setActivePage(props.activePage)
+        setEmployees(props.employees)
         fetchSettings()
     },[props.tasks])
     useEffect(() => {
@@ -41,9 +43,6 @@ function AllToDo(props) {
         var type = res.type;
         var task = res.task;
         tempTasks[type][id] = res.task;
-        console.log(id)
-        console.log(type)
-        console.log(task)
         setTasks(tempTasks);
         createTaskObjects();
         fetch("/saveTask", {
@@ -63,7 +62,7 @@ function AllToDo(props) {
         var taskProps = {updateTasks: updateTasks, employees: props.employees, type: "", task: "", id: "000000"}
         var emptyTasks = 0;
         for (var type in tasks){
-            if(activePage === 'all' || Object.keys(tasks[activePage]).length !== 0){
+            if(props.activePage === 'all' || Object.keys(tasks[props.activePage]).length !== 0){
                 if(Object.keys(tasks[type]).length === 0){
                     emptyTasks++;
                 }

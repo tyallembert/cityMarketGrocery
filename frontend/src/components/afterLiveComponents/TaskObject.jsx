@@ -18,11 +18,12 @@ function TaskObject(props) {
     },[])
     useEffect(() => {
         createEmployeeOptions();
-       createObject();
     },[task, employees])
+    useEffect(() => {
+        createObject();
+    },[employeeOptionObjects])
 
     const createEmployeeOptions = () => {
-        console.log(employees);
         var tempObjects = [];
         tempObjects.push(<option key={0} value="choose">Choose</option>);
         for(var id in employees){
@@ -34,15 +35,19 @@ function TaskObject(props) {
         setEmployeeOptionObjects(tempObjects);
     }
     const createObject = () => {
+        // createEmployeeOptions();
         setClasses("taskObjectContainer " + type)
         switch(task.status){
             case 'To Do':
                 setInfoObject(
                     <>
-                        <select className="nameInput" name="name" onChange={handleChange}>
-                            {employeeOptionObjects}
-                        </select>
-                        <button className="button startButton" onClick={handleStartTask}  {...buttonEnabled ? '':'disabled'}>Start</button> 
+                        <div className="elementContainer">
+                            <select className="nameInput" name="name" onChange={handleChange}>
+                                {employeeOptionObjects}
+                            </select>
+                            <p className="title">Name</p>
+                        </div>
+                        <button className="button startButton" onClick={handleStartTask}>Start</button> 
                     </>
                     )
                 break;

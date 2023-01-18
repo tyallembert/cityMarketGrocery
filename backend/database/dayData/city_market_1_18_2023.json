@@ -1,0 +1,74 @@
+[
+  {
+    "liveFreight": {
+      "h57dkhxx": {
+        "name": "Ty A",
+        "aisle": "3",
+        "boxes": "23",
+        "start": "12:55 PM",
+        "end": "12:55 PM",
+        "status": "Finished"
+      },
+      "o02tkz3b": {
+        "name": "Colin G",
+        "aisle": "2",
+        "boxes": "34",
+        "start": "12:55 PM",
+        "end": "2:59 PM",
+        "status": "Finished"
+      },
+      "klswf1nb": {
+        "name": "Nate L",
+        "aisle": "5",
+        "boxes": "21",
+        "start": "12:55 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "upstock": {
+      "uivua8ln": {
+        "name": "Ty A",
+        "aisle": "1",
+        "boats": "",
+        "start": "3:13 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "backstock": {
+      "wkwioy04": {
+        "name": "",
+        "aisle": "3",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      },
+      "cg7gt8n1": {
+        "name": "",
+        "aisle": "1",
+        "boats": "",
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "sectors": {},
+    "rounding": {
+      "bfpoeqxb": {
+        "name": "Colin G",
+        "aisle": "Water well",
+        "boats": "",
+        "start": "3:13 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "bulk": {},
+    "periCastors": {},
+    "periBackstock": {},
+    "beerWine": {},
+    "extraNotes": {}
+  }
+]
