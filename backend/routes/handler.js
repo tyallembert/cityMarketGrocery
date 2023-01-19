@@ -7,6 +7,7 @@ const database = new Database();
 
 router.use(express.json());
 
+
 router.get("/currentTasks", async (req, res) => {
     console.log("HANDLER: currentTask")
     var date = new Date();
@@ -155,9 +156,8 @@ router.post("/deleteEmployee", async (req, res) => {
 //-------------------------------------------
 router.post("/sendEmail", async (req, res) => {
     console.log("HANDLER: sendEmail")
-    mailHelper.sendEmail();
-    
-    // res.send(JSON.stringify(tasks[0]));
+    console.log(typeof req.body)
+    mailHelper.sendEmail(req.body);
 });
 
 module.exports = router;

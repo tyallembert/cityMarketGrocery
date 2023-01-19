@@ -20,7 +20,7 @@ const handlebarOptions = {
   viewPath: './templates',
 };
 
-function sendEmail() {
+function sendEmail(data) {
   console.log("sending mail")
   var mailOptions = {
     from: 'Grocery Auto<groceryDepartmentAuto@gmail.com>',
@@ -28,7 +28,7 @@ function sendEmail() {
     subject: 'End Of Day Report',
     template: 'EODemail',
     context: {
-      test: "Testing variable"
+      test: data
     }
   };
   transporter.use('compile', hbs(handlebarOptions));

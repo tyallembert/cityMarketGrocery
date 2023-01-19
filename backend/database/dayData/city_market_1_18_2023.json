@@ -32,8 +32,8 @@
         "aisle": "1",
         "boats": "",
         "start": "3:13 PM",
-        "end": "",
-        "status": "In Progress"
+        "end": "3:19 PM",
+        "status": "Finished"
       }
     },
     "backstock": {
@@ -46,12 +46,12 @@
         "status": "To Do"
       },
       "cg7gt8n1": {
-        "name": "",
+        "name": "Ty A",
         "aisle": "1",
         "boats": "",
-        "start": "",
+        "start": "3:18 PM",
         "end": "",
-        "status": "To Do"
+        "status": "In Progress"
       }
     },
     "sectors": {},
@@ -61,6 +61,14 @@
         "aisle": "Water well",
         "boats": "",
         "start": "3:13 PM",
+        "end": "3:19 PM",
+        "status": "Finished"
+      },
+      "s765g7sx": {
+        "name": "Colin G",
+        "aisle": "Polar Cooler",
+        "boats": "",
+        "start": "3:19 PM",
         "end": "",
         "status": "In Progress"
       }

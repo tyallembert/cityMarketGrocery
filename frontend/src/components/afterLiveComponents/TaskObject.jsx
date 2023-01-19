@@ -35,7 +35,6 @@ function TaskObject(props) {
         setEmployeeOptionObjects(tempObjects);
     }
     const createObject = () => {
-        // createEmployeeOptions();
         setClasses("taskObjectContainer " + type)
         switch(task.status){
             case 'To Do':
