@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Cookies from 'universal-cookie';
 import "./admin.scss";
 import AdminNav from './AdminNav';
 import LoginForm from './LoginForm';
@@ -13,23 +14,26 @@ function Admin() {
     const [navSettings, setNavSettings] = useState({});
 
     useEffect(() => {
-        checkIfLoggedIn();
-    }, []);
-
-    useEffect(() => {
+        checkCookies();
         fetchNavSettings();
     }, []);
 
     useEffect(() => {
-        console.log(navSettings)
         handlePageChange();
     }, [navSettings])
     useEffect(() => {
         handlePageChange();
-    }, [activePage])
-
-    const checkIfLoggedIn = () => {
-
+    }, [activePage, loggedIn])
+    const checkCookies = () => {
+        const cookies = new Cookies();
+        try{
+            var currentUser = cookies.get('currentUser');
+            if(currentUser.username !== "" && currentUser.password !== ""){
+                setLoggedIn(true);
+            }
+        }catch(error){
+            console.log("No User Cookies")
+        }
     }
     const pageChange = (res) => {
         setActivePage(res);
@@ -56,6 +60,11 @@ function Admin() {
         }
         setActivePageObject(tempPage);
     }
+    const resetCookies = () => {
+        const cookies = new Cookies();
+        cookies.remove('currentUser', { path: '/' });
+        console.log("removed cookies")
+    }
     return (
         <div className="adminContainer">
             {
@@ -66,10 +75,11 @@ function Admin() {
                     </>
                 ):(
                     <>
-                    <LoginForm checkIfLoggedIn={checkIfLoggedIn}/>
+                    <LoginForm setLoggedIn={setLoggedIn}/>
                     </>
                 )
             }
+            <button onClick={resetCookies}>Reset Cookies</button>
         </div>
     )
 }

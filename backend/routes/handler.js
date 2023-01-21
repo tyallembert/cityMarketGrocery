@@ -113,6 +113,33 @@ router.post('/saveTask', async(req, res) => {
 //-------------------------------------------
 // ===Admin functions===
 //-------------------------------------------
+router.post("/checkAdmin", async (req, res) => {
+    console.log("HANDLER: checkAdmin")
+    var user = req.body;
+    console.log("USER: ")
+    console.log(user);
+    var filename = "adminUsers";
+    var destination = "settingsFile";
+    var response = await database.readJSON(filename, destination);
+
+    var allAdmin = response;
+    console.log(allAdmin)
+    var response = {
+        username: false,
+        password: false
+    }
+    for(var admin in allAdmin[0]){
+        console.log("SENT: "+user.username)
+        console.log("LOOP: "+allAdmin[0][admin])
+        if(user.username === allAdmin[0][admin].username){
+            response.username = true;
+            if(user.password === allAdmin[0][admin].password){
+                response.password = true;
+            }
+        }
+    }
+    res.send(JSON.stringify(response));
+});
 router.post('/daysData', async(req, res) => {
     var destination = "tasksFile";
     var date = new Date();

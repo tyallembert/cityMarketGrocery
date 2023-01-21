@@ -23,6 +23,12 @@
         border-radius: 20px;
         padding: 3%;
         background-color: white;
+        .errorMessage{
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #d64141;
+            color: white;
+        }
         .inputContainer{
             display: flex;
             flex-direction: column;
