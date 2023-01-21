@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>End Of Day Report</title>
-    <link rel="stylesheet" href="EODemail.css">
 </head>
 <body>
     <style>
@@ -47,12 +46,18 @@
         .header .fullReportButton{
             padding: 15px;
             border-radius: 100px;
-            border: none;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            border: solid 1px black;
             font-weight: 700;
             cursor: pointer;
+            text-decoration: none;
+            color: black;
+            background-color: white;
+            transition: all 200ms ease;
         }
-
+        .header .fullReportButton:hover{
+            box-shadow: 0px 3px 5px rgba(0,0,0,0.5);
+            transform: translateY(-3px) scale(1.1);
+        }
 
         .bottom{
             min-height: 200px;
@@ -76,87 +81,161 @@
             margin: 10px 0;
             box-shadow: -2px 2px 3px rgba(0,0,0,0.4);
         }
+        .liveReportObject{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 15px;
+            border: solid 2px black;
+            padding: 1em;
+            box-shadow: -2px 2px 3px rgba(0,0,0,0.4);
+            width: 90%;
+            margin: 10px auto;
+        }
+        .totals{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .totals>p{
+            font-size: 10pt;
+        }
+        .totals .count{
+            font-size: 15pt;
+            font-weight: 600;
+        }
+        .reportContentContainer{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
         .reportContent{
-            margin-top: 1em;
-            word-spacing:1em;
-            {{!-- display:inline-block;
-            text-align: justify;
-            text-align-last: justify;
-            text-justify: distribute; --}}
+            margin: 10px;
         }
         #liveFreight{
-            background-color: rgba(var(--liveFreight), 0.5);
+            background-color: rgba(var(--liveFreight), 0.4);
         }
         #upstock{
-            background: rgba(var(--upstock), 0.5);
+            background: rgba(var(--upstock), 0.4);
         }
         #backstock{
-            background-color: rgba(var(--backstock), 0.5);
+            background-color: rgba(var(--backstock), 0.4);
         }
         #sectors{
-            background-color: rgba(var(--sectors), 0.5);
+            background-color: rgba(var(--sectors), 0.4);
         }
         #rounding{
-            background-color: rgba(var(--rounding), 0.5);            
+            background-color: rgba(var(--rounding), 0.4);            
         }
         #bulk{
-            background-color: rgba(var(--bulk), 0.5);
+            background-color: rgba(var(--bulk), 0.4);
         }
         #periCastors{
-            background-color: rgba(var(--periCastors), 0.5);
+            background-color: rgba(var(--periCastors), 0.4);
         }
         #periBackstock{
-            background-color: rgba(var(--periBackstock), 0.5);
+            background-color: rgba(var(--periBackstock), 0.4);
         }
         #beerWine{
-            background-color: rgba(var(--beerWine), 0.5);
+            background-color: rgba(var(--beerWine), 0.4);
         }
 
     </style>
     <div class="header">
         <h2 class="title">End Of Day Report</h2>
         <h1 class="date">1/9/2023</h1>
-        <button class="fullReportButton">FULL REPORT</button>
+        {{!-- <button class="fullReportButton" onclick="viewReport()">FULL REPORT</button> --}}
+        <a class="fullReportButton" href="http://localhost:3000/admin">FULL REPORT</a>
     </div>
     <div class="bottom">
         <div class="extraMessageContainer">
             <p>{{extraMessage}}</p>
         </div>
+        <div class="liveReportObject" id="liveFreight">
+                <h3 class="reportTitle">Live Freight</h3>
+                <div class="reportContentContainer">
+                    <div class="totalBoxesContainer totals">
+                        <p>Total Boxes</p>
+                        <p class="count">{{totalBoxes}}</p>
+                    </div>
+                    <div class="totalBoatsContainer totals">
+                        <p>Total Boats</p>
+                        <p class="count">{{totalBoats}}</p>
+                    </div>
+                </div>
+            </div>
         <div class="reportContainer">
             <div class="reportObject" id="upstock">
                 <h3 class="reportTitle">Upstock</h3>
-                <p class="reportContent">{{data}}</p>
+                <div class="reportContentContainer">
+                {{#each data.upstock}}
+                    <p class="reportContent">{{this.aisle}}</p>
+                {{/each}}
+                </div>
             </div>
             <div class="reportObject" id="backstock">
                 <h3 class="reportTitle">Backstock</h3>
-                <p class="reportContent">1 2 3 4 5 6 7</p>
+                <div class="reportContentContainer">
+                {{#each data.backstock}}
+                    <p class="reportContent">{{this.aisle}}</p>
+                {{/each}}
+                </div>
             </div>
             <div class="reportObject" id="sectors">
                 <h3 class="reportTitle">Sectors</h3>
-                <p class="reportContent">1234567</p>
+                <div class="reportContentContainer">
+                {{#each data.sectors}}
+                    <p class="reportContent">{{this.aisle}}</p>
+                {{/each}}
+                </div>
             </div>
             <div class="reportObject" id="rounding">
                 <h3 class="reportTitle">Rounding</h3>
-                <p class="reportContent">1234567</p>
+                <div class="reportContentContainer">
+                {{#each data.rounding}}
+                    <p class="reportContent">{{this.aisle}}</p>
+                {{/each}}
+                </div>
             </div>
             <div class="reportObject" id="bulk">
                 <h3 class="reportTitle">Bulk</h3>
-                <p class="reportContent">1234567</p>
+                <div class="reportContentContainer">
+                {{#each data.bulk}}
+                    <p class="reportContent">{{this.aisle}}</p>
+                {{/each}}
+                </div>
             </div>
             <div class="reportObject" id="periCastors">
                 <h3 class="reportTitle">Peri Castors</h3>
-                <p class="reportContent">1234567</p>
+                <div class="reportContentContainer">
+                {{#each data.periCastors}}
+                    <p class="reportContent">{{this.aisle}}</p>
+                {{/each}}
+                </div>
             </div>
             <div class="reportObject" id="periBackstock">
                 <h3 class="reportTitle">Peri Backstock</h3>
-                <p class="reportContent">1234567</p>
+                <div class="reportContentContainer">
+                {{#each data.periBackstock}}
+                    <p class="reportContent">{{this.aisle}}</p>
+                {{/each}}
+                </div>
             </div>
             <div class="reportObject" id="beerWine">
                 <h3 class="reportTitle">Beer & Wine</h3>
-                <p class="reportContent">1234567</p>
+                <div class="reportContentContainer">
+                {{#each data.beerWine}}
+                    <p class="reportContent">{{this.aisle}}</p>
+                {{/each}}
+                </div>
             </div>
 
         </div>
     </div>
+    <script>
+        function viewReport(){
+            fetch("/viewAdmin");
+        }
+    </script>
 </body>
 </html>

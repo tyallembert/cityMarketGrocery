@@ -17,10 +17,13 @@ function AdminOverview(props) {
 
     useEffect(() => {
         setNavSettings(props.navSettings);
-    }, [])
+        setActiveTask()
+    }, [props.navSettings])
+
     useEffect(() => {
         fetchDaysData();
     }, [date])
+    
     useEffect(() => {
         createInfoObjects();
     }, [daysData, activeTask])

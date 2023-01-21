@@ -1,0 +1,135 @@
+[
+  {
+    "liveFreight": {
+      "zujishhh": {
+        "name": "Colin G",
+        "aisle": "2",
+        "boxes": "22",
+        "start": "5:08 PM",
+        "end": "5:09 PM",
+        "status": "Finished"
+      },
+      "39u8qqn3": {
+        "name": "Ty A",
+        "aisle": "3",
+        "boxes": "33",
+        "start": "5:08 PM",
+        "end": "5:09 PM",
+        "status": "Finished"
+      },
+      "e2bletq8": {
+        "name": "Nate L",
+        "aisle": "4",
+        "boxes": "44",
+        "start": "5:08 PM",
+        "end": "5:09 PM",
+        "status": "Finished"
+      },
+      "ns59tipm": {
+        "name": "Ty A",
+        "aisle": "1",
+        "boxes": "32",
+        "start": "5:09 PM",
+        "end": "5:09 PM",
+        "status": "Finished"
+      },
+      "l030klz2": {
+        "name": "Colin G",
+        "aisle": "7",
+        "boxes": "54",
+        "start": "5:09 PM",
+        "end": "5:09 PM",
+        "status": "Finished"
+      }
+    },
+    "upstock": {
+      "gpzn71dy": {
+        "name": "Colin G",
+        "aisle": "1",
+        "boats": "",
+        "start": "8:26 AM",
+        "end": "8:26 AM",
+        "status": "Finished"
+      },
+      "o4l90cy7": {
+        "name": "Ty A",
+        "aisle": "3",
+        "boats": "",
+        "start": "5:57 PM",
+        "end": "5:57 PM",
+        "status": "Finished"
+      }
+    },
+    "backstock": {
+      "ob5rt9hm": {
+        "name": "Ty A",
+        "aisle": "1",
+        "boats": "",
+        "start": "12:45 PM",
+        "end": "12:45 PM",
+        "status": "Finished"
+      }
+    },
+    "sectors": {
+      "k1vpkssf": {
+        "name": "Ty A",
+        "aisle": "Honey",
+        "boats": "",
+        "start": "12:45 PM",
+        "end": "12:45 PM",
+        "status": "Finished"
+      }
+    },
+    "rounding": {
+      "kt9pazxw": {
+        "name": "Ty A",
+        "aisle": "Beverages",
+        "boats": "",
+        "start": "12:45 PM",
+        "end": "12:45 PM",
+        "status": "Finished"
+      }
+    },
+    "bulk": {
+      "kkrk7nvq": {
+        "name": "Ty A",
+        "aisle": "Granola",
+        "boats": "",
+        "start": "12:45 PM",
+        "end": "12:45 PM",
+        "status": "Finished"
+      }
+    },
+    "periCastors": {
+      "2xyktfha": {
+        "name": "Ty A",
+        "aisle": "1",
+        "boats": "",
+        "start": "12:45 PM",
+        "end": "12:45 PM",
+        "status": "Finished"
+      }
+    },
+    "periBackstock": {
+      "mw7293cf": {
+        "name": "Colin G",
+        "aisle": "Back-fill Milk/Juice (1-4)",
+        "boats": "",
+        "start": "12:45 PM",
+        "end": "12:45 PM",
+        "status": "Finished"
+      }
+    },
+    "beerWine": {
+      "jyqurr5x": {
+        "name": "Ty A",
+        "aisle": "Satellite Stands",
+        "boats": "",
+        "start": "12:45 PM",
+        "end": "12:45 PM",
+        "status": "Finished"
+      }
+    },
+    "extraNotes": {}
+  }
+]

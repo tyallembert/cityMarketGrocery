@@ -17,8 +17,8 @@ function AllToDo(props) {
         setTasks(props.tasks)
         setActivePage(props.activePage)
         setEmployees(props.employees)
-        fetchSettings()
-    },[props.tasks])
+        fetchSettings();
+    },[props.tasks, props.activePage])
     useEffect(() => {
         createTaskObjects();
     },[tasks, taskSettings])

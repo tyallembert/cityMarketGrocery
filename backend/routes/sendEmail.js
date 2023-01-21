@@ -21,14 +21,19 @@ const handlebarOptions = {
 };
 
 function sendEmail(data) {
-  console.log("sending mail")
+  
+  var totalBoxes = 0;
+  var totalBoats = 0;
+  [totalBoxes, totalBoats] = calculateTotals(data);
   var mailOptions = {
     from: 'Grocery Auto<groceryDepartmentAuto@gmail.com>',
     to: 'tyallembert@gmail.com',
     subject: 'End Of Day Report',
     template: 'EODemail',
     context: {
-      test: data
+      data: data,
+      totalBoats: totalBoats,
+      totalBoxes: totalBoxes
     }
   };
   transporter.use('compile', hbs(handlebarOptions));
@@ -40,6 +45,17 @@ function sendEmail(data) {
         console.log('Email sent: ' + info.response);
       }
   });
+}
+function calculateTotals(data){
+  console.log("got into calculate");
+  console.log(typeof data.liveFreight)
+  var tempBoxes = 0;
+  var tempBoats = 0;
+  for(var value in data.liveFreight){
+    tempBoxes += parseInt(data.liveFreight[value].boxes);
+    tempBoats++;
+  }
+  return [tempBoxes, tempBoats];
 }
 
 module.exports = { sendEmail };

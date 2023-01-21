@@ -7,7 +7,11 @@ const database = new Database();
 
 router.use(express.json());
 
-
+router.get("/admin", async(req, res) => {
+    console.log("FROM EMAIL");
+    res.location('http://localhost:3000/');
+    res.send("RESPONSE");
+});
 router.get("/currentTasks", async (req, res) => {
     console.log("HANDLER: currentTask")
     var date = new Date();

@@ -1,0 +1,73 @@
+.loginFormContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #FFFFFF;
+    background-image: linear-gradient(180deg, #FFFFFF 0%, #b7b7b7 46%, #5a5a5a 79%);
+
+    h1{
+        margin: 0;
+        width: 32%;
+        text-align: left;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        border: solid 2px black;
+        border-radius: 20px;
+        padding: 3%;
+        background-color: white;
+        .inputContainer{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 80%;
+            p{
+                font-size: 12pt;
+                background-color: white;
+                padding: 5px;
+                border-radius: 3px;
+                transform: translate(10px, 10px);
+                z-index: 3;
+            }
+            input[type=text], input[type=password]{
+                width: 100%;
+                border-radius: 5px;
+                border: solid 1px rgba(0,0,0,0.5);
+                font-size: 14pt;
+                padding: 5px;
+                height: 30px;
+                transition: all 200ms ease;
+                &:focus{
+                    outline: none;
+                    box-shadow: 0px 3px 5px rgba(0,0,0,0.8);
+                    transform: translateY(-3px);
+                    border: solid 2px rgb(75, 180, 250);
+                }
+            }
+        }
+        .submitButton{
+            margin-top: 20px;
+            padding: 10px;
+            width: 50%;
+            font-size: 13pt;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 100px;
+            border: solid 2px rgba(0,0,0,0.5);
+            background-color: white;
+            transition: all 200ms ease;
+            &:hover{
+                box-shadow: 0px 3px 5px rgba(0,0,0,0.8);
+                transform: translateY(-3px);
+                font-size: 15pt;
+            }
+        }
+    }
+}

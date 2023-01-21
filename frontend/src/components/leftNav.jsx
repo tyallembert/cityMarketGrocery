@@ -22,21 +22,8 @@ function LeftNav(props) {
         var page = e.currentTarget.className.split(" ");
         props.updateActivePage(page[0]);
     };
-    const toggleNav = () => {
-        console.log('Hello!'); // implement this later when add minimize button
-    }
     return (
-        <div className="leftNavContainer" onClick={toggleNav}>
-            {/* {
-                Object.keys(navSettings).map((value, index) => {
-                    return (
-                        <div key={index} className={navSettings[value].className} onClick={setActivePage}>
-                            <p>{navSettings[value].title}</p>
-                            <div className="arrow"></div>
-                        </div>
-                    )
-                })
-            } */}
+        <div className="leftNavContainer">
             <div className={navClasses.liveFreight} onClick={setActivePage}>
                 <p>Live Freight</p>
                 <div className="arrow"></div>
