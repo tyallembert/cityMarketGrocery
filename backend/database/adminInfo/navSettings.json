@@ -1,54 +1,78 @@
 [
     {
-        "all": {
-            "title": "All To Do",
-            "color": "#585858",
-            "classes": "all navChild"
-        },
         "liveFreight": {
             "title": "Live Freight",
             "color": "#585858",
-            "classes": "liveFreight navChild"
+            "classes": "liveFreight navChild",
+            "components": {
+                "dryGoods": {
+                    "title": "Dry Goods Live",
+                    "classes": "dryGoodsLive navChild subChild"
+                },
+                "perishables": {
+                    "title": "Perishables Live",
+                    "classes": "perishablesLive navChild subChild"
+                },
+                "bulk": {
+                    "title": "Bulk Live",
+                    "classes": "bulkLive navChild subChild"
+                }
+            }
         },
-        "upstock": {
-            "title": "Upstock",
-            "color": "#EB3636",
-            "classes": "upstock navChild small"
+        "dryGoods": {
+            "title": "Dry Goods",
+            "color": "#585858",
+            "classes": "dryGoods navChild",
+            "components": {
+                "upstock": {
+                    "title": "Upstock",
+                    "classes": "upstock navChild subChild"
+                },
+                "backstock": {
+                    "title": "Backstock",
+                    "color": "#31B94F",
+                    "classes": "backstock navChild subChild"
+                },
+                "sectors": {
+                    "title": "Sectors",
+                    "color": "#D9D11E",
+                    "classes": "sectors navChild subChild"
+                },
+                "rounding": {
+                    "title": "Rounding",
+                    "color": "#cd50d9",
+                    "classes": "rounding navChild subChild"
+                }
+            }
         },
-        "backstock": {
-            "title": "Backstock",
-            "color": "#31B94F",
-            "classes": "backstock navChild small"
-        },
-        "sectors": {
-            "title": "Sectors",
-            "color": "#D9D11E",
-            "classes": "sectors navChild small"
-        },
-        "rounding": {
-            "title": "Rounding",
-            "color": "#cd50d9",
-            "classes": "rounding navChild small"
+        "perishables": {
+            "title": "Perishables",
+            "color": "#585858",
+            "classes": "perishables navChild",
+            "components": {
+                "castors": {
+                    "title": "Peri Castors",
+                    "color": "#1E8AD9",
+                    "classes": "periCastors navChild subChild"
+                },
+                "backstock": {
+                    "title": "Peri Backstock",
+                    "color": "#1E8AD9",
+                    "classes": "periBackstock navChild subChild"
+                }
+            }
         },
         "bulk": {
             "title": "Bulk",
             "color": "#806021",
-            "classes": "bulk navChild small"
-        },
-        "periCastors": {
-            "title": "Peri Castors",
-            "color": "#1E8AD9",
-            "classes": "periCastors navChild small"
-        },
-        "periBackstock": {
-            "title": "Peri Backstock",
-            "color": "#1E8AD9",
-            "classes": "periBackstock navChild small"
+            "classes": "bulk navChild",
+            "components": {}
         },
         "beerWine": {
             "title": "Beer & Wine",
             "color": "#8E4DC1",
-            "classes": "beerWine navChild small"
+            "classes": "beerWine navChild",
+            "components": {}
         }
     }
 ]

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import AddTask from "./addTask/AddTask";
+import AddTask from "../addTask/AddTask";
 import "./header.scss";
+import { GiBrokenBottle } from "react-icons/gi";
+import ShrinkLog from "./ShrinkLog";
 
 function Header(props) {
     const [dateState, setDateState] = useState(new Date());
@@ -35,7 +37,10 @@ function Header(props) {
             </div>
             <div className="titleContainer">
                 <h1>{props.navSettings[activePage].title}</h1>
-                <AddTask navSettings={props.navSettings} updateCurrentTasks={props.updateCurrentTasks}/>
+                <div className="buttonsContainer">
+                    <ShrinkLog />
+                    <AddTask navSettings={props.navSettings} updateCurrentTasks={props.updateCurrentTasks}/>
+                </div>
             </div>
         </div>
     )

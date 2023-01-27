@@ -2,9 +2,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router,Routes, Route, Link, BrowserRouter } from 'react-router-dom';
 import './App.scss';
-import Header from "./components/header";
-import LeftNav from "./components/leftNav";
-import Main from "./components/main";
 import Admin from "./components/admin/Admin";
 import EmployeeView from "./components/EmployeeView";
 

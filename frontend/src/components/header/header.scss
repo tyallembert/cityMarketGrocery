@@ -1,4 +1,4 @@
-@import '../variables.scss';
+@import '../../variables.scss';
 
 .headerContainer{
     display: flex;
@@ -47,6 +47,13 @@
             letter-spacing: 3px;
             text-align: left;
             margin-bottom: auto;
+        }
+        .buttonsContainer{
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            width: 20%;
+            margin-right: 40px;
         }
     }
 }

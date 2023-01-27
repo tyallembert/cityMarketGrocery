@@ -7,6 +7,12 @@
         display: flex;
         width: 90%;
         margin: 10px auto;
+        .titleWhenClosed{
+            margin-left: 3%;
+            h1{
+                color: $headerGray;
+            }
+        }
         .hideOpenCalendar{
             height: 65px;
             width: 70px;

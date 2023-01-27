@@ -3,6 +3,9 @@ const router = express.Router();
 const Database = require('./Database');
 const mailHelper = require('./sendEmail');
 
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
 const database = new Database();
 
 router.use(express.json());
@@ -123,17 +126,22 @@ router.post("/checkAdmin", async (req, res) => {
     var response = await database.readJSON(filename, destination);
 
     var allAdmin = response;
-    console.log(allAdmin)
     var response = {
         username: false,
         password: false
     }
+
+    var hashedPass = await bcrypt.hash(user.password, saltRounds);
+    console.log(hashedPass);
+
     for(var admin in allAdmin[0]){
-        console.log("SENT: "+user.username)
-        console.log("LOOP: "+allAdmin[0][admin])
         if(user.username === allAdmin[0][admin].username){
             response.username = true;
-            if(user.password === allAdmin[0][admin].password){
+            // if(user.password === allAdmin[0][admin].password){
+            var passCorrect = await bcrypt.compare(user.password, allAdmin[0][admin].password);
+            console.log
+            console.log(passCorrect)
+            if(passCorrect){
                 response.password = true;
             }
         }

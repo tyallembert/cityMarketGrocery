@@ -1,7 +1,7 @@
 // https://www.youtube.com/watch?v=9F8bzIlgJ4g
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router,Routes, Route, Link, BrowserRouter } from 'react-router-dom';
-import Header from "./header";
+import Header from "./header/header";
 import LeftNav from "./leftNav";
 import Main from "./main";
 
@@ -85,6 +85,7 @@ function EmployeeView() {
               <LeftNav navSettings={navSettings} updateActivePage={updateActivePage}/>
               <Main activePage={activePage} tasks={currentTasks} employees={employees}/>
             </div>
+            <button onClick={checkIfEmail}>Send Email</button>
         </>
         ) : (<div>Error Fetching Data</div>)
       }

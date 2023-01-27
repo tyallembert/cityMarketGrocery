@@ -2,11 +2,13 @@
   {
       "1tmuxlgn": {
           "username": "tyAllembert",
-          "password": "ILikePie11!"
+          "password": "$2b$10$nJGjLWghsbmdt4j/bg9oruYUazu85.GrOdXvrZY2L7tYISS2SRD2C",
+          "email": "tyallembert@gmail.com"
       },
       "hfsk73nk": {
           "username": "donnaDanforth",
-          "password": "password123!"
+          "password": "password123!",
+          "email": "tyallembert@gmail.com"
       }
   }
 ]

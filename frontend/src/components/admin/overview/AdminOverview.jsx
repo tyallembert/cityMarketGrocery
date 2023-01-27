@@ -13,11 +13,14 @@ function AdminOverview(props) {
     const [date, setDate] = useState(new Date());
     const [calendarActive, setCalendarActive] = useState(false);
 
-    const [navSettings, setNavSettings] = useState({});
+    const [navSettings, setNavSettings] = useState(props.navSettings);
 
     useEffect(() => {
         setNavSettings(props.navSettings);
-        setActiveTask()
+    }, [])
+
+    useEffect(() => {
+        setNavSettings(props.navSettings);
     }, [props.navSettings])
 
     useEffect(() => {
@@ -101,7 +104,11 @@ function AdminOverview(props) {
                     value={date} 
                     minDetail={"year"}
                     maxDate={new Date()}
-                    />) : null
+                    />) : (
+                        <div className='titleWhenClosed'>
+                            <h1>{date.toLocaleString('default', { month: 'long' })}  {date.getDate()}, {date.getFullYear()}</h1>
+                        </div>
+                    )
                 }
             </div>
             <div className='infoContainer'>
