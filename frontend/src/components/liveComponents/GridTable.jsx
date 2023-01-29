@@ -16,10 +16,10 @@ function GridTable(props) {
 
     const fetchLiveAisles = async() => {
         setTasks(props.tasks)
-        if(Object.keys(tasks).length !== 0){
+        if(Object.keys(tasks.liveFreight.dryGoodsLive).length !== 0){
             var allRows = []
-            for(var key in tasks){
-                allRows.push(<GridRow aisle={tasks[key]} id={key} key={key} />);
+            for(var key in tasks.liveFreight.dryGoodsLive){
+                allRows.push(<GridRow updateTasks={props.updateTasks} aisle={tasks.liveFreight.dryGoodsLive[key]} id={key} key={key} />);
             }
             setRowObjects(allRows);
         }else{

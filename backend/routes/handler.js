@@ -22,7 +22,20 @@ router.get("/currentTasks", async (req, res) => {
     var filename = dateString.replace(/\//g, "_");
     var destination = "daysData";
     var tasks = await database.readJSON(filename, destination);
+    console.log("TASKS:")
+    console.log(tasks)
     res.send(JSON.stringify(tasks[0]));
+});
+router.post("/saveData", async(req, res) => {
+    console.log("HANDLER: saveData")
+    var body = req.body;
+    var date = new Date();
+    var dateString = date.toLocaleDateString('en-us');
+    var filename = dateString.replace(/\//g, "_");
+    var destination = "daysData";
+    await database.writeJSON(filename, destination, body, "");
+    var returnData = await database.readJSON(filename, destination);
+    res.send(JSON.stringify(returnData));
 });
 //-------------------------------------------
 // ===Retrieving Settings functions===
@@ -63,15 +76,14 @@ router.get("/currentLiveAisles", (req, res) => {
 });
 router.post('/saveLiveData', async(req, res) => {
     console.log("HANDLER: saveLiveData")
-    console.log(typeof req.body)
     var body = req.body;
-    console.log(body);
     const type = "liveFreight";
+    var parent = "";
     var date = new Date();
     var dateString = date.toLocaleDateString('en-us');
     var filename = dateString.replace(/\//g, "_");
     var destination = "daysData";
-    var newId = await database.writeJSON(filename, destination, type, body, "");
+    var newId = await database.writeJSON(filename, destination, parent, type, body, "");
     res.send(JSON.stringify(newId));
 });
 router.post('/saveFinishedLive', (req, res) => {
@@ -79,24 +91,26 @@ router.post('/saveFinishedLive', (req, res) => {
     var id = req.body[0]
     var information = JSON.parse(req.body[1]);
     const type = "liveFreight";
+    var parent = "";
     var date = new Date();
     var dateString = date.toLocaleDateString('en-us');
     var filename = dateString.replace(/\//g, "_");
     var destination = "daysData";
-    var newId = database.writeJSON(filename, destination, type, information, id);
+    var newId = database.writeJSON(filename, destination, parent, type, information, id);
     res.send(newId);
 });
 //-------------------------------------------
 // ===Task functions===
 //-------------------------------------------
 router.post('/saveNewTask', async(req, res) => {
-    const type = req.body[0];
+    var type = req.body[0];
+    var parent = "";
     var body = JSON.parse(req.body[1]);
     var date = new Date();
     var dateString = date.toLocaleDateString('en-us');
     var filename = dateString.replace(/\//g, "_");
     var destination = "daysData";
-    var newId = await database.writeJSON(filename, destination, type, body, "");
+    var newId = await database.writeJSON(filename, destination, parent, type, body, "");
     res.send(JSON.stringify(newId));
 });
 
@@ -174,9 +188,10 @@ router.post("/saveNewEmployee", async (req, res) => {
     console.log("HANDLER: saveNewEmployee")
     var body = req.body.employee;
     var type = "";
+    var parent = "";
     var destination = "settingsFile";
     var filename = "currentEmployees";
-    var newId = await database.writeJSON(filename, destination, type, body, "");
+    var newId = await database.writeJSON(filename, destination, parent, type, body, "");
     console.log("ID: "+newId)
     res.send(JSON.stringify(newId));
 });
@@ -185,9 +200,10 @@ router.post("/deleteEmployee", async (req, res) => {
     var body = "delete";
     var id = req.body.id;
     var type = "";
+    var parent = "";
     var destination = "settingsFile";
     var filename = "currentEmployees";
-    var newId = await database.writeJSON(filename, destination, type, body, id);
+    var newId = await database.writeJSON(filename, destination, parent, type, body, id);
     res.send(JSON.stringify(newId));
 });
 //-------------------------------------------

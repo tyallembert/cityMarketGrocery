@@ -26,25 +26,26 @@ function GridRow(props) {
         tempAisle.status = "Finished";
         setCurrentAisle(tempAisle);
 
-        await fetch("/saveFinishedLive", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify([id, JSON.stringify(tempAisle)])
-        });
+        props.updateTasks({id: id, task: tempAisle});
+        // await fetch("/saveData", {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify([id, JSON.stringify(tempAisle)])
+        // });
 
     };
     const checkIfFinished = () => {
-        var tempAisle = currentAisle;
-        if (tempAisle.end === ""){
-            tempAisle.end = (
-                <button onClick={handleFinish} className='endButton'>
-                    <p>End</p>
-                </button>
-            )
-        }
-        setCurrentAisle(tempAisle);
+        // var tempAisle = currentAisle;
+        // if (tempAisle.end === ""){
+        //     tempAisle.end = (
+        //         <button onClick={handleFinish} className='endButton'>
+        //             <p>End</p>
+        //         </button>
+        //     )
+        // }
+        // setCurrentAisle(tempAisle);
         setDataLoaded(true);
     };
 
@@ -67,7 +68,13 @@ function GridRow(props) {
                         <p>{currentAisle.start}</p>
                     </div>
                     <div className="rowElement end">
-                        {currentAisle.end}
+                        {
+                        currentAisle.end === "" ? (
+                            <button onClick={handleFinish} className='endButton'>
+                                <p>End</p>
+                            </button>
+                        ) : (currentAisle.end)
+                        }
                     </div>
                     <div className="rowElement status">
                         <p className={currentAisle.status}>{currentAisle.status}</p>

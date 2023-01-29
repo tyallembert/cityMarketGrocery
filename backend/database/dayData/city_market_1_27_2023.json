@@ -1,13 +1,21 @@
 [
   {
-    "liveFreight": {},
-    "upstock": {},
-    "backstock": {},
-    "sectors": {},
-    "rounding": {},
+    "liveFreight": {
+      "dryGoodsLive": {},
+      "perishablesLive": {},
+      "bulkLive": {}
+    },
+    "dryGoods": {
+      "upstock": {},
+      "backstock": {},
+      "sectors": {},
+      "rounding": {}
+    },
+    "perishables": {
+      "castors": {},
+      "backstock": {}
+    },
     "bulk": {},
-    "periCastors": {},
-    "periBackstock": {},
     "beerWine": {},
     "extraNotes": {}
   }

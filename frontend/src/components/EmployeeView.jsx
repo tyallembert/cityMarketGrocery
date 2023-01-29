@@ -10,6 +10,7 @@ function EmployeeView() {
   // SEND THE PAGES VARIABLES OVER TO ALL PAGES THAT NEED IT
 
   const [activePage, setActivePage] = useState("liveFreight");
+  const [activePageParent, setActivePageParent] = useState("");
   const [currentTasks, setCurrentTasks] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [dataFetched, setDataFetched] = useState(false);
@@ -26,7 +27,10 @@ function EmployeeView() {
     fetchCurrentTasks();
   }, []);
   useEffect(() => {
-  }, [currentTasks, navSettings]);
+    // console.log("RELOAD: ")
+    // console.log(activePageParent)
+    // console.log(activePage)
+  }, [currentTasks, navSettings, activePage, activePageParent]);
 
   const checkIfEmail = () => {
     var date = new Date();
@@ -47,7 +51,9 @@ function EmployeeView() {
   const fetchCurrentTasks = async() => {
     const data = await fetch('/currentTasks');
     const tasks = await data.json();
+    console.log(tasks)
     setCurrentTasks(tasks);
+    console.log("got to here")
     setDataFetched(true);
   }
   const fetchEmployees = async() => {
@@ -71,7 +77,10 @@ function EmployeeView() {
   }
 
   const updateActivePage = (res) => {
-    setActivePage(res);
+    var page = res.activePage;
+    var parent = res.parent;
+    setActivePageParent(parent);
+    setActivePage(page);
   }
 
   return (
@@ -80,7 +89,7 @@ function EmployeeView() {
         dataFetched ? 
         (
         <>
-            <Header activePage={activePage} navSettings={navSettings} updateCurrentTasks={updateCurrentTasks}/>
+            <Header activePage={activePage} activePageParent={activePageParent} navSettings={navSettings} updateCurrentTasks={updateCurrentTasks}/>
             <div className="contentContainer">
               <LeftNav navSettings={navSettings} updateActivePage={updateActivePage}/>
               <Main activePage={activePage} tasks={currentTasks} employees={employees}/>

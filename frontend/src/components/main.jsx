@@ -19,7 +19,7 @@ function Main(props) {
             {
                 (activePage === "liveFreight") ? 
                 (
-                    <LiveFreight tasks={tasks.liveFreight} employees={employees}/>
+                    <LiveFreight tasks={tasks} employees={employees}/>
                 ): 
                 (
                     <AllToDo tasks={tasks} activePage={activePage} employees={employees}/>

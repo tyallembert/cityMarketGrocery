@@ -29,24 +29,34 @@ class Database {
     /* 
     Writes to and modifies the data of a certain days tasks
     */
-    async writeJSON(filename, destination, type, newData, id){
+    async writeJSON(filename, destination, newData, id){
         console.log("WRITE FUNCTION")
         //constructs the local path
         var path = this.getLocalPath(filename, destination);
         // Creates and populates file with blank template
-        var fileExists = this.checkFileExists(path);
-        //gets everything saved to fiel for today
-        var daysData = await this.readJSON(filename, destination);
-        //updated info in object to get it ready to write
-        var [updatedTasks, newId] = this.updateData(daysData, type, newData, id);
+        var exists = await this.checkFileExists(path);
 
-        var json = JSON.stringify(updatedTasks, null, 2);
-        var success = false;
-        fs.writeFile(path, json, 'utf8', function(err){
-            if (err) success = false;
-            else success = true;
-        });
-        return newId;
+        //gets everything saved to file for today
+        // var daysData = await this.readJSON(filename, destination);
+
+        //updated info in object to get it ready to write
+        // var [updatedTasks, newId] = this.updateData(daysData, parent, type, newData, id);
+        console.log("EXISTS: "+exists)
+        if(exists){
+            var json = JSON.stringify(newData, null, 2);
+            json = "[\n" + json + "\n]"
+            console.log("JSON:")
+            console.log(json)
+            var success = false;
+            fs.writeFileSync(path, json, 'utf8', function(err){
+                if (err){
+                    success = false;
+                    console.log("ERROR")
+                    console.log(err)
+                }
+                else success = true;
+            });
+        }
     }
     /* 
     Reads in json data from the specified day
@@ -78,11 +88,9 @@ class Database {
     Helper function to prepare json data with updated 
     new values before it is re-written to the file
     */
-    updateData(allData, taskType, newData, id){
+    updateData(allData, taskParent, taskType, newData, id){
         if(id !== ""){
             if(newData === "delete"){
-                console.log("DELETED EMPLOYEE");
-                console.log(id);
                 delete allData[0][id];
             }else{
                 if(taskType === ""){
@@ -109,14 +117,22 @@ class Database {
     getNewDayTemplate(){
         console.log("creating template")
         var template = [{
-                liveFreight: {},
-                upstock: {},
-                backstock: {},
-                sectors: {},
-                rounding: {},
+                liveFreight: {
+                    dryGoodsLive: {},
+                    perishablesLive: {},
+                    bulkLive: {}
+                },
+                dryGoods: {
+                    upstock: {},
+                    backstock: {},
+                    sectors: {},
+                    rounding: {},
+                },
+                perishables: {
+                    castors: {},
+                    backstock: {}
+                },
                 bulk: {},
-                periCastors: {},
-                periBackstock: {},
                 beerWine: {},
                 extraNotes: {}
             }];

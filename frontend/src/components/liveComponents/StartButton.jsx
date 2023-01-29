@@ -3,7 +3,7 @@ import "./startButton.scss";
 function StartButton(props) {
     return (
         <div className="startButtonContainer">
-            <button onClick={()=>{props.handleClick(true)}}>Start Aisle</button>
+            <button onClick={()=>{props.togglePopup(true)}}>Start Aisle</button>
         </div>
     )
 }

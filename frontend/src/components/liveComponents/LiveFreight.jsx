@@ -9,23 +9,30 @@ function LiveFreight(props) {
     const [tasks, setTasks] = useState(props.tasks);
     const [employees, setEmployees] = useState(props.employees);
 
-    const updateTasks = (res) => {
-        let r = res[0];
-        let tempTasks = tasks;
-        tempTasks[r] = (res[1]);
+    const updateTasks = async(res) => {
+        let newId = res.id;
+        let tempTasks = {...tasks};
+        tempTasks["liveFreight"]["dryGoodsLive"][newId] = (res.task);
+        const response = await fetch("/saveData", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(tempTasks)
+        });
         setTasks(tempTasks)
     }
-    const handleClick = (res) => {
+    const togglePopup = (res) => {
         setShowingPopUp(res);
     }
     return (
         <div className="liveFreightContainer">
-            <StartButton handleClick={handleClick}/>
+            <StartButton togglePopup={togglePopup}/>
             {showingPopUp ? (
-                <NewAislePopup handleClick={handleClick} updateTasks={updateTasks} employees={employees} />
+                <NewAislePopup togglePopup={togglePopup} updateTasks={updateTasks} employees={employees} />
             ) : (null)
             }
-            <GridTable newAisleActive={showingPopUp} tasks={tasks}/>
+            <GridTable updateTasks={updateTasks} newAisleActive={showingPopUp} tasks={tasks}/>
         </div>
     )
 }

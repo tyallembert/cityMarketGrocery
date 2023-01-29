@@ -16,11 +16,9 @@ function LeftNav(props) {
     const changeActivePage = (e) => {
         var page = e.currentTarget.className.split(" ");
         console.log(e.currentTarget)
-        console.log(page[0])
+        var parentType = "";
         if(page[2] === "subChild"){
-            var parentType = e.currentTarget.parentNode.parentNode.className.split(" ")[0];
-            console.log(navSettings[parentType][page[0]])
-            console.log(page[0])
+            parentType = e.currentTarget.parentNode.parentNode.className.split(" ")[0];
             navSettings[activePage].classes = navSettings[activePage].classes.replace('activePage','');
             navSettings[parentType].components[page[0]].classes = navSettings[parentType].components[page[0]].classes + " activePage";
         }else{
@@ -28,7 +26,7 @@ function LeftNav(props) {
             navSettings[page[0]].classes = navSettings[page[0]].classes + " activePage";
         }
         setActivePage(page[0]);
-        props.updateActivePage(page[0]);
+        props.updateActivePage({activePage: page[0], parent: parentType});
     };
     return (
         <div className="leftNavContainer">
@@ -40,8 +38,6 @@ function LeftNav(props) {
                                 <p>{navSettings[outer].title}</p>
                                 <div className="arrow"></div>
                             </div>
-                            {/* <p>{navSettings[outer].title}</p>
-                            <div className="arrow"></div> */}
                             {
                                 activePage === outer ? (
                                 <motion.div className="subNavsContainer"

@@ -46,20 +46,21 @@ function NewAislePopup(props) {
         var tempTask = {...taskInfo};
         tempTask.start = time;
 
-        const response = await fetch("/saveLiveData", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(tempTask)
-        });
-        const id = await response.json();
-        props.updateTasks([id, tempTask]);
+        // const response = await fetch("/saveLiveData", {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(tempTask)
+        // });
+        // const id = await response.json();
+        var id = (Math.random() + 1).toString(36).slice(2,10);
+        props.updateTasks({id: id, task: tempTask});
 
         closePopUp();
     };
     const closePopUp = () => {
-        props.handleClick(false);
+        props.togglePopup(false);
     };
 
     return (
