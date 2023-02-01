@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import "./leftNav.scss";
 import {motion} from 'framer-motion';
+import { GiConsoleController } from "react-icons/gi";
 
 function LeftNav(props) {
-    const [activePage, setActivePage] = useState("liveFreight");
+    const [activePage, setActivePage] = useState(["liveFreight"]);
     const [navSettings, setNavSettings] = useState(props.navSettings);
     useEffect(() => {
         setNavSettings(props.navSettings);
-        console.log(props.navSettings);
     }, [])
     useEffect(() => {
         setNavSettings(props.navSettings);
@@ -15,17 +15,44 @@ function LeftNav(props) {
 
     const changeActivePage = (e) => {
         var page = e.currentTarget.className.split(" ");
-        console.log(e.currentTarget)
+        //if
         var parentType = "";
+        var tempActive = [];
         if(page[2] === "subChild"){
             parentType = e.currentTarget.parentNode.parentNode.className.split(" ")[0];
-            navSettings[activePage].classes = navSettings[activePage].classes.replace('activePage','');
-            navSettings[parentType].components[page[0]].classes = navSettings[parentType].components[page[0]].classes + " activePage";
+            tempActive.push(parentType);
+            tempActive.push(page[0])
         }else{
-            navSettings[activePage].classes = navSettings[activePage].classes.replace('activePage','');
-            navSettings[page[0]].classes = navSettings[page[0]].classes + " activePage";
+            tempActive.push(page[0])
         }
-        setActivePage(page[0]);
+
+        if(tempActive.length == 2){
+            if(activePage.length == 2){
+                //the old active is a subchild 
+                //the new active is a subchild 
+                navSettings[activePage[0]].components[activePage[1]].classes = navSettings[activePage[0]].components[activePage[1]].classes.replace('activePage','');
+                navSettings[parentType].components[page[0]].classes = navSettings[parentType].components[page[0]].classes + " activePage";
+            }else{
+                //the old active is a parent 
+                //the new active is a subchild 
+                navSettings[activePage[0]].classes = navSettings[activePage[0]].classes.replace('activePage','');
+                navSettings[parentType].components[page[0]].classes = navSettings[parentType].components[page[0]].classes + " activePage";
+            }
+        }else{
+            if(activePage.length == 2){
+                //the old active is a subchild 
+                //the new active is a parent 
+                navSettings[activePage[0]].components[activePage[1]].classes = navSettings[activePage[0]].components[activePage[1]].classes.replace('activePage','');
+                navSettings[page[0]].classes = navSettings[page[0]].classes + " activePage";
+            }else{
+                //the old active is a parent 
+                //the new active is a parent 
+                navSettings[activePage[0]].classes = navSettings[activePage[0]].classes.replace('activePage','');
+                navSettings[page[0]].classes = navSettings[page[0]].classes + " activePage";
+            }
+        }
+
+        setActivePage(tempActive);
         props.updateActivePage({activePage: page[0], parent: parentType});
     };
     return (
@@ -39,7 +66,7 @@ function LeftNav(props) {
                                 <div className="arrow"></div>
                             </div>
                             {
-                                activePage === outer ? (
+                                activePage[0] === outer ? (
                                 <motion.div className="subNavsContainer"
                                 initial={{height: "0px"}}
                                 animate={{height: "auto"}}

@@ -92,7 +92,7 @@ function EmployeeView() {
             <Header activePage={activePage} activePageParent={activePageParent} navSettings={navSettings} updateCurrentTasks={updateCurrentTasks}/>
             <div className="contentContainer">
               <LeftNav navSettings={navSettings} updateActivePage={updateActivePage}/>
-              <Main activePage={activePage} tasks={currentTasks} employees={employees}/>
+              <Main activePage={activePage} activePageParent={activePageParent} tasks={currentTasks} employees={employees}/>
             </div>
             <button onClick={checkIfEmail}>Send Email</button>
         </>

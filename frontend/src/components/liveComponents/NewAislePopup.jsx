@@ -6,6 +6,9 @@ function NewAislePopup(props) {
 
     const [employees, setEmployees] = useState(props.employees);
     const [employeeOptionObjects, setEmployeeOptionObjects] = useState([]);
+    const [liveSettings, setLiveSettings] = useState([]);
+    const [liveSettingsOptions, setLiveSettingsOptions] = useState([]);
+    const [activePage, setActivePage] = useState(props.activePage);
     const [taskInfo, setTaskInfo] = useState({
         name: "",
         aisle: "",
@@ -16,13 +19,21 @@ function NewAislePopup(props) {
     });
     useEffect(() => {
         setEmployees(props.employees);
+        setActivePage(props.activePage);
+        fetchLiveSettings(props.liveSettings)
     }, [])
     useEffect(() => {
         createEmployeeOptions();
-    }, [employees])
+        createLiveSettings()
+    }, [employees, liveSettings])
     const handleChange = (event) => {
         setTaskInfo({ ...taskInfo, [event.target.name]: event.target.value });
     };
+    const fetchLiveSettings = async() => {
+        const data = await fetch('/getLiveSettings');
+        const tempLiveSettings = await data.json();
+        setLiveSettings(tempLiveSettings);
+      }
     const createEmployeeOptions = () => {
         console.log(employees);
         var tempObjects = [];
@@ -35,6 +46,17 @@ function NewAislePopup(props) {
         }
         setEmployeeOptionObjects(tempObjects);
     }
+    const createLiveSettings = () => {
+        console.log(activePage);
+        var tempObjects = [];
+        tempObjects.push(<option key={0} value="choose">Choose</option>);
+        for(var value in liveSettings[activePage]){
+            tempObjects.push(
+                <option key={liveSettings[activePage][value]} value={liveSettings[activePage][value]}>{liveSettings[activePage][value]}</option>
+            )
+        }
+        setLiveSettingsOptions(tempObjects);
+    }
     const handleSubmit = async(e) => {
         e.preventDefault();
         var today = new Date();
@@ -46,14 +68,6 @@ function NewAislePopup(props) {
         var tempTask = {...taskInfo};
         tempTask.start = time;
 
-        // const response = await fetch("/saveLiveData", {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(tempTask)
-        // });
-        // const id = await response.json();
         var id = (Math.random() + 1).toString(36).slice(2,10);
         props.updateTasks({id: id, task: tempTask});
 
@@ -77,11 +91,9 @@ function NewAislePopup(props) {
 
                 <label>
                     Aisle Number:
-                    <input type="text" 
-                    name="aisle"
-                    value={taskInfo.aisle} 
-                    onChange={handleChange} 
-                    maxLength={1}/>
+                    <select className="nameInput" name="number" onChange={handleChange}>
+                        {liveSettingsOptions}
+                    </select>
                 </label>
 
                 <label>

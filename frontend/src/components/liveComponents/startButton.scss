@@ -11,14 +11,23 @@
         font-weight: 700;
         background: $buttonGreen;
         color: white;
-        border-radius: 10px;
-        border: solid 2px white;
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        border-radius: 100px;
+        border: solid 0.5px white;
+        // border: none;
+        box-shadow: 2px 2px 3px rgba(0,0,0,0.5),
+        inset 2px 2px 2px rgba(255,255,255,0.7);
+        text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
         transition: all 200ms ease;
-    }
-    button:hover{
-        cursor: pointer;
-        letter-spacing: 3px;
-        transform: translateY(-5px);
+        &:hover{
+            cursor: pointer;
+            letter-spacing: 3px;
+            transform: translateY(-5px);
+            box-shadow: 2px 7px 6px rgba(0,0,0,0.5),
+            inset 2px 2px 2px rgba(255,255,255,0.7);
+        }
+        &:active{
+            transform: scale(0.9);
+            letter-spacing: 1px;
+        }
     }
 }

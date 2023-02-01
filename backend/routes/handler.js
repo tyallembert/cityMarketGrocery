@@ -54,6 +54,13 @@ router.get("/getNavSettings", async(req, res) => {
     var settings = await database.readJSON(filename, destination);
     res.send(JSON.stringify(settings[0]));
 });
+router.get("/getLiveSettings", async(req, res) => {
+    console.log("HANDLER: getLiveSettings")
+    var destination = "settingsFile";
+    var filename = "newLiveSettings";
+    var settings = await database.readJSON(filename, destination);
+    res.send(JSON.stringify(settings[0]));
+});
 router.get("/getCurrentEmployees", async(req, res) => {
     console.log("HANDLER: getCurrentEmployees")
     var destination = "settingsFile";
