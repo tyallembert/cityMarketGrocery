@@ -47,10 +47,10 @@ router.get("/getAddTaskSettings", async(req, res) => {
     var settings = await database.readJSON(filename, destination);
     res.send(JSON.stringify(settings[0]));
 });
-router.get("/getNavSettings", async(req, res) => {
+router.get("/getTaskSettings", async(req, res) => {
     console.log("HANDLER: getNavSettings")
     var destination = "settingsFile";
-    var filename = "navSettings";
+    var filename = "taskSettings";
     var settings = await database.readJSON(filename, destination);
     res.send(JSON.stringify(settings[0]));
 });

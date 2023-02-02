@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import TaskObject from './TaskObject.jsx'
-import "./allToDo.scss";
+import TaskContainer from './TaskContainer.jsx'
+import "./allDryGoods.scss";
 
-function AllToDo(props) {
-    const [taskSettings, setTaskSettings] = useState([])
+function AllDryGoods(props) {
+    const [taskSettings, setTaskSettings] = useState(props.taskSettings)
     const [tasks, setTasks] = useState(props.tasks);
     const [activePage, setActivePage] = useState(props.tasks);
     const [employees, setEmployees] = useState(props.tasks);
@@ -17,7 +18,7 @@ function AllToDo(props) {
         setTasks(props.tasks)
         setActivePage(props.activePage)
         setEmployees(props.employees)
-        fetchSettings();
+        setTaskSettings(props.taskSettings);
     },[props.tasks, props.activePage])
     useEffect(() => {
         createTaskObjects();
@@ -25,16 +26,6 @@ function AllToDo(props) {
     useEffect(() => {
 
     },[toDoObjects, inProgressObjects, finishedObjects])
-
-    const fetchSettings = async() => {
-        const response = await fetch("/getAddTaskSettings");
-        var data = await response.json();
-        var tempSettings = []; // ['upstock', 'backstock', ...]
-        for (var i in data){
-            tempSettings.push(i);
-        }
-        setTaskSettings(tempSettings);
-    }
 
     const updateTasks = (res) => {
         console.log("got to here from task page")
@@ -61,6 +52,7 @@ function AllToDo(props) {
         var tempFinished = [];
         var taskProps = {updateTasks: updateTasks, employees: props.employees, type: "", task: "", id: "000000"}
         var emptyTasks = 0;
+
         for (var type in tasks){
             if(props.activePage === 'all' || Object.keys(tasks[props.activePage]).length !== 0){
                 if(Object.keys(tasks[type]).length === 0){
@@ -115,33 +107,44 @@ function AllToDo(props) {
         setFinishedObjects(tempFinished);
     }
     return (
-        <div className="allToDoContainer">
-            <div className="headerRow">
-                <div className="headerToDo">
-                    <p>To Do</p>
-                </div>
-                <div className="headerInProgress">
-                    <p>In Progress</p>
-                </div>
-                <div className="headerFinished">
-                    <p>Finshed</p>
-                </div>
+        <div className="dryGoodsContainer">
+            <div className="dryGoodsOptionsContainer">
+                {
+                    Object.keys(taskSettings.dryGoods.components).map((value) => {
+                        return (
+                            <TaskContainer updateTasks={updateTasks} taskSettings={taskSettings} activePage={value}/>
+                        )
+                    })
+                }
             </div>
+            <div className="allToDoContainer">
+                <div className="headerRow">
+                    {/* <div className="headerToDo">
+                        <p>To Do</p>
+                    </div> */}
+                    <div className="headerInProgress">
+                        <p>In Progress</p>
+                    </div>
+                    <div className="headerFinished">
+                        <p>Finshed</p>
+                    </div>
+                </div>
 
-            <div className="tableColumns">
-                {emptyMessage}
-                <div className="column toDoContainer">
-                    {toDoObjects}
-                </div>
-                <div className="column inProgressContainer">
-                    {inProgressObjects}
-                </div>
-                <div className="column finishedContainer">
-                    {finishedObjects}
+                <div className="tableColumns">
+                    {emptyMessage}
+                    {/* <div className="column toDoContainer">
+                        {toDoObjects}
+                    </div> */}
+                    <div className="column inProgressContainer">
+                        {inProgressObjects}
+                    </div>
+                    <div className="column finishedContainer">
+                        {finishedObjects}
+                    </div>
                 </div>
             </div>
         </div>
     )
 }
 
-export default AllToDo
+export default AllDryGoods

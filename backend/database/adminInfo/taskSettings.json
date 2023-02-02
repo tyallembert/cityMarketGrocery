@@ -1,0 +1,99 @@
+[
+    {
+        "liveFreight": {
+            "type": "outer",
+            "title": "Live Freight",
+            "color": "#585858",
+            "classes": "liveFreight navChild",
+            "components": {
+                "dryGoodsLive": {
+                    "type": "component",
+                    "title": "Dry Goods Live",
+                    "classes": "dryGoodsLive navChild subChild",
+                    "options": [1, 2, 3, 4, 5, 6, 7]
+                },
+                "perishablesLive": {
+                    "type": "component",
+                    "title": "Perishables Live",
+                    "classes": "perishablesLive navChild subChild",
+                    "options":["UNFI", "Monument Farms", "Dreamwalker", "Maple Meadows", "Cabot", "Champlain", "Farrell"]
+                },
+                "bulkLive": {
+                    "type": "component",
+                    "title": "Bulk Live",
+                    "classes": "bulkLive navChild subChild",
+                    "options": ["Granola", "Flour", "Nuts", "Dried Fruit", "Candy", "Baking", "Spices", "Rice", "Coffee", "Grains"]
+                }
+            }
+        },
+        "dryGoods": {
+            "type": "outer",
+            "title": "Dry Goods",
+            "color": "#585858",
+            "classes": "dryGoods navChild",
+            "components": {
+                "upstock": {
+                    "type": "component",
+                    "title": "Upstock",
+                    "classes": "upstock navChild subChild",
+                    "options": [1, 2, 3, 4, 5, 6, 7]
+                },
+                "backstock": {
+                    "type": "component",
+                    "title": "Backstock",
+                    "color": "#31B94F",
+                    "classes": "backstock navChild subChild",
+                    "options": [1, 2, 3, 4, 5, 6, 7]
+                },
+                "sectors": {
+                    "type": "component",
+                    "title": "Sectors",
+                    "color": "#D9D11E",
+                    "classes": "sectors navChild subChild",
+                    "options": ["Honey", "Coffee", "Boves", "Jerky", "Seasonal", "Local Chocolates", "Teddys PB", "Vinegar", "Hot Sauce"]
+                },
+                "rounding": {
+                    "type": "component",
+                    "title": "Rounding",
+                    "color": "#cd50d9",
+                    "classes": "rounding navChild subChild",
+                    "options": ["Beverages", "Polar", "Polar Cooler", "Polar Endcap", "Grab 'n Go", "Water well"]
+                }
+            }
+        },
+        "perishables": {
+            "type": "outer",
+            "title": "Perishables",
+            "color": "#585858",
+            "classes": "perishables navChild",
+            "components": {
+                "castors": {
+                    "type": "component",
+                    "title": "Peri Castors",
+                    "color": "#1E8AD9",
+                    "classes": "periCastors navChild subChild"
+                },
+                "backstock": {
+                    "type": "component",
+                    "title": "Peri Backstock",
+                    "color": "#1E8AD9",
+                    "classes": "periBackstock navChild subChild"
+                }
+            }
+        },
+        "bulk": {
+            "type": "outer",
+            "title": "Bulk",
+            "color": "#806021",
+            "classes": "bulk navChild",
+            "components": {}
+        },
+        "beerWine": {
+            "type": "outer",
+            "title": "Beer & Wine",
+            "color": "#8E4DC1",
+            "classes": "beerWine navChild",
+            "components": {}
+        }
+    }
+]

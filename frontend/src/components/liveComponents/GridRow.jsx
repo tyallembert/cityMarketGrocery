@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import "./gridRow.scss";
+import {motion} from 'framer-motion';
 
 function GridRow(props) {
     const [currentAisle, setCurrentAisle] = useState(props.aisle);
     const [dataLoaded, setDataLoaded] = useState(false);
     const [id, setId] = useState(props.id);
     useEffect(() => {
-        checkIfFinished();
         setId(props.id)
+        setDataLoaded(true)
     }, []);
 
     const handleFinish = async() => {

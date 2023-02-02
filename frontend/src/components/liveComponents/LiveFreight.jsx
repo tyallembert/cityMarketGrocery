@@ -33,7 +33,8 @@ function LiveFreight(props) {
         <div className="liveFreightContainer">
             <StartButton togglePopup={togglePopup}/>
             {showingPopUp ? (
-                <NewAislePopup togglePopup={togglePopup} updateTasks={updateTasks} employees={employees} activePage={activePage} />
+                <NewAislePopup
+                    togglePopup={togglePopup} updateTasks={updateTasks} employees={employees} activePage={activePage} />
             ) : (null)
             }
             <GridTable updateTasks={updateTasks} newAisleActive={showingPopUp} tasks={tasks}/>

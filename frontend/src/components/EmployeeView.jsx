@@ -14,7 +14,7 @@ function EmployeeView() {
   const [currentTasks, setCurrentTasks] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [dataFetched, setDataFetched] = useState(false);
-  const [navSettings, setNavSettings] = useState({});
+  const [taskSettings, setTaskSettings] = useState({});
 
   //Check if its time to send email
   useEffect(() => {
@@ -22,7 +22,7 @@ function EmployeeView() {
   }, []);
 
   useEffect(() => {
-    fetchNavSettings();
+    fetchTaskSettings();
     fetchEmployees();
     fetchCurrentTasks();
   }, []);
@@ -30,7 +30,7 @@ function EmployeeView() {
     // console.log("RELOAD: ")
     // console.log(activePageParent)
     // console.log(activePage)
-  }, [currentTasks, navSettings, activePage, activePageParent]);
+  }, [currentTasks, taskSettings, activePage, activePageParent]);
 
   const checkIfEmail = () => {
     var date = new Date();
@@ -61,10 +61,10 @@ function EmployeeView() {
     const tempEmployees = await data.json();
     setEmployees(tempEmployees);
   }
-  const fetchNavSettings = async() => {
-    const data = await fetch('/getNavSettings');
+  const fetchTaskSettings = async() => {
+    const data = await fetch('/getTaskSettings');
     const settings = await data.json();
-    setNavSettings(settings);
+    setTaskSettings(settings);
   }
 
   const updateCurrentTasks = async(res) => {
@@ -89,10 +89,10 @@ function EmployeeView() {
         dataFetched ? 
         (
         <>
-            <Header activePage={activePage} activePageParent={activePageParent} navSettings={navSettings} updateCurrentTasks={updateCurrentTasks}/>
+            <Header activePage={activePage} activePageParent={activePageParent} taskSettings={taskSettings} updateCurrentTasks={updateCurrentTasks}/>
             <div className="contentContainer">
-              <LeftNav navSettings={navSettings} updateActivePage={updateActivePage}/>
-              <Main activePage={activePage} activePageParent={activePageParent} tasks={currentTasks} employees={employees}/>
+              <LeftNav taskSettings={taskSettings} updateActivePage={updateActivePage}/>
+              <Main taskSettings={taskSettings} activePage={activePage} activePageParent={activePageParent} tasks={currentTasks} employees={employees}/>
             </div>
             <button onClick={checkIfEmail}>Send Email</button>
         </>

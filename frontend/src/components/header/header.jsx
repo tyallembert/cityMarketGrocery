@@ -8,13 +8,13 @@ function Header(props) {
     const [dateState, setDateState] = useState(new Date());
     const [activePage, setActivePage] = useState(props.activePage);
     const [activePageParent, setActivePageParent] = useState(props.activePageParent);
-    const [navSettings, setNavSettings] = useState(props.navSettings);
+    const [taskSettings, setTaskSettings] = useState(props.taskSettings);
     const [pageTitle, setPageTitle] = useState("");
     
     useEffect(() => {
         setActivePage(props.activePage);
         setActivePageParent(props.activePageParent);
-        setNavSettings(props.navSettings);
+        setTaskSettings(props.taskSettings);
     }, [])
     useEffect(() => {
         setActivePage(props.activePage)
@@ -27,16 +27,16 @@ function Header(props) {
     }, [props.activePage]);
     useEffect(() => {
         getHeaderFromSettings();
-    }, [navSettings, activePage, activePageParent])
+    }, [taskSettings, activePage, activePageParent])
     const getHeaderFromSettings = () => {
         console.log("PARENT: "+activePageParent);
         console.log("PAGE: "+activePageParent);
         if(activePageParent !== ""){
             console.log("went through if")
-            setPageTitle(props.navSettings[activePageParent].components[activePage].title)
+            setPageTitle(props.taskSettings[activePageParent].components[activePage].title)
         }else{
             console.log("went through else")
-            setPageTitle(props.navSettings[activePage].title);
+            setPageTitle(props.taskSettings[activePage].title);
         }
     }
     return (
@@ -66,7 +66,7 @@ function Header(props) {
                 <h1>{pageTitle}</h1>
                 <div className="buttonsContainer">
                     <ShrinkLog />
-                    <AddTask navSettings={props.navSettings} updateCurrentTasks={props.updateCurrentTasks}/>
+                    <AddTask taskSettings={props.taskSettings} updateCurrentTasks={props.updateCurrentTasks}/>
                 </div>
             </div>
         </div>

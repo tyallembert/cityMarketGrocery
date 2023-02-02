@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { IoCheckmarkDoneSharp, IoCloseSharp } from "react-icons/io5";
 import "./newAislePopup.scss";
+import {motion} from 'framer-motion';
+import {animation__newAisleContainer, animation__newAisleChild} from "../animations";
 
 function NewAislePopup(props) {
 
@@ -20,12 +22,14 @@ function NewAislePopup(props) {
     useEffect(() => {
         setEmployees(props.employees);
         setActivePage(props.activePage);
-        fetchLiveSettings(props.liveSettings)
+        fetchLiveSettings()
     }, [])
     useEffect(() => {
         createEmployeeOptions();
-        createLiveSettings()
-    }, [employees, liveSettings])
+    }, [employees])
+    useEffect(() => {
+        createLiveSettings();
+    }, [liveSettings])
     const handleChange = (event) => {
         setTaskInfo({ ...taskInfo, [event.target.name]: event.target.value });
     };
@@ -33,9 +37,8 @@ function NewAislePopup(props) {
         const data = await fetch('/getLiveSettings');
         const tempLiveSettings = await data.json();
         setLiveSettings(tempLiveSettings);
-      }
+    }
     const createEmployeeOptions = () => {
-        console.log(employees);
         var tempObjects = [];
         tempObjects.push(<option key={0} value="choose">Choose</option>);
         for(var id in employees){
@@ -47,7 +50,6 @@ function NewAislePopup(props) {
         setEmployeeOptionObjects(tempObjects);
     }
     const createLiveSettings = () => {
-        console.log(activePage);
         var tempObjects = [];
         tempObjects.push(<option key={0} value="choose">Choose</option>);
         for(var value in liveSettings[activePage]){
@@ -79,38 +81,43 @@ function NewAislePopup(props) {
 
     return (
         <div className="newAislePopupContainer">
+
             <div className='background' onClick={closePopUp}></div>
-            <form className='formContainer' onSubmit={handleSubmit}>
+            <motion.form
+            variants={animation__newAisleContainer}
+            initial="hidden"
+            animate="visible"
+            className='formContainer' onSubmit={handleSubmit}>
                 <h1 className='formTitle'>New Aisle</h1>
-                <label>
+                <motion.label variants={animation__newAisleChild}>
                     Name:
                     <select className="nameInput" name="name" onChange={handleChange}>
                         {employeeOptionObjects}
                     </select>
-                </label>
+                </motion.label>
 
-                <label>
+                <motion.label variants={animation__newAisleChild}>
                     Aisle Number:
-                    <select className="nameInput" name="number" onChange={handleChange}>
+                    <select className="aisleInput" name="aisle" onChange={handleChange}>
                         {liveSettingsOptions}
                     </select>
-                </label>
+                </motion.label>
 
-                <label>
+                <motion.label variants={animation__newAisleChild}>
                     Box Count:
                     <input type="text"
                     name="boxes" 
                     value={taskInfo.boxes} 
                     onChange={handleChange} 
                     maxLength={3}/>
-                </label>
-                <button type="submit">
+                </motion.label>
+                <motion.button variants={animation__newAisleChild} type="submit">
                     <IoCheckmarkDoneSharp />
-                </button>
-                <button type='button' onClick={closePopUp}>
+                </motion.button>
+                <motion.button variants={animation__newAisleChild} type='button' onClick={closePopUp}>
                     <IoCloseSharp />
-                </button>
-            </form>
+                </motion.button>
+            </motion.form>
         </div>
     )
 }
