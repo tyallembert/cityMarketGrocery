@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./main.scss";
 import LiveFreight from "./liveComponents/LiveFreight.jsx";
 import AllDryGoods from "./afterLiveComponents/AllDryGoods.jsx";
+import { GiConsoleController } from "react-icons/gi";
 
 function Main(props) {
     const [activePage, setActivePage] = useState(props.activePage);

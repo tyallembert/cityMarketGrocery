@@ -15,7 +15,7 @@ function TaskObject(props) {
         setTask(props.task);
         setType(props.type);
         setEmployees(props.employees);
-    },[])
+    },[props.employees])
     useEffect(() => {
         createEmployeeOptions();
     },[task, employees])
@@ -37,19 +37,6 @@ function TaskObject(props) {
     const createObject = () => {
         setClasses("taskObjectContainer " + type)
         switch(task.status){
-            case 'To Do':
-                setInfoObject(
-                    <>
-                        <div className="elementContainer">
-                            <select className="nameInput" name="name" onChange={handleChange}>
-                                {employeeOptionObjects}
-                            </select>
-                            <p className="title">Name</p>
-                        </div>
-                        <button className="button startButton" onClick={handleStartTask}>Start</button> 
-                    </>
-                    )
-                break;
             case 'In Progress':
                 setInfoObject(
                     <>
@@ -89,7 +76,7 @@ function TaskObject(props) {
                     <select className="nameInput" name="name" onChange={handleChange}>
                         {employeeOptionObjects}
                     </select>
-                    <button className="startButton" onClick={handleStartTask}>Start</button>
+                    <button className="startButton button" onClick={handleStartTask}>Start</button>
                 </>
                 )
         }
@@ -108,7 +95,8 @@ function TaskObject(props) {
         tempTask.start = time;
         tempTask.status = "In Progress";
         setTask(tempTask);
-        props.updateTasks({type: type, id: props.id, task: tempTask});
+        var id = (Math.random() + 1).toString(36).slice(2,10);
+        props.updateTasks({type: type, id: id, task: tempTask});
     }
     const handleFinishTask = () => {
         var tempTask = task;

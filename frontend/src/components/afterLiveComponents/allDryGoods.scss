@@ -4,6 +4,9 @@
     flex-direction: column;
     width: 100%;
     .dryGoodsOptionsContainer{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
         width: 100%;
         margin-bottom: 10px;
         overflow-x: scroll;
@@ -41,7 +44,7 @@
                 color: rgba(0,0,0,0.5);
             }
             .column{
-                width: calc((100%/3) - 4%);
+                width: calc((100%/2) - 4%);
                 padding: 1% 2%;
             }
         }

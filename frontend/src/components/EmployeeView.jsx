@@ -51,9 +51,7 @@ function EmployeeView() {
   const fetchCurrentTasks = async() => {
     const data = await fetch('/currentTasks');
     const tasks = await data.json();
-    console.log(tasks)
     setCurrentTasks(tasks);
-    console.log("got to here")
     setDataFetched(true);
   }
   const fetchEmployees = async() => {

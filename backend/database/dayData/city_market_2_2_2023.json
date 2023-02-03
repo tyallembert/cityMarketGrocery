@@ -1,0 +1,45 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {},
+    "perishablesLive": {},
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "kxb9s32o": {
+        "name": "",
+        "aisle": 1,
+        "start": "4:20 PM",
+        "end": "4:22 PM",
+        "status": "Finished"
+      },
+      "ji52817z": {
+        "name": "",
+        "aisle": 3,
+        "start": "4:20 PM",
+        "end": "4:22 PM",
+        "status": "Finished"
+      }
+    },
+    "backstock": {
+      "kepm9e1q": {
+        "name": "",
+        "aisle": 1,
+        "start": "4:22 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

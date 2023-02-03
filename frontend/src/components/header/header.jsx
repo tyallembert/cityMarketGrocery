@@ -29,13 +29,9 @@ function Header(props) {
         getHeaderFromSettings();
     }, [taskSettings, activePage, activePageParent])
     const getHeaderFromSettings = () => {
-        console.log("PARENT: "+activePageParent);
-        console.log("PAGE: "+activePageParent);
         if(activePageParent !== ""){
-            console.log("went through if")
             setPageTitle(props.taskSettings[activePageParent].components[activePage].title)
         }else{
-            console.log("went through else")
             setPageTitle(props.taskSettings[activePage].title);
         }
     }

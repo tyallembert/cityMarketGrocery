@@ -6,8 +6,8 @@ import "./allDryGoods.scss";
 function AllDryGoods(props) {
     const [taskSettings, setTaskSettings] = useState(props.taskSettings)
     const [tasks, setTasks] = useState(props.tasks);
-    const [activePage, setActivePage] = useState(props.tasks);
-    const [employees, setEmployees] = useState(props.tasks);
+    const [activePage, setActivePage] = useState(props.activePage);
+    const [employees, setEmployees] = useState(props.employees);
 
     const [toDoObjects, setToDoObjects] = useState([]);
     const [inProgressObjects, setInProgressObjects] = useState([]);
@@ -22,10 +22,7 @@ function AllDryGoods(props) {
     },[props.tasks, props.activePage])
     useEffect(() => {
         createTaskObjects();
-    },[tasks, taskSettings])
-    useEffect(() => {
-
-    },[toDoObjects, inProgressObjects, finishedObjects])
+    },[tasks, taskSettings, activePage])
 
     const updateTasks = (res) => {
         console.log("got to here from task page")
@@ -33,66 +30,60 @@ function AllDryGoods(props) {
         var id = res.id;
         var type = res.type;
         var task = res.task;
-        tempTasks[type][id] = res.task;
+        tempTasks.dryGoods[type][id] = res.task;
+        console.log(tempTasks)
         setTasks(tempTasks);
         createTaskObjects();
-        fetch("/saveTask", {
+        fetch("/saveData", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({id: id, type: type, task: task})
+            body: JSON.stringify(tempTasks)
         });
     }
 
     const createTaskObjects = async() => {
-        var isEmpty = true;
         var tempToDo = [];
         var tempProgress = [];
         var tempFinished = [];
         var taskProps = {updateTasks: updateTasks, employees: props.employees, type: "", task: "", id: "000000"}
         var emptyTasks = 0;
+        console.log("ACTIVE: "+activePage)
 
-        for (var type in tasks){
-            if(props.activePage === 'all' || Object.keys(tasks[props.activePage]).length !== 0){
-                if(Object.keys(tasks[type]).length === 0){
-                    emptyTasks++;
-                }
-                taskProps.type = type;
-                isEmpty = false;
-                if(taskSettings.includes(type)){
-                    if(activePage === type || activePage === 'all'){ //this line checks if its a specific page
-                        for (var task in tasks[type]){
-                            taskProps.id = task;
-                            taskProps.task = tasks[type][task];
-    
-                            switch(tasks[type][task].status){
-                                case "To Do":
-                                    tempToDo.push(
-                                        <TaskObject {...taskProps} key={task}/>
-                                    )
-                                    break;
-                                case "In Progress":
-                                    tempProgress.push(
-                                        <TaskObject {...taskProps} key={task}/>
-                                    )
-                                    break;
-                                case "Finished":
-                                    tempFinished.push(
-                                        <TaskObject {...taskProps} key={task}/>
-                                    )
-                                    break;
-                                default:
-                                    tempToDo.push(
-                                        <TaskObject {...taskProps} key={task}/>
-                                    )
-                            }
-                        }
+        for (var type in tasks.dryGoods){
+            if(Object.keys(tasks.dryGoods[type]).length === 0 && emptyTasks < Object.keys(tasks.dryGoods[type]).length){
+                emptyTasks++;
+            }
+            if(type === activePage && Object.keys(tasks.dryGoods[type]).length === 0){
+                emptyTasks = Object.keys(tasks.dryGoods).length;
+            }
+            taskProps.type = type;
+            if(activePage === type || activePage === 'dryGoods'){ //this line checks if its a specific page
+                for (var task in tasks.dryGoods[type]){
+                    taskProps.id = task;
+                    taskProps.task = tasks.dryGoods[type][task];
+
+                    switch(tasks.dryGoods[type][task].status){
+                        case "In Progress":
+                            tempProgress.push(
+                                <TaskObject {...taskProps} key={task}/>
+                            )
+                            break;
+                        case "Finished":
+                            tempFinished.push(
+                                <TaskObject {...taskProps} key={task}/>
+                            )
+                            break;
+                        default:
+                            tempToDo.push(
+                                <TaskObject {...taskProps} key={task}/>
+                            )
                     }
                 }
             }
         }
-        if(isEmpty || Object.keys(tasks).length === emptyTasks){
+        if(Object.keys(tasks.dryGoods).length === emptyTasks){
             var message = (
             <div className="emptyMessage">
                 <h2>No tasks yet for today</h2>
@@ -112,16 +103,13 @@ function AllDryGoods(props) {
                 {
                     Object.keys(taskSettings.dryGoods.components).map((value) => {
                         return (
-                            <TaskContainer updateTasks={updateTasks} taskSettings={taskSettings} activePage={value}/>
+                            <TaskContainer key={value} updateTasks={updateTasks} employees={employees} taskSettings={taskSettings} activePage={value}/>
                         )
                     })
                 }
             </div>
             <div className="allToDoContainer">
                 <div className="headerRow">
-                    {/* <div className="headerToDo">
-                        <p>To Do</p>
-                    </div> */}
                     <div className="headerInProgress">
                         <p>In Progress</p>
                     </div>
@@ -132,9 +120,6 @@ function AllDryGoods(props) {
 
                 <div className="tableColumns">
                     {emptyMessage}
-                    {/* <div className="column toDoContainer">
-                        {toDoObjects}
-                    </div> */}
                     <div className="column inProgressContainer">
                         {inProgressObjects}
                     </div>

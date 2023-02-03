@@ -1,11 +1,10 @@
 @import "../..//variables.scss";
 .tasksContainerWrapper{
-    display: inline-block;
     background-color: $grayBackground;
     padding: 2%;
-    height: 300px;
-    min-width: 300px;
-    margin: 0 20px;
+    max-height: 30px;
+    width: 40%;
+    margin: 5px;
     border-radius: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -14,4 +13,20 @@
     &::-webkit-scrollbar{
         display: none;
     }
+    .taskHeaderContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .header{
+            font-size: 18pt;
+            width: 70%;
+        }
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+.activeTaskContainer{
+    // width: 50%;
+    height: 300px;
 }
