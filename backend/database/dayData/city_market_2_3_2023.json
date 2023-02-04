@@ -15,7 +15,15 @@
         "status": "Finished"
       }
     },
-    "backstock": {},
+    "backstock": {
+      "czm7zxfm": {
+        "name": "Ty A",
+        "aisle": 2,
+        "start": "4:34 PM",
+        "end": "4:35 PM",
+        "status": "Finished"
+      }
+    },
     "sectors": {},
     "rounding": {
       "35izztzv": {
@@ -29,8 +37,8 @@
         "name": "Ty A",
         "aisle": "Beverages",
         "start": "1:05 PM",
-        "end": "",
-        "status": "In Progress"
+        "end": "4:35 PM",
+        "status": "Finished"
       }
     }
   },

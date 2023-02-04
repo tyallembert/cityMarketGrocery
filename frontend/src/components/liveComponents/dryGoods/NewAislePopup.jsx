@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { IoCheckmarkDoneSharp, IoCloseSharp } from "react-icons/io5";
 import "./newAislePopup.scss";
 import {motion} from 'framer-motion';
-import {animation__newAisleContainer, animation__newAisleChild} from "../animations";
+import {animation__newAisleContainer, animation__newAisleChild} from "../../animations";
 
 function NewAislePopup(props) {
 

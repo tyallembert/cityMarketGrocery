@@ -1,0 +1,51 @@
+@import "../../../variables.scss";
+.taskPerishablesContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 100px;
+    background-color: $grayBackground;
+    width: 40%;
+    padding: 1%;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 200ms ease;
+    &:hover{
+        outline: solid 2px rgb(115, 190, 122);
+    }
+    &:active{
+        transform: scale(0.9);
+    }
+    .taskTitle{
+        margin-right: 20%;
+        width: 50%;
+        text-align: center;
+        font-weight: 700;
+    }
+    .outerCircle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 30px;
+        border-radius: 100px;
+        border: solid 4px rgb(193, 193, 193);
+        background-color: $grayBackground;
+        .innerCircle{
+            height: 80%;
+            width: 80%;
+            border-radius: 100px;
+            background-color: $grayBackground;
+        }
+    }
+}
+.isChecked{
+    background-color: rgb(78, 164, 86);
+    .outerCircle{
+        border: solid 4px rgb(52, 121, 59);
+        background-color: rgb(115, 190, 122);
+        .innerCircle{
+            background-color: rgb(52, 121, 59);
+        }
+    }
+}

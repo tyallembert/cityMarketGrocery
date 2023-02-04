@@ -22,7 +22,7 @@ function Main(props) {
             {
                 (activePageParent === "liveFreight" || activePage === "liveFreight") ? 
                 (
-                    <LiveFreight activePage={activePage} tasks={tasks} employees={employees}/>
+                    <LiveFreight activePage={activePage} taskSettings={props.taskSettings} tasks={tasks} employees={employees}/>
                 ): 
                 (
                     <AllDryGoods tasks={tasks} taskSettings={props.taskSettings} activePage={activePage} employees={employees}/>

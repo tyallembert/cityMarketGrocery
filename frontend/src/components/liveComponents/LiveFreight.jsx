@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react';
 import "./liveFreight.scss";
-import GridTable from './GridTable';
-import StartButton from './StartButton';
-import NewAislePopup from './NewAislePopup';
+import DryGoodsLive from './dryGoods/DryGoodsLive';
+import PerishablesLive from './perishables/PerishablesLive';
 
 function LiveFreight(props) {
-    const [showingPopUp, setShowingPopUp] = useState(false);
     const [tasks, setTasks] = useState(props.tasks);
     const [activePage, setActivePage] = useState(props.activePage);
-    const [employees, setEmployees] = useState(props.employees);
 
     useEffect(() => {
         setActivePage(props.activePage)
@@ -26,20 +23,34 @@ function LiveFreight(props) {
         });
         setTasks(tempTasks)
     }
-    const togglePopup = (res) => {
-        setShowingPopUp(res);
+    switch(activePage){
+        case "dryGoodsLive":
+            return (
+                <DryGoodsLive updateTasks={updateTasks} 
+                activePage={props.activePage} 
+                tasks={tasks}
+                employees={props.employees}/>
+            )
+        case "perishablesLive":
+            return (
+                <PerishablesLive updateTasks={updateTasks} 
+                activePage={props.activePage} 
+                taskSettings={props.taskSettings} 
+                tasks={tasks}/>
+            )
+        case "bulkLive":
+            return (
+                <DryGoodsLive updateTasks={updateTasks} activePage={props.activePage} tasks={tasks}/>
+            )
+        default:
+            return (
+                <>
+                    <DryGoodsLive updateTasks={updateTasks} activePage={props.activePage} tasks={tasks}/>
+                    {/* add perishables */}
+                    {/* add bulk */}
+                </>
+            )
     }
-    return (
-        <div className="liveFreightContainer">
-            <StartButton togglePopup={togglePopup}/>
-            {showingPopUp ? (
-                <NewAislePopup
-                    togglePopup={togglePopup} updateTasks={updateTasks} employees={employees} activePage={activePage} />
-            ) : (null)
-            }
-            <GridTable updateTasks={updateTasks} newAisleActive={showingPopUp} tasks={tasks}/>
-        </div>
-    )
 }
 
 export default LiveFreight
