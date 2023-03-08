@@ -1,20 +1,20 @@
 [
-  {
-    "ec7lclo8": {
-      "firstName": "Ty",
-      "lastName": "Allembert"
-    },
-    "5q7v85iw": {
-      "firstName": "Colin",
-      "lastName": "Greenleaf"
-    },
-    "zawlv8zz": {
-      "firstName": "Nate",
-      "lastName": "Lalor"
-    },
-    "s6sswcwp": {
-      "firstName": "Molly",
-      "lastName": "Stoner"
+    {
+      "ec7lclo8": {
+        "firstName": "Ty",
+        "lastName": "Allembert"
+      },
+      "5q7v85iw": {
+        "firstName": "Colin",
+        "lastName": "Greenleaf"
+      },
+      "zawlv8zz": {
+        "firstName": "Nate",
+        "lastName": "Lalor"
+      },
+      "s6sswcwp": {
+        "firstName": "Molly",
+        "lastName": "Stoner"
+      }
     }
-  }
-]
+  ]

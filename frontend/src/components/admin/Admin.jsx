@@ -41,6 +41,7 @@ function Admin() {
     const fetchNavSettings = async() => {
         const data = await fetch('/getNavSettings');
         const settings = await data.json();
+        console.log(settings);
         setNavSettings(settings);
       }
     const handlePageChange = () => {

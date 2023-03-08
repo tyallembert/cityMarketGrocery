@@ -1,0 +1,47 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {
+      "bo6n5qau": {
+        "name": "Ty A",
+        "aisle": "2",
+        "boxes": "45",
+        "start": "11:57 AM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "perishablesLive": {},
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "2r9mltdz": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "2:54 PM",
+        "end": "7:23 PM",
+        "status": "Finished"
+      }
+    },
+    "backstock": {},
+    "sectors": {},
+    "rounding": {
+      "xg4lj0jy": {
+        "name": "Ty A",
+        "aisle": "Polar",
+        "start": "11:46 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    }
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

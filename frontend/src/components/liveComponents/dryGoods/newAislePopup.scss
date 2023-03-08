@@ -67,6 +67,15 @@
             }
             &[type=submit]{
                 background-color: $buttonGreen;
+                &:disabled, &[disabled]{
+                    background-color: rgba($buttonGreen, 0.5);
+                    &:hover{
+                        box-shadow: none;
+                        transform: translateY(0px);
+                        font-size: 19pt;
+                        cursor: auto;
+                    }
+                }
             }
             &[type=button]{
                 background-color: $buttonRed;

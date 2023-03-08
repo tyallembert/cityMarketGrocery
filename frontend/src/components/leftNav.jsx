@@ -7,14 +7,13 @@ function LeftNav(props) {
     const [taskSettings, setTaskSettings] = useState(props.taskSettings);
     useEffect(() => {
         setTaskSettings(props.taskSettings);
-    }, [])
+    }, [props.taskSettings])
     useEffect(() => {
         setTaskSettings(props.taskSettings);
     }, [activePage, taskSettings])
 
     const changeActivePage = (e) => {
         var page = e.currentTarget.className.split(" ");
-        //if
         var parentType = "";
         var tempActive = [];
         if(page[2] === "subChild"){

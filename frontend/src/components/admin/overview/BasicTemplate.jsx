@@ -10,11 +10,8 @@ function BasicTemplate(props) {
         setActiveTask(props.activeTask);
         setTask(props.task);
         setIsAll(props.isAll);
-        fillEmptyFields();
+        // fillEmptyFields();
     }, [])
-    // useEffect(() => {
-    //     fillEmptyFields();
-    // }, [task])
     const setContainerClass = () => {
         var theClass = "";
         if(isAll){

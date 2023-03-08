@@ -1,5 +1,4 @@
 // https://www.youtube.com/watch?v=9F8bzIlgJ4g
-import { useState, useEffect } from "react";
 import { BrowserRouter as Router,Routes, Route, Link, BrowserRouter } from 'react-router-dom';
 import './App.scss';
 import Admin from "./components/admin/Admin";

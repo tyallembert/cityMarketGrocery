@@ -7,10 +7,6 @@ function AddEmployee(props) {
         firstName: "",
         lastName: ""
     });
-
-    useEffect(() => {
-        
-    }, [])
     const handleChange = (event) => {
         setNewEmployee({ ...newEmployee, [event.target.name]: event.target.value });
     }

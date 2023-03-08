@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useFetcher } from "react-router-dom";
 import "./taskObject.scss";
 
 function TaskObject(props) {
@@ -6,6 +7,7 @@ function TaskObject(props) {
     const [type, setType] = useState(props.type);
     const [employees, setEmployees] = useState(props.employees);
     const [employeeOptionObjects, setEmployeeOptionObjects] = useState([]);
+    const [startDisabled, setStartDisabled] = useState(true);
 
     const [classes, setClasses] = useState("");
     const [infoObject, setInfoObject] = useState([]);
@@ -36,6 +38,7 @@ function TaskObject(props) {
     }
     const createObject = () => {
         setClasses("taskObjectContainer " + type)
+        console.log(task.status)
         switch(task.status){
             case 'In Progress':
                 setInfoObject(
@@ -76,13 +79,18 @@ function TaskObject(props) {
                     <select className="nameInput" name="name" onChange={handleChange}>
                         {employeeOptionObjects}
                     </select>
-                    <button className="startButton button" onClick={handleStartTask}>Start</button>
+                    <button className="startButton button" onClick={handleStartTask} disabled={startDisabled}>Start</button>
                 </>
                 )
         }
     }
     const handleChange = (event) => {
         setTask({ ...task, [event.target.name]: event.target.value });
+        if(task.name !== "choose"){
+            setStartDisabled(false);
+        }else{
+            setStartDisabled(true);
+        }
     }
     const handleStartTask = (e) => {
         var tempTask = task;
@@ -113,7 +121,7 @@ function TaskObject(props) {
     }
     return (
         <div className={classes}>
-            <p className="type">{type}</p>
+            {task.status === undefined ? null: (<p className="type">{type}</p>)}
             <div className="elementContainer aisle">
                 <p>{task.aisle}</p>
                 <p className="title">Aisle</p>

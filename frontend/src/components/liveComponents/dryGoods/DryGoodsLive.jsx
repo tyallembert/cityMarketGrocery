@@ -14,19 +14,6 @@ function DryGoodsLive(props) {
         setActivePage(props.activePage)
         setEmployees(props.employees)
     }, [props.activePage, props.employees])
-    // const updateTasks = async(res) => {
-    //     let newId = res.id;
-    //     let tempTasks = {...tasks};
-    //     tempTasks["liveFreight"]["dryGoodsLive"][newId] = (res.task);
-    //     const response = await fetch("/saveData", {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(tempTasks)
-    //     });
-    //     setTasks(tempTasks)
-    // }
     const togglePopup = (res) => {
         setShowingPopUp(res);
     }
@@ -35,10 +22,10 @@ function DryGoodsLive(props) {
             <StartButton togglePopup={togglePopup}/>
             {showingPopUp ? (
                 <NewAislePopup
-                    togglePopup={togglePopup} updateTasks={props.updateTasks} employees={employees} activePage={activePage} />
+                    togglePopup={togglePopup} updateTasks={props.updateTasks} employees={employees} activePage={props.activePage} />
             ) : (null)
             }
-            <GridTable updateTasks={props.updateTasks} newAisleActive={showingPopUp} tasks={tasks}/>
+            <GridTable updateTasks={props.updateTasks} newAisleActive={showingPopUp} tasks={props.tasks}/>
         </div>
     )
 }

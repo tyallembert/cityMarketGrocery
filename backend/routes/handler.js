@@ -47,8 +47,13 @@ router.get("/getAddTaskSettings", async(req, res) => {
     var settings = await database.readJSON(filename, destination);
     res.send(JSON.stringify(settings[0]));
 });
+router.get("/getNavSettings", async(req, res) => {
+    var destination = "settingsFile";
+    var filename = "navSettings";
+    var settings = await database.readJSON(filename, destination);
+    res.send(JSON.stringify(settings[0]));
+});
 router.get("/getTaskSettings", async(req, res) => {
-    console.log("HANDLER: getNavSettings")
     var destination = "settingsFile";
     var filename = "taskSettings";
     var settings = await database.readJSON(filename, destination);
@@ -189,7 +194,8 @@ router.post('/daysData', async(req, res) => {
         }
         tasks[filename] = (oneDay);
     }
-    res.send(JSON.stringify(tasks));
+    console.log(tasks[0])
+    res.send(JSON.stringify(oneDay));
 });
 router.post("/saveNewEmployee", async (req, res) => {
     console.log("HANDLER: saveNewEmployee")

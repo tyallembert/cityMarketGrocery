@@ -12,10 +12,8 @@
     &:nth-child(odd){
         background-color: white;
     }
-}
-.dataContainer.all{
-    @each $themeColour, $i in $mainColors {
-        .#{$themeColour} {
+    @each $themeColor, $i in $mainColors {
+        &.#{$themeColor} {
             background-color: rgba($i, 0.5);
         }
     }

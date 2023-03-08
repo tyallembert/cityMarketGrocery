@@ -10,9 +10,6 @@
     margin: 10px;
     cursor: pointer;
     transition: all 200ms ease;
-    &:hover{
-        outline: solid 2px rgb(115, 190, 122);
-    }
     &:active{
         transform: scale(0.9);
     }

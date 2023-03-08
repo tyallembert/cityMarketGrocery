@@ -2,6 +2,7 @@
 .addNewEmployeeContainer{
     background-color: $grayBackground;
     padding: 3%;
+    padding-top: 2em;
     border-radius: 15px;
     .formTitle{
         color: $headerGray;
@@ -17,19 +18,13 @@
             p{
                 font-size: 10pt;
                 padding: 3px;
-                background-color: $grayBackground;
-                color: $headerGray;
-                border-radius: 3px;
-                transform: translate(15px, 10px);
+                color: $adminDark;
             }
             input[type=text]{
                 font-size: 12pt;
-                height: 30px;
+                padding: 5px;
                 border: solid 1px $headerGray;
                 border-radius: 5px;
-            }
-            input[type=text]:focus ~ p{
-                transform: translateY(-20px);
             }
         }
         .submitButton{
@@ -41,13 +36,12 @@
             font-size: 12pt;
             font-weight: 700;
             border: none;
-            border-radius: 15px;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            border-radius: 50px;
+            box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
             transition: all 150ms ease;
             &:hover{
-                font-size: 13pt;
-                transform: translateY(-3px);
-                box-shadow: 2px 5px 5px rgba(0,0,0,0.5);
+                transform: scale(1.05);
+                box-shadow: 2px 5px 3px rgba(0,0,0,0.5);
                 cursor: pointer;
             }
         }

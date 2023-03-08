@@ -27,10 +27,10 @@ function EmployeeView() {
     fetchCurrentTasks();
   }, []);
   useEffect(() => {
-    // console.log("RELOAD: ")
+    console.log("RERENDER: ")
     // console.log(activePageParent)
     // console.log(activePage)
-  }, [currentTasks, taskSettings, activePage, activePageParent]);
+  }, [employees, currentTasks, taskSettings, activePage, activePageParent]);
 
   const checkIfEmail = () => {
     var date = new Date();

@@ -11,6 +11,7 @@ function NewAislePopup(props) {
     const [liveSettings, setLiveSettings] = useState([]);
     const [liveSettingsOptions, setLiveSettingsOptions] = useState([]);
     const [activePage, setActivePage] = useState(props.activePage);
+    const [submitDisabled, setSubmitDisabled] = useState(true);
     const [taskInfo, setTaskInfo] = useState({
         name: "",
         aisle: "",
@@ -22,20 +23,26 @@ function NewAislePopup(props) {
     useEffect(() => {
         setEmployees(props.employees);
         setActivePage(props.activePage);
-        fetchLiveSettings()
-    }, [])
+        fetchLiveSettings();
+    }, [props.employees, props.liveSettings])
     useEffect(() => {
         createEmployeeOptions();
     }, [employees])
     useEffect(() => {
         createLiveSettings();
-    }, [liveSettings])
+    }, [liveSettings, activePage])
     const handleChange = (event) => {
+        if(taskInfo.name !== "Choose" && taskInfo.aisle !== "Choose" && taskInfo.boxes !== ""){
+            setSubmitDisabled(false);
+        }else{
+            setSubmitDisabled(true);
+        }
         setTaskInfo({ ...taskInfo, [event.target.name]: event.target.value });
     };
     const fetchLiveSettings = async() => {
         const data = await fetch('/getLiveSettings');
         const tempLiveSettings = await data.json();
+        console.log(tempLiveSettings)
         setLiveSettings(tempLiveSettings);
     }
     const createEmployeeOptions = () => {
@@ -51,6 +58,8 @@ function NewAislePopup(props) {
     }
     const createLiveSettings = () => {
         var tempObjects = [];
+        console.log(activePage)
+        console.log(liveSettings)
         tempObjects.push(<option key={0} value="choose">Choose</option>);
         for(var value in liveSettings[activePage]){
             tempObjects.push(
@@ -87,7 +96,8 @@ function NewAislePopup(props) {
             variants={animation__newAisleContainer}
             initial="hidden"
             animate="visible"
-            className='formContainer' onSubmit={handleSubmit}>
+            className='formContainer' 
+            onSubmit={handleSubmit}>
                 <h1 className='formTitle'>New Aisle</h1>
                 <motion.label variants={animation__newAisleChild}>
                     Name:
@@ -111,7 +121,7 @@ function NewAislePopup(props) {
                     onChange={handleChange} 
                     maxLength={3}/>
                 </motion.label>
-                <motion.button variants={animation__newAisleChild} type="submit">
+                <motion.button variants={animation__newAisleChild} type="submit" disabled={submitDisabled}>
                     <IoCheckmarkDoneSharp />
                 </motion.button>
                 <motion.button variants={animation__newAisleChild} type='button' onClick={closePopUp}>

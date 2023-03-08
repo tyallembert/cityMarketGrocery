@@ -14,7 +14,7 @@ function LiveFreight(props) {
         let newId = res.id;
         let tempTasks = {...tasks};
         tempTasks["liveFreight"]["dryGoodsLive"][newId] = (res.task);
-        const response = await fetch("/saveData", {
+        await fetch("/saveData", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,25 +27,32 @@ function LiveFreight(props) {
         case "dryGoodsLive":
             return (
                 <DryGoodsLive updateTasks={updateTasks} 
-                activePage={props.activePage} 
+                activePage={"dryGoodsLive"} 
                 tasks={tasks}
                 employees={props.employees}/>
             )
         case "perishablesLive":
             return (
                 <PerishablesLive updateTasks={updateTasks} 
-                activePage={props.activePage} 
+                activePage={"perishablesLive"} 
                 taskSettings={props.taskSettings} 
-                tasks={tasks}/>
+                tasks={tasks}
+                employees={props.employees}/>
             )
         case "bulkLive":
             return (
-                <DryGoodsLive updateTasks={updateTasks} activePage={props.activePage} tasks={tasks}/>
+                <DryGoodsLive updateTasks={updateTasks} 
+                activePage={"dryGoodsLive"} 
+                tasks={tasks}
+                employees={props.employees}/>
             )
         default:
             return (
                 <>
-                    <DryGoodsLive updateTasks={updateTasks} activePage={props.activePage} tasks={tasks}/>
+                    <DryGoodsLive updateTasks={updateTasks} 
+                    activePage={"dryGoodsLive"} 
+                    tasks={tasks}
+                    employees={props.employees}/>
                     {/* add perishables */}
                     {/* add bulk */}
                 </>

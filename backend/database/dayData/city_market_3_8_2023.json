@@ -1,0 +1,78 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {
+      "4qctc5ll": {
+        "name": "Ty A",
+        "aisle": "4",
+        "boxes": "56",
+        "start": "10:57 AM",
+        "end": "10:57 AM",
+        "status": "Finished"
+      },
+      "1nbajwzm": {
+        "name": "Colin G",
+        "aisle": "3",
+        "boxes": "56",
+        "start": "10:57 AM",
+        "end": "10:57 AM",
+        "status": "Finished"
+      },
+      "w4slohhd": {
+        "name": "Nate L",
+        "aisle": "1",
+        "boxes": "22",
+        "start": "12:31 PM",
+        "end": "12:32 PM",
+        "status": "Finished"
+      }
+    },
+    "perishablesLive": {},
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "notn4pif": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "11:07 AM",
+        "end": "11:07 AM",
+        "status": "Finished"
+      },
+      "38aqsu6x": {
+        "name": "Colin G",
+        "aisle": 2,
+        "start": "11:26 AM",
+        "end": "11:26 AM",
+        "status": "Finished"
+      }
+    },
+    "backstock": {
+      "qax826bj": {
+        "name": "Colin G",
+        "aisle": 2,
+        "start": "11:07 AM",
+        "end": "11:07 AM",
+        "status": "Finished"
+      }
+    },
+    "sectors": {
+      "f5c3ad1m": {
+        "name": "Colin G",
+        "aisle": "Coffee",
+        "start": "11:28 AM",
+        "end": "11:28 AM",
+        "status": "Finished"
+      }
+    },
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]
