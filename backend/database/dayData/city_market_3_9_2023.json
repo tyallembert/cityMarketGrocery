@@ -1,0 +1,30 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {},
+    "perishablesLive": {},
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "da9d106y": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "9:10 PM",
+        "end": "9:10 PM",
+        "status": "Finished"
+      }
+    },
+    "backstock": {},
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

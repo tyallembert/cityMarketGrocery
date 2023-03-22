@@ -34,28 +34,26 @@ function AdminManageEmployees(props) {
     }
     const saveNewEmployee = async(res) => {
         var newEmployee = res.employee;
+        var id = (Math.random() + 1).toString(36).slice(2,10);
+        updateCurrentEmployees({type: "add", id: id, employee: newEmployee});
         const response = await fetch("/saveNewEmployee", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({employee: newEmployee})
+            body: JSON.stringify({employee: currentEmployees})
         });
-        var id = await response.json();
-        console.log(id);
-        updateCurrentEmployees({type: "add", id: id, employee: newEmployee});
         toggleNewEmployeePopup();
     }
     const deleteEmployee = async(e) => {
         var id = e.target.parentNode.getAttribute("id");
-        const response = await fetch("/deleteEmployee", {
+        await fetch("/deleteEmployee", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({id: id})
         });
-        const resID = await response.json();
         updateCurrentEmployees({type: "delete", id: id});
     }
 

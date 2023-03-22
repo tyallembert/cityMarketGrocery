@@ -1,0 +1,45 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {},
+    "perishablesLive": {},
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "beftthtg": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "9:50 AM",
+        "end": "10:14 AM",
+        "status": "Finished"
+      },
+      "27f5tqhy": {
+        "name": "Ty A",
+        "aisle": 2,
+        "start": "9:57 AM",
+        "end": "10:15 AM",
+        "status": "Finished"
+      }
+    },
+    "backstock": {},
+    "sectors": {
+      "2tbdggh4": {
+        "name": "Ty A",
+        "aisle": "Honey",
+        "start": "10:14 AM",
+        "end": "10:15 AM",
+        "status": "Finished"
+      }
+    },
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

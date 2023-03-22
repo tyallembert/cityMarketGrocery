@@ -67,13 +67,13 @@
             "color": "#585858",
             "classes": "perishables navChild",
             "components": {
-                "castors": {
+                "periCastors": {
                     "type": "component",
                     "title": "Peri Castors",
                     "color": "#1E8AD9",
                     "classes": "periCastors navChild subChild"
                 },
-                "backstock": {
+                "periBackstock": {
                     "type": "component",
                     "title": "Peri Backstock",
                     "color": "#1E8AD9",
@@ -86,14 +86,40 @@
             "title": "Bulk",
             "color": "#806021",
             "classes": "bulk navChild",
-            "components": {}
+            "components": {
+                "frozenFruit": {
+                    "type": "component",
+                    "title": "Frozen Fruit",
+                    "color": "#1E8AD9",
+                    "classes": "frozenFruit navChild subChild"
+                },
+                "bulkBackstock": {
+                    "type": "component",
+                    "title": "Bulk Backstock",
+                    "color": "#1E8AD9",
+                    "classes": "bulkBackstock navChild subChild"
+                }
+            }
         },
         "beerWine": {
             "type": "outer",
             "title": "Beer & Wine",
             "color": "#8E4DC1",
             "classes": "beerWine navChild",
-            "components": {}
+            "components": {
+                "beer": {
+                    "type": "component",
+                    "title": "Beer",
+                    "color": "#1E8AD9",
+                    "classes": "beer navChild subChild"
+                },
+                "wine": {
+                    "type": "component",
+                    "title": "Wine",
+                    "color": "#1E8AD9",
+                    "classes": "wine navChild subChild"
+                }
+            }
         }
     }
 ]

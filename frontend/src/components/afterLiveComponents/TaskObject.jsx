@@ -38,7 +38,6 @@ function TaskObject(props) {
     }
     const createObject = () => {
         setClasses("taskObjectContainer " + type)
-        console.log(task.status)
         switch(task.status){
             case 'In Progress':
                 setInfoObject(
@@ -104,7 +103,7 @@ function TaskObject(props) {
         tempTask.status = "In Progress";
         setTask(tempTask);
         var id = (Math.random() + 1).toString(36).slice(2,10);
-        props.updateTasks({type: type, id: id, task: tempTask});
+        props.newTaskStarted({type: type, id: id, task: tempTask});
     }
     const handleFinishTask = () => {
         var tempTask = task;

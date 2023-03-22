@@ -24,14 +24,14 @@ function LeftNav(props) {
             tempActive.push(page[0])
         }
 
-        if(tempActive.length == 2){
-            if(activePage.length == 2){
+        if(tempActive.length === 2){
+            if(activePage.length === 2){
                 //the old active is a subchild 
                 //the new active is a subchild 
                 taskSettings[activePage[0]].components[activePage[1]].classes = taskSettings[activePage[0]].components[activePage[1]].classes.replace('activePage','');
                 taskSettings[parentType].components[page[0]].classes = taskSettings[parentType].components[page[0]].classes + " activePage";
             }else{
-                //the old active is a paretask
+                //the old active is a parent
                 //the new active is a subchild 
                 taskSettings[activePage[0]].classes = taskSettings[activePage[0]].classes.replace('activePage','');
                 taskSettings[parentType].components[page[0]].classes = taskSettings[parentType].components[page[0]].classes + " activePage";

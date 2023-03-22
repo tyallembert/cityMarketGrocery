@@ -13,7 +13,6 @@ class Database {
     };
     getLocalPath(filename, destination){
         var path = "";
-        console.log(destination)
         switch(destination){
             case "daysData":
                 path = __dirname + "/../database/dayData/city_market_" + filename + ".json";
@@ -29,7 +28,7 @@ class Database {
     /* 
     Writes to and modifies the data of a certain days tasks
     */
-    async writeJSON(filename, destination, newData, id){
+    async writeJSON(filename, destination, newData){
         console.log("WRITE FUNCTION")
         //constructs the local path
         var path = this.getLocalPath(filename, destination);
@@ -38,15 +37,9 @@ class Database {
 
         //gets everything saved to file for today
         // var daysData = await this.readJSON(filename, destination);
-
-        //updated info in object to get it ready to write
-        // var [updatedTasks, newId] = this.updateData(daysData, parent, type, newData, id);
-        console.log("EXISTS: "+exists)
         if(exists){
             var json = JSON.stringify(newData, null, 2);
             json = "[\n" + json + "\n]"
-            console.log("JSON:")
-            console.log(json)
             var success = false;
             fs.writeFileSync(path, json, 'utf8', function(err){
                 if (err){
@@ -88,34 +81,7 @@ class Database {
     Helper function to prepare json data with updated 
     new values before it is re-written to the file
     */
-    updateData(allData, taskParent, taskType, newData, id){
-        if(id !== ""){
-            if(newData === "delete"){
-                delete allData[0][id];
-            }else{
-                if(taskType === ""){
-                    allData[0][id] = (newData);
-                }else{
-                    allData[0][taskType][id] = (newData);
-                }
-            }
-        }else{
-            let r = (Math.random() + 1).toString(36).slice(2,10);
-            id = r;
-            if(taskType === ""){
-                allData[0][r] = (newData);
-            }else{
-                allData[0][taskType][r] = (newData);
-            }
-        }
-        return [allData, id];
-    }
-    /* 
-    Helper function to prepare json data with updated 
-    new values before it is re-written to the file
-    */
     getNewDayTemplate(){
-        console.log("creating template")
         var template = [{
                 liveFreight: {
                     dryGoodsLive: {},

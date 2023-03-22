@@ -9,18 +9,12 @@ import LeftNav from '../../leftNav';
 
 function AdminOverview(props) {
     const [daysData, setDaysData] = useState([]);
-    const [activeTask, setActiveTask] = useState("");
-    const [activeParent, setActiveParent] = useState("");
+    const [activeTask, setActiveTask] = useState(props.activePage);
+    const [activeParent, setActiveParent] = useState(props.parent);
     const [daysDataObjects, setDaysDataObjects] = useState([]);
     const [date, setDate] = useState(new Date());
     const [calendarActive, setCalendarActive] = useState(false);
-
-    const [navSettings, setNavSettings] = useState(props.navSettings);
     const [taskSettings, setTaskSettings] = useState({});
-
-    useEffect(() => {
-        setNavSettings(props.navSettings);
-    }, [props.navSettings])
 
     useEffect(() => {
         fetchTaskSettings();
@@ -37,6 +31,8 @@ function AdminOverview(props) {
         const data = await fetch('/getTaskSettings')
         const settings = await data.json();
         setTaskSettings(settings);
+        console.log('SETTINGS:')
+        console.log(settings)
     }
     const fetchDaysData = async() => {
         var formattedStart = date.toLocaleDateString('en-us');
@@ -108,6 +104,12 @@ function AdminOverview(props) {
                             </div>
                         )
                     }
+                </div>
+                <div>
+                    {/* <h1>
+                    {activeTask ? taskSettings[activeTask].title : null}
+                    {activeTask && activeParent ? taskSettings[activeParent][activeTask].title : null}
+                    </h1> */}
                 </div>
                 <div className='infoContainer'>
                     <div className='activeTitle'>

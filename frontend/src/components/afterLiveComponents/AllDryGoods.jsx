@@ -25,13 +25,11 @@ function AllDryGoods(props) {
     },[tasks, taskSettings, activePage])
 
     const updateTasks = (res) => {
-        console.log("got to here from task page")
         var tempTasks = tasks;
         var id = res.id;
         var type = res.type;
         var task = res.task;
         tempTasks.dryGoods[type][id] = res.task;
-        console.log(tempTasks)
         setTasks(tempTasks);
         createTaskObjects();
         fetch("/saveData", {
@@ -49,10 +47,9 @@ function AllDryGoods(props) {
         var tempFinished = [];
         var taskProps = {updateTasks: updateTasks, employees: props.employees, type: "", task: "", id: "000000"}
         var emptyTasks = 0;
-        console.log("ACTIVE: "+activePage)
 
         for (var type in tasks.dryGoods){
-            if(Object.keys(tasks.dryGoods[type]).length === 0 && emptyTasks < Object.keys(tasks.dryGoods[type]).length){
+            if(Object.keys(tasks.dryGoods[type]).length === 0){
                 emptyTasks++;
             }
             if(type === activePage && Object.keys(tasks.dryGoods[type]).length === 0){

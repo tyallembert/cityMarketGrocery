@@ -15,6 +15,10 @@ function TaskContainer(props) {
         setActivePage(props.activePage);
     }, [props.taskSettings, props.activePage])
 
+    const newTaskStarted = (res) => {
+        setShowingTasks(!showingTasks);
+        props.updateTasks(res);
+    }
     const toggleShowNewTasks = (e) => {
         if(e.currentTarget.className.split(" ")[0] === "taskHeaderContainer"){
             setShowingTasks(!showingTasks);
@@ -35,7 +39,8 @@ function TaskContainer(props) {
                     Object.keys(taskSettings.dryGoods.components[activePage].options).map((value) => {
                         var aisleValue = taskSettings.dryGoods.components[activePage].options[value];
                         return (
-                            <TaskObject updateTasks={props.updateTasks} 
+                            <TaskObject newTaskStarted={newTaskStarted} 
+                                updateTasks={props.updateTasks}
                                 task={{name: "", aisle: aisleValue, start: "", end: ""}}
                                 type={activePage}
                                 employees={props.employees} 

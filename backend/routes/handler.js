@@ -200,24 +200,29 @@ router.post('/daysData', async(req, res) => {
 router.post("/saveNewEmployee", async (req, res) => {
     console.log("HANDLER: saveNewEmployee")
     var body = req.body.employee;
-    var type = "";
-    var parent = "";
     var destination = "settingsFile";
     var filename = "currentEmployees";
-    var newId = await database.writeJSON(filename, destination, parent, type, body, "");
-    console.log("ID: "+newId)
-    res.send(JSON.stringify(newId));
+    await database.writeJSON(filename, destination, body);
+    var returnData = await database.readJSON(filename, destination);
+    console.log(returnData)
+    res.send(JSON.stringify(returnData));
+    // var newId = await database.writeJSON(filename, destination, employees[0]);
+    // console.log("ID: "+newId)
+    // res.send(JSON.stringify(newId));
 });
 router.post("/deleteEmployee", async (req, res) => {
     console.log("HANDLER: deleteEmployee")
-    var body = "delete";
     var id = req.body.id;
-    var type = "";
-    var parent = "";
     var destination = "settingsFile";
     var filename = "currentEmployees";
-    var newId = await database.writeJSON(filename, destination, parent, type, body, id);
-    res.send(JSON.stringify(newId));
+    var employees = await database.readJSON(filename, destination);
+    console.log(employees[0])
+    if(employees[0].hasOwnProperty(id)){
+        delete employees[0][id];
+    }
+    console.log(employees)
+    await database.writeJSON(filename, destination, employees[0]);
+    // res.send(JSON.stringify(newId));
 });
 //-------------------------------------------
 // ===Send Email===

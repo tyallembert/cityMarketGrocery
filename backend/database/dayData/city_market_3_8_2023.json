@@ -65,7 +65,22 @@
         "status": "Finished"
       }
     },
-    "rounding": {}
+    "rounding": {
+      "ekf54drm": {
+        "name": "Ty A",
+        "aisle": "Polar",
+        "start": "7:55 PM",
+        "end": "",
+        "status": "In Progress"
+      },
+      "69eliyp2": {
+        "name": "Ty A",
+        "aisle": "Polar Cooler",
+        "start": "8:03 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    }
   },
   "perishables": {
     "castors": {},
