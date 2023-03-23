@@ -1,9 +1,8 @@
 @import "../..//variables.scss";
 .tasksContainerWrapper{
     background-color: $grayBackground;
-    padding: 2%;
+    padding: 1% 2%;
     max-height: 30px;
-    width: 40%;
     margin: 5px;
     border-radius: 50px;
     overflow-y: scroll;
@@ -18,8 +17,11 @@
         justify-content: center;
         align-items: center;
         .header{
-            font-size: 18pt;
-            width: 70%;
+            font-size: 13pt;
+        }
+        svg{
+            stroke: black;
+            stroke-width: 20;
         }
         &:hover{
             cursor: pointer;
@@ -28,5 +30,6 @@
 }
 .activeTaskContainer{
     height: 300px;
+    width: 40%;
     border-radius: 20px;
 }

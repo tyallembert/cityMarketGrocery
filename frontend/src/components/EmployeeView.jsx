@@ -87,10 +87,19 @@ function EmployeeView() {
         dataFetched ? 
         (
         <>
-            <Header activePage={activePage} activePageParent={activePageParent} taskSettings={taskSettings} updateCurrentTasks={updateCurrentTasks}/>
+            <Header activePage={activePage} 
+            activePageParent={activePageParent} 
+            taskSettings={taskSettings} 
+            updateCurrentTasks={updateCurrentTasks} 
+            employees={employees}/>
             <div className="contentContainer">
-              <LeftNav taskSettings={taskSettings} updateActivePage={updateActivePage}/>
-              <Main taskSettings={taskSettings} activePage={activePage} activePageParent={activePageParent} tasks={currentTasks} employees={employees}/>
+              <LeftNav taskSettings={taskSettings} 
+              updateActivePage={updateActivePage}/>
+              <Main taskSettings={taskSettings} 
+              activePage={activePage} 
+              activePageParent={activePageParent} 
+              tasks={currentTasks} 
+              employees={employees}/>
             </div>
             <button onClick={checkIfEmail}>Send Email</button>
         </>

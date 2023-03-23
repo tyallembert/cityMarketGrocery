@@ -9,8 +9,8 @@ import LeftNav from '../../leftNav';
 
 function AdminOverview(props) {
     const [daysData, setDaysData] = useState([]);
-    const [activeTask, setActiveTask] = useState(props.activePage);
-    const [activeParent, setActiveParent] = useState(props.parent);
+    const [activeTask, setActiveTask] = useState("liveFreight");
+    const [activeParent, setActiveParent] = useState("");
     const [daysDataObjects, setDaysDataObjects] = useState([]);
     const [date, setDate] = useState(new Date());
     const [calendarActive, setCalendarActive] = useState(false);
@@ -31,8 +31,6 @@ function AdminOverview(props) {
         const data = await fetch('/getTaskSettings')
         const settings = await data.json();
         setTaskSettings(settings);
-        console.log('SETTINGS:')
-        console.log(settings)
     }
     const fetchDaysData = async() => {
         var formattedStart = date.toLocaleDateString('en-us');
@@ -44,25 +42,32 @@ function AdminOverview(props) {
             body: JSON.stringify({start: formattedStart, end: formattedStart})
         });
         const tasks = await data.json();
+        console.log(tasks)
         setDaysData(tasks[0]);
     }
     const createInfoObjects = () => {
         var tempObjects = []
+        console.log("ACTIVE TASK: ", activeTask)
         if(activeParent === ""){
             for(var taskType in daysData[activeTask]){
                 for(var taskKey in daysData[activeTask][taskType]){
                     var oneTask = daysData[activeTask][taskType][taskKey];
+                    console.log("Pushing one entry")
                     tempObjects.push(
                         <BasicTemplate key={taskKey} isAll={true} activeTask={taskType} task={oneTask}/>
                     )
                 }
             }
         }else{
-            for(var taskKey in daysData[activeParent][activeTask]){
-                var oneTask = daysData[activeParent][activeTask][taskKey];
-                tempObjects.push(
-                    <BasicTemplate key={taskKey} activeTask={activeTask} task={oneTask}/>
-                )
+            try{
+                for(var taskKey in daysData[activeParent][activeTask]){
+                    var oneTask = daysData[activeParent][activeTask][taskKey];
+                    tempObjects.push(
+                        <BasicTemplate key={taskKey} activeTask={activeTask} task={oneTask}/>
+                    )
+                }
+            }catch(e){
+                console.log(e)
             }
         }
         if(tempObjects.length === 0){

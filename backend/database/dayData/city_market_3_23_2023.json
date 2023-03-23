@@ -1,0 +1,53 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {},
+    "perishablesLive": {},
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "ep7i0i1p": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "12:00 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "backstock": {
+      "ypwrrcz9": {
+        "name": "Colin G",
+        "aisle": 1,
+        "start": "12:01 PM",
+        "end": "",
+        "status": "In Progress"
+      },
+      "97z0mn3b": {
+        "name": "Ty A",
+        "aisle": 3,
+        "start": "12:03 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "sectors": {
+      "kiw63b08": {
+        "name": "Ty A",
+        "aisle": "Coffee",
+        "start": "12:04 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

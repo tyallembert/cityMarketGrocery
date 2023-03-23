@@ -5,8 +5,8 @@
     width: 100%;
     .dryGoodsOptionsContainer{
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
+        // justify-content: space-around;
+        align-items: flex-end;
         width: 100%;
         margin-bottom: 10px;
         overflow-x: scroll;

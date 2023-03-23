@@ -36,3 +36,18 @@ $radioBackground: #f1f1f1;
 // ===Admin Variables===
 $adminDark: #6c6c6c;
 $adminLight: #dddddd;
+
+.button{
+    background-color: $radioActive;
+    color: white;
+    border: solid 1px white;
+    border-radius: 50px;
+    padding: 5px 10px;
+    font-size: 12pt;
+    &:hover{
+        cursor: pointer;
+    }
+    &:active{
+        transform: scale(0.95);
+    }
+}

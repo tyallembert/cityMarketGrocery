@@ -1,9 +1,9 @@
+@import "../../variables.scss";
 .shrinkLogContainer{
     .shrinkButton{
         display: flex;
         align-items: center;
         justify-content: center;
-        // border: solid 2px black;
         border: none;
         box-shadow: 0px 3px 5px rgba(0,0,0,0.4);
         background-color: white;
@@ -14,6 +14,123 @@
         font-weight: 500;
         cursor: pointer;
         transition: all ease 200ms;
-        
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    .shrinkLogPopup{
+        position: absolute;
+        top: calc(40% - 150px);
+        left: calc(50% - 250px);
+        z-index: 10;
+        padding: 1%;
+        min-height: 300px;
+        width: 600px;
+        background-color: $grayBackground;
+        border-radius: 15px;
+        box-shadow: 2px 2px 3px rgba(0,0,0,0.4);
+        .mainTitle{
+            font-size: 30pt;
+            font-weight: 900;
+            color: $headerGray;
+            margin-bottom: 15px;
+        }
+        .newItemButton{
+            display: flex;
+            align-items: left;
+        }
+        .newShrinkContainer{
+            display: flex;
+            justify-content: space-around;
+            padding: 2%;
+            background-color: white;
+            border-radius: 7px;
+            label{
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+                text-align: left;
+                color: $headerGray;
+            }
+            .upcLabel{
+                width: 25%;
+            }
+            .sizeLabel{
+                width: 10%;
+            }
+            .quantityLabel{
+                width: 10%;
+            }
+        }
+        .headersContainer{
+            display: flex;
+            justify-content: left;
+            margin-top: 20px;
+            button{
+                background-color: rgba(0,0,0,0.1);
+                color: $headerGray;
+                font-size: 15pt;
+                font-weight: 800;
+                cursor: pointer;
+                border: none;
+                z-index: 8;
+                padding: 1%;
+                border-left: solid 2px $headerGray;
+                border-right: solid 2px $headerGray;
+                border-top: solid 2px $headerGray;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                margin: 0 2%;
+                transform: translateY(2px);
+                transition: all ease 150ms;
+                &:hover{
+                    padding: 1% 2%;
+                }
+                &:active{
+                    transform: scaleX(0.9);
+                }
+            }
+            .activeButton{
+                background-color: white;
+                color: $headerGray;
+                z-index: 10;
+            }
+        }
+        .infoContainer{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background-color: white;
+            border: solid 2px $headerGray;
+            border-radius: 10px;
+            // border-top-left-radius: 0;
+            min-height: 200px;
+            z-index: 9;
+            .shrinkedItemContainer{
+                display: flex;
+                justify-content: space-around;
+                color: black;
+                padding: 1%;
+                &:nth-child(even){
+                    background-color: rgba(0,0,0,0.1);
+                }
+                .shrinkItemParam {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: calc(100%/6)
+                }
+            }
+        }
+    }
+    .blackBackground{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 9;
     }
 }

@@ -22,8 +22,6 @@ router.get("/currentTasks", async (req, res) => {
     var filename = dateString.replace(/\//g, "_");
     var destination = "daysData";
     var tasks = await database.readJSON(filename, destination);
-    console.log("TASKS:")
-    console.log(tasks)
     res.send(JSON.stringify(tasks[0]));
 });
 router.post("/saveData", async(req, res) => {
@@ -132,7 +130,6 @@ router.post('/saveTask', async(req, res) => {
     const id = req.body.id;
     var task = req.body.task;
     var destination = "daysData";
-    // console.log(task)
     var date = new Date();
     var dateString = date.toLocaleDateString('en-us');
     var filename = dateString.replace(/\//g, "_");
@@ -145,8 +142,6 @@ router.post('/saveTask', async(req, res) => {
 router.post("/checkAdmin", async (req, res) => {
     console.log("HANDLER: checkAdmin")
     var user = req.body;
-    console.log("USER: ")
-    console.log(user);
     var filename = "adminUsers";
     var destination = "settingsFile";
     var response = await database.readJSON(filename, destination);
@@ -158,14 +153,12 @@ router.post("/checkAdmin", async (req, res) => {
     }
 
     var hashedPass = await bcrypt.hash(user.password, saltRounds);
-    console.log(hashedPass);
 
     for(var admin in allAdmin[0]){
         if(user.username === allAdmin[0][admin].username){
             response.username = true;
             // if(user.password === allAdmin[0][admin].password){
             var passCorrect = await bcrypt.compare(user.password, allAdmin[0][admin].password);
-            console.log
             console.log(passCorrect)
             if(passCorrect){
                 response.password = true;
@@ -194,7 +187,6 @@ router.post('/daysData', async(req, res) => {
         }
         tasks[filename] = (oneDay);
     }
-    console.log(tasks[0])
     res.send(JSON.stringify(oneDay));
 });
 router.post("/saveNewEmployee", async (req, res) => {
@@ -204,11 +196,7 @@ router.post("/saveNewEmployee", async (req, res) => {
     var filename = "currentEmployees";
     await database.writeJSON(filename, destination, body);
     var returnData = await database.readJSON(filename, destination);
-    console.log(returnData)
     res.send(JSON.stringify(returnData));
-    // var newId = await database.writeJSON(filename, destination, employees[0]);
-    // console.log("ID: "+newId)
-    // res.send(JSON.stringify(newId));
 });
 router.post("/deleteEmployee", async (req, res) => {
     console.log("HANDLER: deleteEmployee")
@@ -216,7 +204,6 @@ router.post("/deleteEmployee", async (req, res) => {
     var destination = "settingsFile";
     var filename = "currentEmployees";
     var employees = await database.readJSON(filename, destination);
-    console.log(employees[0])
     if(employees[0].hasOwnProperty(id)){
         delete employees[0][id];
     }

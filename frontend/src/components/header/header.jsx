@@ -61,7 +61,7 @@ function Header(props) {
             <div className="titleContainer">
                 <h1>{pageTitle}</h1>
                 <div className="buttonsContainer">
-                    <ShrinkLog />
+                    <ShrinkLog employees={props.employees}/>
                     {/* <AddTask taskSettings={props.taskSettings} updateCurrentTasks={props.updateCurrentTasks}/> */}
                 </div>
             </div>
