@@ -1,3 +1,4 @@
+@import "../../variables.scss";
 .loginFormContainer{
     display: flex;
     flex-direction: column;
@@ -6,12 +7,13 @@
     width: 100%;
     height: 100vh;
     background-color: #FFFFFF;
-    background-image: linear-gradient(180deg, #FFFFFF 0%, #b7b7b7 46%, #5a5a5a 79%);
+    background: radial-gradient(circle, rgba(238,174,202,0.5) 0%, rgba(148,187,233,0.5) 100%);
 
     h1{
         margin: 0;
         width: 32%;
         text-align: left;
+        color: $headerGray;
     }
     form{
         display: flex;
@@ -19,7 +21,7 @@
         justify-content: center;
         align-items: center;
         width: 30%;
-        border: solid 2px black;
+        border: solid 2px $headerGray;
         border-radius: 20px;
         padding: 3%;
         background-color: white;
@@ -64,15 +66,18 @@
             width: 50%;
             font-size: 13pt;
             font-weight: 700;
+            color: $headerGray;
             cursor: pointer;
             border-radius: 100px;
-            border: solid 2px rgba(0,0,0,0.5);
+            border: solid 2px $headerGray;
             background-color: white;
             transition: all 200ms ease;
             &:hover{
                 box-shadow: 0px 3px 5px rgba(0,0,0,0.8);
-                transform: translateY(-3px);
-                font-size: 15pt;
+                transform: scale(1.05);
+                font-size: 14pt;
+                color: white;
+                background-color: $headerGray;
             }
         }
     }

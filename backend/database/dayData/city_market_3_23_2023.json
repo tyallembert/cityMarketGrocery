@@ -1,46 +1,79 @@
 [
 {
   "liveFreight": {
-    "dryGoodsLive": {},
+    "dryGoodsLive": {
+      "rny36t0u": {
+        "name": "Ty A",
+        "aisle": "4",
+        "boxes": "56",
+        "start": "1:37 PM",
+        "end": "1:37 PM",
+        "status": "Finished"
+      },
+      "2cs0cg9h": {
+        "name": "Colin G",
+        "aisle": "3",
+        "boxes": "34",
+        "start": "1:37 PM",
+        "end": "1:38 PM",
+        "status": "Finished"
+      },
+      "7t3j9lzh": {
+        "name": "Nate L",
+        "aisle": "3",
+        "boxes": "66",
+        "start": "1:38 PM",
+        "end": "1:38 PM",
+        "status": "Finished"
+      }
+    },
     "perishablesLive": {},
     "bulkLive": {}
   },
   "dryGoods": {
     "upstock": {
-      "ep7i0i1p": {
+      "03mgj0at": {
         "name": "Ty A",
         "aisle": 1,
-        "start": "12:00 PM",
+        "start": "1:45 PM",
+        "end": "1:47 PM",
+        "status": "Finished"
+      },
+      "eakw12ln": {
+        "name": "Ty A",
+        "aisle": 3,
+        "start": "1:46 PM",
         "end": "",
         "status": "In Progress"
       }
     },
     "backstock": {
-      "ypwrrcz9": {
-        "name": "Colin G",
-        "aisle": 1,
-        "start": "12:01 PM",
-        "end": "",
-        "status": "In Progress"
-      },
-      "97z0mn3b": {
+      "4n58qlkm": {
         "name": "Ty A",
-        "aisle": 3,
-        "start": "12:03 PM",
+        "aisle": 2,
+        "start": "1:46 PM",
         "end": "",
         "status": "In Progress"
       }
     },
     "sectors": {
-      "kiw63b08": {
-        "name": "Ty A",
+      "fkip5reh": {
+        "name": "Colin G",
         "aisle": "Coffee",
-        "start": "12:04 PM",
+        "start": "1:46 PM",
         "end": "",
         "status": "In Progress"
       }
     },
-    "rounding": {}
+    "rounding": {
+      "ey93usym": {
+        "name": "Ty A",
+        "aisle": "Beverages",
+        "start": "1:46 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    }
   },
   "perishables": {
     "castors": {},

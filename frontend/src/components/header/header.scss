@@ -2,7 +2,7 @@
 
 .headerContainer{
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     background-color: rgba(0,0,0,0.7);
     color: white;
     transition: all 200ms ease;
@@ -41,6 +41,7 @@
         width: 75%;
         height: 100%;
         padding-left: 1em;
+        margin-bottom: 20px;
         border-left: solid 1px white;
         h1{
             font-size: 3em;

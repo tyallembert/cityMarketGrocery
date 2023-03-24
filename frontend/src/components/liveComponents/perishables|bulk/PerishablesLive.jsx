@@ -18,7 +18,7 @@ function PerishablesLive(props) {
     return (
         <div className="perishablesLiveContainer">
             {
-                taskSettings.liveFreight.components.perishablesLive.options.map((value) => {
+                taskSettings.liveFreight.components[activePage].options.map((value) => {
                     return (
                         <TaskPerishables key={value}
                         title={value}/>

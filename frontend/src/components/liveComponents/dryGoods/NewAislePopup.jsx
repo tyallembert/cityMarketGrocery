@@ -16,6 +16,7 @@ function NewAislePopup(props) {
         name: "",
         aisle: "",
         boxes: "",
+        totes: "",
         start: "",
         end: "",
         status: "In Progress"
@@ -118,6 +119,14 @@ function NewAislePopup(props) {
                     <input type="text"
                     name="boxes" 
                     value={taskInfo.boxes} 
+                    onChange={handleChange} 
+                    maxLength={3}/>
+                </motion.label>
+                <motion.label variants={animation__newAisleChild}>
+                    Tote Count:
+                    <input type="text"
+                    name="totes" 
+                    value={taskInfo.totes} 
                     onChange={handleChange} 
                     maxLength={3}/>
                 </motion.label>

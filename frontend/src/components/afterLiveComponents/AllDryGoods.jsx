@@ -99,9 +99,11 @@ function AllDryGoods(props) {
             <div className="dryGoodsOptionsContainer">
                 {
                     Object.keys(taskSettings.dryGoods.components).map((value) => {
-                        return (
-                            <TaskContainer key={value} updateTasks={updateTasks} employees={employees} taskSettings={taskSettings} activePage={value}/>
-                        )
+                        if(value === activePage || activePage === 'dryGoods'){
+                            return (
+                                <TaskContainer key={value} updateTasks={updateTasks} employees={employees} taskSettings={taskSettings} activePage={value}/>
+                            )
+                        }
                     })
                 }
             </div>
