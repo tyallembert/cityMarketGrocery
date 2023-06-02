@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./shrinkLog.scss";
+import "../../styles/shrinkLog.scss";
 import { GiBrokenBottle } from "react-icons/gi";
 
 function ShrinkLog(props) {

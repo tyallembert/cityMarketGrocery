@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import "./gridTable.scss";
+import "../../../styles/gridTable.scss";
 import GridRow from './GridRow';
 
 function GridTable(props) {

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie';
-import "./admin.scss";
+import "../../styles/admin.scss";
 import AdminNav from './AdminNav';
 import LoginForm from './LoginForm';
-import AdminManageEmployees from './manageEmployees/AdminManageEmployees';
+import AdminManageEmployees from './settings/AdminManageEmployees';
 import AdminOverview from './overview/AdminOverview';
 
 function Admin() {

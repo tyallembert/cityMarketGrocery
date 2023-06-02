@@ -1,7 +1,7 @@
 // https://www.youtube.com/watch?v=9F8bzIlgJ4g
 import { useState, useEffect } from "react";
 import AddEmployee from "./AddEmployee";
-import './adminManageEmployees.scss';
+import '../../../styles/adminManageEmployees.scss';
 
 function AdminManageEmployees(props) {
     const [currentEmployees, setCurrentEmployees] = useState({});

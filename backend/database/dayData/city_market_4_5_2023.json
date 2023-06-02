@@ -1,0 +1,71 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {
+      "f5x8xogx": {
+        "name": "Ty A",
+        "aisle": "5",
+        "boxes": "56",
+        "start": "1:13 PM",
+        "end": "1:14 PM",
+        "status": "Finished"
+      },
+      "xkpibi2z": {
+        "name": "Colin G",
+        "aisle": "2",
+        "boxes": "43",
+        "totes": "8",
+        "start": "1:13 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "perishablesLive": {},
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "gan6b1kx": {
+        "name": "Ty A",
+        "aisle": 3,
+        "start": "1:15 PM",
+        "end": "1:16 PM",
+        "status": "Finished"
+      }
+    },
+    "backstock": {
+      "isfvlbrn": {
+        "name": "Ty A",
+        "aisle": 2,
+        "start": "1:16 PM",
+        "end": "1:16 PM",
+        "status": "Finished"
+      },
+      "exrjmcot": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "1:16 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "sectors": {
+      "5xj63jtc": {
+        "name": "Ty A",
+        "aisle": "Honey",
+        "start": "1:16 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

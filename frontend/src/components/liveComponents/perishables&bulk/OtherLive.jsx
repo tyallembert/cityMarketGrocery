@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import "./perishablesLive.scss";
-import TaskPerishables from './TaskPerishables';
+import "../../../styles/otherLive.scss";
+import TaskLive from './TaskLive';
 
-function PerishablesLive(props) {
+function OtherLive(props) {
     const [tasks, setTasks] = useState(props.tasks);
     const [taskSettings, setTaskSettings] = useState(props.taskSettings);
     const [activePage, setActivePage] = useState(props.activePage);
@@ -20,7 +20,7 @@ function PerishablesLive(props) {
             {
                 taskSettings.liveFreight.components[activePage].options.map((value) => {
                     return (
-                        <TaskPerishables key={value}
+                        <TaskLive key={value}
                         title={value}/>
                     )
                 })
@@ -33,4 +33,4 @@ function PerishablesLive(props) {
     )
 }
 
-export default PerishablesLive
+export default OtherLive

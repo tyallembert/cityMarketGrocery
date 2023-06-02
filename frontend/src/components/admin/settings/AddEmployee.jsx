@@ -1,6 +1,6 @@
 // https://www.youtube.com/watch?v=9F8bzIlgJ4g
 import { useState, useEffect } from "react";
-import './addEmployee.scss';
+import '../../../styles/addEmployee.scss';
 
 function AddEmployee(props) {
     const [newEmployee, setNewEmployee] = useState({

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import TaskObject from './TaskObject.jsx'
 import TaskContainer from './TaskContainer.jsx'
-import "./allDryGoods.scss";
+import "../../styles/allDryGoods.scss";
 
 function AllDryGoods(props) {
     const [taskSettings, setTaskSettings] = useState(props.taskSettings)

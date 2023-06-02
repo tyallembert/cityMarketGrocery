@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import "./taskPerishables.scss";
+import "../../../styles/taskLive.scss";
 
-function TaskPerishables(props) {
+function TaskLive(props) {
     const [title, setTitle] = useState(props.title);
     const [checked, setChecked] = useState(false);
 
@@ -21,4 +21,4 @@ function TaskPerishables(props) {
     )
 }
 
-export default TaskPerishables
+export default TaskLive

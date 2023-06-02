@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import "./basicTemplate.scss";
+import "../../../styles/basicTemplate.scss";
 
 function BasicTemplate(props) {
     const [activeTask, setActiveTask] = useState(props.activeTask);

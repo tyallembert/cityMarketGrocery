@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react';
-import "./addTask.scss";
+import "../../styles/addTask.scss";
 import Objectpreview from './ObjectPreview';
 
 function AddTask(props) {

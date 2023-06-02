@@ -26,13 +26,11 @@ function EmployeeView() {
     fetchEmployees();
     fetchCurrentTasks();
   }, []);
-  useEffect(() => {
-  }, [employees, currentTasks, taskSettings, activePage, activePageParent]);
+  // useEffect(() => {
+  // }, [employees, currentTasks, taskSettings, activePage, activePageParent]);
 
   const checkIfEmail = () => {
     var date = new Date();
-    console.log("HOURS: "+date.getHours())
-    console.log("MINUTES: "+date.getMinutes())
     var send = true;
     // if (date.getHours() === 17 && date.getMinutes() === 32) {
     if (send) {
@@ -45,6 +43,7 @@ function EmployeeView() {
       });
     }
   }
+  
   const fetchCurrentTasks = async() => {
     const data = await fetch('/currentTasks');
     const tasks = await data.json();

@@ -3,8 +3,8 @@ import Calendar from 'react-calendar';
 import BasicTemplate from './BasicTemplate';
 import { FcCalendar } from "react-icons/fc";
 import { GrFormClose } from "react-icons/gr";
-import '../calendar.scss';
-import "./adminOverview.scss";
+import '../../../styles/calendar.scss';
+import "../../../styles/adminOverview.scss";
 import LeftNav from '../../leftNav';
 
 function AdminOverview(props) {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
-import "./taskObject.scss";
+import "../../styles/taskObject.scss";
 
 function TaskObject(props) {
     const [task, setTask] = useState(props.task);

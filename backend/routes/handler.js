@@ -16,7 +16,6 @@ router.get("/admin", async(req, res) => {
     res.send("RESPONSE");
 });
 router.get("/currentTasks", async (req, res) => {
-    console.log("HANDLER: currentTask")
     var date = new Date();
     var dateString = date.toLocaleDateString('en-us');
     var filename = dateString.replace(/\//g, "_");
@@ -54,6 +53,7 @@ router.get("/getNavSettings", async(req, res) => {
 router.get("/getTaskSettings", async(req, res) => {
     var destination = "settingsFile";
     var filename = "taskSettings";
+    console.log("HANDLER: getTaskSettings")
     var settings = await database.readJSON(filename, destination);
     res.send(JSON.stringify(settings[0]));
 });

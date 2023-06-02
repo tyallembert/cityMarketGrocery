@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie';
-import "./loginForm.scss";
+import "../../styles/loginForm.scss";
 
 function LoginForm(props) {
     const [error, setError] = useState(false);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./leftNav.scss";
+import "../styles/leftNav.scss";
 import {motion} from 'framer-motion';
 
 function LeftNav(props) {

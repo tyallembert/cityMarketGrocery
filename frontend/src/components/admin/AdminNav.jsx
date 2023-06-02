@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import "./adminNav.scss";
+import "../../styles/adminNav.scss";
 
 function AdminNav(props) {
     const [navClasses, setNavClasses] = useState({
@@ -32,7 +32,7 @@ function AdminNav(props) {
                 <p>Analytics</p>
             </div>
             <div className={navClasses.manage} onClick={updateActivePage}>
-                <p>Manage Employees</p>
+                <p>Settings</p>
             </div>
         </div>
     )

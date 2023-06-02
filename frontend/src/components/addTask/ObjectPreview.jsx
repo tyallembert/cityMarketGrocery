@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./objectPreview.scss";
+import "../../styles/objectPreview.scss";
 
 function ObjectPreview(props) {
     const [type, setType] = useState("");

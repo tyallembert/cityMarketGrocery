@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import "./dryGoodsLive.scss";
+import "../../../styles/dryGoodsLive.scss";
 import GridTable from './GridTable';
 import StartButton from './StartButton';
 import NewAislePopup from './NewAislePopup';

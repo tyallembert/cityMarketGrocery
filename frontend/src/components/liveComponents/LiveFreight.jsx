@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import "./liveFreight.scss";
+import "../../styles/liveFreight.scss";
 import DryGoodsLive from './dryGoods/DryGoodsLive';
-import PerishablesLive from './perishables|bulk/PerishablesLive';
+import OtherLive from './perishables&bulk/OtherLive';
 
 function LiveFreight(props) {
     const [tasks, setTasks] = useState(props.tasks);
@@ -33,7 +33,7 @@ function LiveFreight(props) {
             )
         case "perishablesLive":
             return (
-                <PerishablesLive updateTasks={updateTasks} 
+                <OtherLive updateTasks={updateTasks} 
                 activePage={"perishablesLive"} 
                 taskSettings={props.taskSettings} 
                 tasks={tasks}
@@ -41,7 +41,7 @@ function LiveFreight(props) {
             )
         case "bulkLive":
             return (
-                <PerishablesLive updateTasks={updateTasks} 
+                <OtherLive updateTasks={updateTasks} 
                 activePage={"bulkLive"} 
                 taskSettings={props.taskSettings} 
                 tasks={tasks}
@@ -49,14 +49,10 @@ function LiveFreight(props) {
             )
         default:
             return (
-                <>
-                    <DryGoodsLive updateTasks={updateTasks} 
-                    activePage={"dryGoodsLive"} 
-                    tasks={tasks}
-                    employees={props.employees}/>
-                    {/* add perishables */}
-                    {/* add bulk */}
-                </>
+                <DryGoodsLive updateTasks={updateTasks} 
+                activePage={"dryGoodsLive"} 
+                tasks={tasks}
+                employees={props.employees}/>
             )
     }
 }

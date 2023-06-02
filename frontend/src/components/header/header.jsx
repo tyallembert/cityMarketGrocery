@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import AddTask from "../addTask/AddTask";
-import "./header.scss";
+import "../../styles/header.scss";
 import { GiBrokenBottle } from "react-icons/gi";
 import ShrinkLog from "./ShrinkLog";
 

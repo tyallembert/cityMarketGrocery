@@ -1,4 +1,4 @@
-import "./startButton.scss";
+import "../../../styles/startButton.scss";
 
 function StartButton(props) {
     return (

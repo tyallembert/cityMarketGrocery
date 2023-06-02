@@ -1,0 +1,40 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {
+      "opdo1jfu": {
+        "name": "Ty A",
+        "aisle": "2",
+        "boxes": "56",
+        "start": "8:20 PM",
+        "end": "8:21 PM",
+        "status": "Finished"
+      },
+      "zlhh86nm": {
+        "name": "Colin G",
+        "aisle": "1",
+        "boxes": "55",
+        "totes": "4",
+        "start": "8:21 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "perishablesLive": {},
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {},
+    "backstock": {},
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

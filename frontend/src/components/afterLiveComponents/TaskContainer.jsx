@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./taskContainer.scss";
+import "../../styles/taskContainer.scss";
 import TaskObject from "./TaskObject";
 import {AiOutlinePlus, AiOutlineMinus} from 'react-icons/ai'
 import {motion} from 'framer-motion';

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import "./gridRow.scss";
+import "../../../styles/gridRow.scss";
 import {motion} from 'framer-motion';
 
 function GridRow(props) {
