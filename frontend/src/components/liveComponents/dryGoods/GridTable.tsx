@@ -1,8 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../../../styles/gridTable.scss";
 import GridRow from './GridRow';
 
-function GridTable(props) {
+type Props = {
+    newAisleActive: boolean,
+    tasks: any,
+    updateTasks: any
+}
+
+const GridTable: React.FC<Props> = (props) => {
     const [newAisleActive, setNewAisleActive] = useState(false);
     const [rowObjects, setRowObjects] = useState([]);
     const [tasks, setTasks] = useState(props.tasks);

@@ -1,7 +1,15 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/objectPreview.scss";
 
-function ObjectPreview(props) {
+type Props = {
+    type: string,
+    task: any,
+    listOptions: any,
+    setNewTask: any,
+    setCustomType: any
+}
+
+const ObjectPreview: React.FC<Props> = (props) => {
     const [type, setType] = useState("");
     const [task, setTask] = useState(props.task);
     const [listOptions, setListOptions] = useState(props.listOptions);
@@ -13,20 +21,20 @@ function ObjectPreview(props) {
     useEffect(() => {
 
     }, [type])
-    const handleChange = (event) => {
+    const handleChange = (event:any) => {
         var value = event.target.value;
         setTask({...task,["aisle"]: value});
         console.log(task)
         props.setNewTask(task);
     }
-    const handleListChange = (event) => {
+    const handleListChange = (event:any) => {
         var value = event.target.value;
         setType(value);
         props.setCustomType(value);
     }
 
     return (
-        <div className={["objectPreviewContainer " + type]}>
+        <div className={"objectPreviewContainer " + type}>
             <p className="type">{type}</p>
             <select className="type" placeholder='Choose one' onChange={handleListChange}>
                 {listOptions.map((value, index) => {

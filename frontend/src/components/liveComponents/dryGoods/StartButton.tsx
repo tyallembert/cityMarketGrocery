@@ -1,6 +1,11 @@
+import React from "react";
 import "../../../styles/startButton.scss";
 
-function StartButton(props) {
+type Props = {
+    togglePopup: any
+}
+
+const StartButton: React.FC<Props> = (props) => {
     return (
         <div className="startButtonContainer">
             <button onClick={()=>{props.togglePopup(true)}}>Start Aisle</button>

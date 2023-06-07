@@ -1,0 +1,55 @@
+@import "variables.scss";
+.perishablesLiveContainer{
+    width: 100%;
+    .noTasksContainer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 40vh;
+        h1{
+            text-align: center;
+            font-size: 2.5em;
+            color: #bcbcbc;
+        }
+    }
+    .arrivedContainer, .startedContainer, .finishedContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 2em;
+        padding: 0.5em;
+        width: calc(100%/3);
+    }
+    .waitingContainer{
+        display: flex;
+        justify-content: flex-start;
+        gap: 2em;
+        background-color: $taskInProgress;
+        padding: 0.5em;
+        border-radius: 100px;
+        width: 100%;
+        transition: all 150ms ease-in-out;
+    }
+    .arrivedContainer{
+        display: flex;
+        justify-content: flex-start;
+        gap: 2em;
+        padding: 0.5em;
+        width: calc(100%/3);
+    }
+    .startedContainer{
+        display: flex;
+        justify-content: flex-start;
+        gap: 2em;
+        padding: 0.5em;
+        width: calc(100%/3);
+    }
+    .finishedContainer{
+        display: flex;
+        justify-content: flex-start;
+        gap: 2em;
+        padding: 0.5em;
+        width: calc(100%/3);
+    }
+}

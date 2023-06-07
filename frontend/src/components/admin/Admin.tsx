@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie';
 import "../../styles/admin.scss";
 import AdminNav from './AdminNav';
@@ -6,7 +6,7 @@ import LoginForm from './LoginForm';
 import AdminManageEmployees from './settings/AdminManageEmployees';
 import AdminOverview from './overview/AdminOverview';
 
-function Admin() {
+const Admin = () => {
     const [loggedIn, setLoggedIn] = useState(false);
 
     const [activePage, setActivePage] = useState("");
@@ -35,7 +35,7 @@ function Admin() {
             console.log("No User Cookies")
         }
     }
-    const pageChange = (res) => {
+    const pageChange = (res: any) => {
         setActivePage(res);
     }
     const fetchNavSettings = async() => {

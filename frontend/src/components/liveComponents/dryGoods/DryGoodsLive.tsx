@@ -1,10 +1,17 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../../../styles/dryGoodsLive.scss";
 import GridTable from './GridTable';
 import StartButton from './StartButton';
 import NewAislePopup from './NewAislePopup';
 
-function DryGoodsLive(props) {
+type Props = {
+    activePage: string,
+    tasks: any,
+    employees: any,
+    updateTasks: any
+}
+
+const DryGoodsLive: React.FC<Props> = (props) => {
     const [showingPopUp, setShowingPopUp] = useState(false);
     const [tasks, setTasks] = useState(props.tasks);
     const [activePage, setActivePage] = useState(props.activePage);

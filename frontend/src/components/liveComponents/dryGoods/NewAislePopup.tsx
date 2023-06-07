@@ -1,10 +1,17 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoCheckmarkDoneSharp, IoCloseSharp } from "react-icons/io5";
 import "../../../styles/newAislePopup.scss";
 import {motion} from 'framer-motion';
-import {animation__newAisleContainer, animation__newAisleChild} from "../../animations";
+import {animation__newAisleContainer, animation__newAisleChild} from "../../animations.js";
 
-function NewAislePopup(props) {
+type Props = {
+    togglePopup: any,
+    employees: any,
+    liveSettings: any,
+    activePage: string,
+    addTask: any,
+}
+const NewAislePopup: React.FC<Props> = (props) => {
 
     const [employees, setEmployees] = useState(props.employees);
     const [employeeOptionObjects, setEmployeeOptionObjects] = useState([]);

@@ -1,8 +1,15 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
 import "../../styles/taskObject.scss";
 
-function TaskObject(props) {
+type Props = {
+    task: any,
+    type: string,
+    employees: any,
+    updateTasks: any
+}
+
+const TaskObject: React.FC<Props> = (props) => {
     const [task, setTask] = useState(props.task);
     const [type, setType] = useState(props.type);
     const [employees, setEmployees] = useState(props.employees);
@@ -83,7 +90,7 @@ function TaskObject(props) {
                 )
         }
     }
-    const handleChange = (event) => {
+    const handleChange = (event: any) => {
         setTask({ ...task, [event.target.name]: event.target.value });
         if(task.name !== "choose"){
             setStartDisabled(false);
@@ -91,7 +98,7 @@ function TaskObject(props) {
             setStartDisabled(true);
         }
     }
-    const handleStartTask = (e) => {
+    const handleStartTask = (e: any) => {
         var tempTask = task;
         const today = new Date();
         const time = today.toLocaleString('en-US', {

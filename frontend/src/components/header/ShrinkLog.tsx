@@ -1,8 +1,11 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/shrinkLog.scss";
 import { GiBrokenBottle } from "react-icons/gi";
 
-function ShrinkLog(props) {
+type Props = {
+    employees: any
+}
+const ShrinkLog: React.FC<Props> = (props) => {
     const [activeLog, setActiveLog] = useState("dryGoodsLog");
     const [showingPopup, setShowingPopup] = useState(false);
     const [showingNewShrink, setShowingNewShrink] = useState(false);
@@ -26,7 +29,7 @@ function ShrinkLog(props) {
                 quantity: 1,
                 employee: "Ty"
             },
-            "iuiwome": {
+            "iuiome": {
                 name: "Mayonaise",
                 UPC: "123456789",
                 size: "32oz",

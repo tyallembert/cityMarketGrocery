@@ -1,7 +1,13 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../../../styles/basicTemplate.scss";
 
-function BasicTemplate(props) {
+type Props = {
+    activeTask: string,
+    task: any,
+    isAll: boolean
+}
+
+const BasicTemplate: React.FC<Props> = (props) => {
     const [activeTask, setActiveTask] = useState(props.activeTask);
     const [task, setTask] = useState(props.task);
     const [isAll, setIsAll] = useState(props.isAll);

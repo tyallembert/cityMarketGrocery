@@ -1,10 +1,18 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import AddTask from "../addTask/AddTask";
 import "../../styles/header.scss";
 import { GiBrokenBottle } from "react-icons/gi";
 import ShrinkLog from "./ShrinkLog";
+import { Employee } from "../../types";
 
-function Header(props) {
+type Props = {
+    activePage: string,
+    activePageParent: string,
+    taskSettings: any,
+    employees: Employee[]
+}
+
+const Header: React.FC<Props> = (props) => {
     const [dateState, setDateState] = useState(new Date());
     const [activePage, setActivePage] = useState(props.activePage);
     const [activePageParent, setActivePageParent] = useState(props.activePageParent);
@@ -36,7 +44,7 @@ function Header(props) {
         }
     }
     return (
-        <div className={["headerContainer "+activePage]}>
+        <div className={"headerContainer "+activePage}>
             <div className="dateContainer">
                 <div className="top">
                     <p className="day">
@@ -62,7 +70,6 @@ function Header(props) {
                 <h1>{pageTitle}</h1>
                 <div className="buttonsContainer">
                     <ShrinkLog employees={props.employees}/>
-                    {/* <AddTask taskSettings={props.taskSettings} updateCurrentTasks={props.updateCurrentTasks}/> */}
                 </div>
             </div>
         </div>

@@ -1,8 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../../../styles/otherLive.scss";
 import TaskLive from './TaskLive';
 
-function OtherLive(props) {
+type Props = {
+    activePage: string,
+    tasks: any,
+    taskSettings: any
+}
+
+const OtherLive:React.FC<Props> = (props) => {
     const [tasks, setTasks] = useState(props.tasks);
     const [taskSettings, setTaskSettings] = useState(props.taskSettings);
     const [activePage, setActivePage] = useState(props.activePage);
@@ -18,7 +24,7 @@ function OtherLive(props) {
     return (
         <div className="perishablesLiveContainer">
             {
-                taskSettings.liveFreight.components[activePage].options.map((value) => {
+                taskSettings.liveFreight.components[activePage].options.map((value:any) => {
                     return (
                         <TaskLive key={value}
                         title={value}/>

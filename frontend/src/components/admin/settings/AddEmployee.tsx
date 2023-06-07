@@ -1,16 +1,20 @@
 // https://www.youtube.com/watch?v=9F8bzIlgJ4g
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import '../../../styles/addEmployee.scss';
 
-function AddEmployee(props) {
+type Props = {
+    saveNewEmployee: any
+}
+
+const AddEmployee: React.FC<Props> = (props) => {
     const [newEmployee, setNewEmployee] = useState({
         firstName: "",
         lastName: ""
     });
-    const handleChange = (event) => {
+    const handleChange = (event:any) => {
         setNewEmployee({ ...newEmployee, [event.target.name]: event.target.value });
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = (e:any) => {
         e.preventDefault();
         props.saveNewEmployee({employee: newEmployee});
     }

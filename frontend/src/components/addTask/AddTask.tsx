@@ -1,8 +1,15 @@
-import { useState, useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import "../../styles/addTask.scss";
 import Objectpreview from './ObjectPreview';
 
-function AddTask(props) {
+type Props = {
+    updateTasks: any,
+    employees: any,
+    activePage: string,
+    taskSettings: any
+}
+
+const AddTask: React.FC<Props> = (props) => {
     const [showingPopup, setShowingPopup] = useState(false);
     const [taskType, setTaskType] = useState("");
     const [listOptions, setListOptions] = useState([]);
@@ -38,14 +45,14 @@ function AddTask(props) {
         setMoreInfo([]);
         setListOptions([]);
     }
-    const handleRadioChange = (e) => {
+    const handleRadioChange = (e:any) => {
         var input = e.target;
         var tempTask = {...newTask};
         tempTask.aisle = input.value;
         setNewTask(tempTask);
         setActiveRadio(input.value);
     }
-    const handleSubmit = async(e) => {
+    const handleSubmit = async(e:any) => {
         e.preventDefault()
         var type = (taskType === "custom") ? customType: taskType;
         const response = await fetch("/saveNewTask", {

@@ -1,9 +1,12 @@
 // https://www.youtube.com/watch?v=9F8bzIlgJ4g
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import AddEmployee from "./AddEmployee";
 import '../../../styles/adminManageEmployees.scss';
 
-function AdminManageEmployees(props) {
+type Props = {
+    employees: any
+}
+const AdminManageEmployees: React.FC<Props> = (props) => {
     const [currentEmployees, setCurrentEmployees] = useState({});
     const [showingPopup, setShowingPopup] = useState(false);
 
@@ -21,7 +24,7 @@ function AdminManageEmployees(props) {
     const toggleNewEmployeePopup = () => {
         showingPopup ? setShowingPopup(false): setShowingPopup(true);
     }
-    const updateCurrentEmployees = (res) => {
+    const updateCurrentEmployees = (res:any) => {
         var id = res.id;
         if(res.type === "add"){
             var newEmployee = res.employee;

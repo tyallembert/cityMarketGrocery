@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import BasicTemplate from './BasicTemplate';
 import { FcCalendar } from "react-icons/fc";
@@ -7,7 +7,13 @@ import '../../../styles/calendar.scss';
 import "../../../styles/adminOverview.scss";
 import LeftNav from '../../leftNav';
 
-function AdminOverview(props) {
+type Props = {
+    tasks: any,
+    employees: any,
+    updateTasks: any
+}
+
+const AdminOverview: React.FC<Props> = (props) => {
     const [daysData, setDaysData] = useState([]);
     const [activeTask, setActiveTask] = useState("liveFreight");
     const [activeParent, setActiveParent] = useState("");

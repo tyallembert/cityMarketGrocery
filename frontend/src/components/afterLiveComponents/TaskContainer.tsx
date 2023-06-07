@@ -1,11 +1,16 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/taskContainer.scss";
 import TaskObject from "./TaskObject";
 import {AiOutlinePlus, AiOutlineMinus} from 'react-icons/ai'
 import {motion} from 'framer-motion';
 import {animation__newTaskContainer} from "../animations"
 
-function TaskContainer(props) {
+type Props = {
+    taskSettings: any,
+    activePage: string,
+    updateTasks: any
+}
+const TaskContainer: React.FC<Props> = (props) => {
     const [taskSettings, setTaskSettings] = useState(props.taskSettings);
     const [activePage, setActivePage] = useState(props.activePage);
     const [showingTasks, setShowingTasks] = useState(false);
@@ -15,11 +20,11 @@ function TaskContainer(props) {
         setActivePage(props.activePage);
     }, [props.taskSettings, props.activePage])
 
-    const newTaskStarted = (res) => {
+    const newTaskStarted = (res:any) => {
         setShowingTasks(!showingTasks);
         props.updateTasks(res);
     }
-    const toggleShowNewTasks = (e) => {
+    const toggleShowNewTasks = (e:any) => {
         if(e.currentTarget.className.split(" ")[0] === "taskHeaderContainer"){
             setShowingTasks(!showingTasks);
         }

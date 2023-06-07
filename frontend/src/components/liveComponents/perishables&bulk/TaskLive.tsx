@@ -1,7 +1,10 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../../../styles/taskLive.scss";
 
-function TaskLive(props) {
+type Props = {
+    title: string
+}
+const TaskLive: React.FC<Props> = (props) => {
     const [title, setTitle] = useState(props.title);
     const [checked, setChecked] = useState(false);
 

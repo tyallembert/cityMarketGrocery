@@ -1,9 +1,15 @@
-import { useState, useEffect } from "react";
-import TaskObject from './TaskObject.jsx'
-import TaskContainer from './TaskContainer.jsx'
+import React, { useState, useEffect } from "react";
+import TaskObject from './TaskObject.tsx'
+import TaskContainer from './TaskContainer.tsx'
 import "../../styles/allDryGoods.scss";
 
-function AllDryGoods(props) {
+type Props = {
+    activePage: string,
+    tasks: any,
+    employees: any,
+    taskSettings: any
+}
+const AllDryGoods: React.FC<Props> = (props) => {
     const [taskSettings, setTaskSettings] = useState(props.taskSettings)
     const [tasks, setTasks] = useState(props.tasks);
     const [activePage, setActivePage] = useState(props.activePage);

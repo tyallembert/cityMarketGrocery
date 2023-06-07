@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie';
 import "../../styles/loginForm.scss";
 
-function LoginForm(props) {
+type Props = {
+    setLoggedIn: any
+}
+const LoginForm: React.FC<Props> = (props) => {
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [credentials, setCredentials] = useState({
@@ -59,7 +62,7 @@ function LoginForm(props) {
                     <input type='text'
                     name='username'
                     className='inputUsername'
-                    maxLength="20"
+                    maxLength={20}
                     onChange={handleChange}/>
                 </div>
                 <div className='inputContainer'>
@@ -67,7 +70,7 @@ function LoginForm(props) {
                     <input type='password'
                     name='password'
                     className='inputUsername'
-                    maxLength="20"
+                    maxLength={20}
                     onChange={handleChange}/>
                 </div>
                 <input type='submit' 

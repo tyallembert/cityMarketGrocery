@@ -1,0 +1,40 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {
+      "ki7ppwkk": {
+        "name": "Ty A",
+        "aisle": "1",
+        "boxes": "56",
+        "totes": "3",
+        "start": "11:07 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "perishablesLive": {},
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "nidkepov": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "6:11 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "backstock": {},
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

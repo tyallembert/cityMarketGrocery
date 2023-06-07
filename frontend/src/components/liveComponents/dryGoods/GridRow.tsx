@@ -1,8 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../../../styles/gridRow.scss";
 import {motion} from 'framer-motion';
 
-function GridRow(props) {
+type Props = {
+    aisle: any,
+    id: any,
+    updateTasks: any
+}
+
+const GridRow: React.FC<Props> = (props) => {
     const [currentAisle, setCurrentAisle] = useState(props.aisle);
     const [dataLoaded, setDataLoaded] = useState(false);
     const [id, setId] = useState(props.id);

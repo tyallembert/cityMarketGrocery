@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react";
+import React from "react";
 import "../styles/main.scss";
-import LiveFreight from "./liveComponents/LiveFreight.jsx";
-import AllDryGoods from "./afterLiveComponents/AllDryGoods.jsx";
+import LiveFreight from "./liveComponents/LiveFreight.tsx";
+import AllDryGoods from "./afterLiveComponents/AllDryGoods.tsx";
 import { GiConsoleController } from "react-icons/gi";
 
-function Main(props) {
+type Props = {
+    activePage: string,
+    activePageParent: string,
+    tasks: any,
+    employees: any,
+    taskSettings: any,
+    saveData: (data: any) => void
+}
+const Main: React.FC<Props> = (props) => {
     // const [activePage, setActivePage] = useState(props.activePage);
     // const [activePageParent, setActivePageParent] = useState(props.activePageParent);
     // const [tasks, setTasks] = useState(props.tasks);

@@ -1,7 +1,10 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../../styles/adminNav.scss";
 
-function AdminNav(props) {
+type Props = {
+    pageChange: any
+}
+const AdminNav: React.FC<Props> = (props) => {
     const [navClasses, setNavClasses] = useState({
         overview: "overview navChild activeNav",
         analytics: "analytics navChild",

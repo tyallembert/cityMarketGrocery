@@ -1,19 +1,20 @@
 // https://www.youtube.com/watch?v=9F8bzIlgJ4g
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router,Routes, Route, Link, BrowserRouter } from 'react-router-dom';
-import Header from "./header/header";
-import LeftNav from "./leftNav";
-import Main from "./main";
+import Header from "./header/header.tsx";
+import LeftNav from "./leftNav.tsx";
+import Main from "./main.tsx";
+import { Employee, Tasks } from "../types.ts";
 
-function EmployeeView() {
+const EmployeeView = () => {
 
   // SEND THE PAGES VARIABLES OVER TO ALL PAGES THAT NEED IT
 
-  const [activePage, setActivePage] = useState("liveFreight");
-  const [activePageParent, setActivePageParent] = useState("");
-  const [currentTasks, setCurrentTasks] = useState([]);
-  const [employees, setEmployees] = useState([]);
-  const [dataFetched, setDataFetched] = useState(false);
+  const [activePage, setActivePage] = useState<string>("liveFreight");
+  const [activePageParent, setActivePageParent] = useState<string>("");
+  const [currentTasks, setCurrentTasks] = useState<Tasks>({} as Tasks);
+  const [employees, setEmployees] = useState<Employee[]>([]);
+  const [dataFetched, setDataFetched] = useState<boolean>(false);
   const [taskSettings, setTaskSettings] = useState({});
 
   //Check if its time to send email
@@ -46,7 +47,7 @@ function EmployeeView() {
   
   const fetchCurrentTasks = async() => {
     const data = await fetch('/currentTasks');
-    const tasks = await data.json();
+    const tasks: Tasks = await data.json();
     setCurrentTasks(tasks);
     setDataFetched(true);
   }
@@ -60,17 +61,35 @@ function EmployeeView() {
     const settings = await data.json();
     setTaskSettings(settings);
   }
-
-  const updateCurrentTasks = async(res) => {
+  const updateTask = async(res: any) => {
     var type = res.type;
     var data = res.task;
-    var id = res.id;
-    var tempTasks = {...currentTasks};
-    tempTasks[type][id] = await {...data};
+    var id: string = res.id;
+    var tempTasks: Tasks = {...currentTasks};
+    tempTasks[type][id] = {...data};
     setCurrentTasks(tempTasks);
+    await saveData();
+  }
+  const saveData = async() => {
+    await fetch("/saveData", {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(currentTasks)
+    });
   }
 
-  const updateActivePage = (res) => {
+  // const updateCurrentTasks = async(res: any) => {
+  //   var type = res.type;
+  //   var data = res.task;
+  //   var id: string = res.id;
+  //   var tempTasks: Tasks = {...currentTasks};
+  //   tempTasks[type][id] = {...data};
+  //   setCurrentTasks(tempTasks);
+  // }
+
+  const updateActivePage = (res: any) => {
     var page = res.activePage;
     var parent = res.parent;
     setActivePageParent(parent);
@@ -85,8 +104,7 @@ function EmployeeView() {
         <>
             <Header activePage={activePage} 
             activePageParent={activePageParent} 
-            taskSettings={taskSettings} 
-            updateCurrentTasks={updateCurrentTasks} 
+            taskSettings={taskSettings}
             employees={employees}/>
 
             <div className="contentContainer">
@@ -97,7 +115,8 @@ function EmployeeView() {
               activePage={activePage} 
               activePageParent={activePageParent} 
               tasks={currentTasks} 
-              employees={employees}/>
+              employees={employees}
+              saveData={saveData}/>
 
             </div>
             <button onClick={checkIfEmail}>Send Email</button>

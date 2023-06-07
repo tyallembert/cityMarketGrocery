@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/leftNav.scss";
 import {motion} from 'framer-motion';
 
-function LeftNav(props) {
+type Props = {
+    taskSettings: any,
+    updateActivePage: any
+}
+const LeftNav: React.FC<Props> = (props) => {
     const [activePage, setActivePage] = useState(["liveFreight"]);
     const [taskSettings, setTaskSettings] = useState(props.taskSettings);
     useEffect(() => {
@@ -12,7 +16,7 @@ function LeftNav(props) {
         setTaskSettings(props.taskSettings);
     }, [activePage, taskSettings])
 
-    const changeActivePage = (e) => {
+    const changeActivePage = (e: any) => {
         var page = e.currentTarget.className.split(" ");
         var parentType = "";
         var tempActive = [];
