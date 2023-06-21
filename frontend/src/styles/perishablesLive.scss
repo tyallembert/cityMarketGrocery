@@ -30,6 +30,16 @@
         border-radius: 100px;
         width: 100%;
         transition: all 150ms ease-in-out;
+        .noneWaitingContainer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            h1{
+                font-size: 1.7em;
+                color: $grayBackground;
+            }
+        }
     }
     .arrivedContainer{
         display: flex;

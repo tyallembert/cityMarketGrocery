@@ -9,19 +9,18 @@ type Props = {
 }
 
 const GridTable: React.FC<Props> = (props) => {
-    const [newAisleActive, setNewAisleActive] = useState(false);
     const [rowObjects, setRowObjects] = useState([]);
     const [tasks, setTasks] = useState(props.tasks);
     useEffect(() => {
-        setNewAisleActive(props.newAisleActive);
         setTasks(props.tasks);
-    })
-    useEffect(() => {
-        fetchLiveAisles();
-    }, [newAisleActive]);
+    }, [props.tasks])
 
-    const fetchLiveAisles = async() => {
-        setTasks(props.tasks)
+    useEffect(() => {
+        populateAisles();
+    }, [tasks]);
+
+    const populateAisles = () => {
+        // setTasks(props.tasks)
         if(Object.keys(tasks.liveFreight.dryGoodsLive).length !== 0){
             var allRows = []
             for(var key in tasks.liveFreight.dryGoodsLive){

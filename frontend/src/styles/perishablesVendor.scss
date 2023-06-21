@@ -35,9 +35,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border: solid 1px black;
         gap: 1em;
         background-color: $grayBackground;
-        padding: 0.5em;
+        padding: 0.3em;
         border-radius: 50px;
         z-index: 2;
         width: 100%;
@@ -50,14 +51,17 @@
             transform: scale(0.95);
         }
         .statusIconContainer{
-            min-width: 30px;
-            min-height: 30px;
+            min-width: 40px;
+            min-height: 40px;
             border-radius: 50px;
             border: solid 3px $taskInProgress;
         }
         .vendorTitle{
             text-align: center;
             width: 100%;
+            margin-right: 1em;
+            font-weight: 600;
+            font-size: 1.1em;
         }
     }
     .vendorStatusContainer{
@@ -77,6 +81,36 @@
             .timeElement{
                 font-size: 1.5em;
                 font-weight: 600;
+            }
+        }
+        .nameHeader{
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-bottom: 0.5em;
+            margin-left: 0.5em;
+        }
+        .nameContainer{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+            border-radius: 50px;
+            background-color: $gridRowDark;
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            select{
+                height: 100%;
+                background-color: transparent;
+                border: none;
+                padding: 0.7em 1em;
+                font-weight: 500;
+                font-size: 1.05em;
+                &:focus{
+                    outline: none;
+                }
+            }
+            button{
+                height: 100%;
+                width: 40%;
             }
         }
     }

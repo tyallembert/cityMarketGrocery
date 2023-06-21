@@ -44,7 +44,7 @@ export type ExtraNotes = Record<string, unknown>;
 export type Tasks = {
   liveFreight: {
     dryGoodsLive: DryGoodsLive;
-    perishablesLive: PerishablesLiveFreight;
+    perishablesLive: {[key:string]:PerishablesLiveFreight};
     bulkLive: BulkLive;
   };
   dryGoods: DryGoods;

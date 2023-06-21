@@ -5,10 +5,9 @@ import Header from "./header/header.tsx";
 import LeftNav from "./leftNav.tsx";
 import Main from "./main.tsx";
 import { Employee, Tasks } from "../types.ts";
+import { typeOptions } from "@testing-library/user-event/dist/type/typeImplementation";
 
 const EmployeeView = () => {
-
-  // SEND THE PAGES VARIABLES OVER TO ALL PAGES THAT NEED IT
 
   const [activePage, setActivePage] = useState<string>("liveFreight");
   const [activePageParent, setActivePageParent] = useState<string>("");
@@ -27,8 +26,13 @@ const EmployeeView = () => {
     fetchEmployees();
     fetchCurrentTasks();
   }, []);
-  // useEffect(() => {
-  // }, [employees, currentTasks, taskSettings, activePage, activePageParent]);
+
+  useEffect(() => {
+    if(Object.keys(currentTasks).length > 0){
+      saveData();
+    }
+  }, [currentTasks])
+
 
   const checkIfEmail = () => {
     var date = new Date();
@@ -61,15 +65,23 @@ const EmployeeView = () => {
     const settings = await data.json();
     setTaskSettings(settings);
   }
-  const updateTask = async(res: any) => {
-    var type = res.type;
-    var data = res.task;
-    var id: string = res.id;
-    var tempTasks: Tasks = {...currentTasks};
-    tempTasks[type][id] = {...data};
-    setCurrentTasks(tempTasks);
-    await saveData();
+
+  const updateTasks = async(task: any, id: string, type: string, subType: string) => {
+    setCurrentTasks((prevTasks) => ({
+      ...prevTasks,
+      [type]: {
+        ...prevTasks[type as keyof Tasks],
+        [subType]: {
+          ...prevTasks[type][subType],
+          [id]: {
+            ...task,
+          },
+        },
+      },
+    }));
+    saveData();
   }
+
   const saveData = async() => {
     await fetch("/saveData", {
       method: 'POST',
@@ -79,15 +91,6 @@ const EmployeeView = () => {
       body: JSON.stringify(currentTasks)
     });
   }
-
-  // const updateCurrentTasks = async(res: any) => {
-  //   var type = res.type;
-  //   var data = res.task;
-  //   var id: string = res.id;
-  //   var tempTasks: Tasks = {...currentTasks};
-  //   tempTasks[type][id] = {...data};
-  //   setCurrentTasks(tempTasks);
-  // }
 
   const updateActivePage = (res: any) => {
     var page = res.activePage;
@@ -116,7 +119,7 @@ const EmployeeView = () => {
               activePageParent={activePageParent} 
               tasks={currentTasks} 
               employees={employees}
-              saveData={saveData}/>
+              updateTasks={updateTasks}/>
 
             </div>
             <button onClick={checkIfEmail}>Send Email</button>

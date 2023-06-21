@@ -1,27 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, SetStateAction } from 'react';
 import "../../../styles/dryGoodsLive.scss";
 import GridTable from './GridTable';
 import StartButton from './StartButton';
 import NewAislePopup from './NewAislePopup';
+import { Tasks } from '../../../types';
 
 type Props = {
     activePage: string,
-    tasks: any,
+    tasks: Tasks,
     employees: any,
-    updateTasks: any
+    updateTasks: (task: any, id: string, type: string, subType: string) => void
 }
 
 const DryGoodsLive: React.FC<Props> = (props) => {
-    const [showingPopUp, setShowingPopUp] = useState(false);
-    const [tasks, setTasks] = useState(props.tasks);
-    const [activePage, setActivePage] = useState(props.activePage);
-    const [employees, setEmployees] = useState(props.employees);
+    const [showingPopUp, setShowingPopUp] = useState<boolean>(false);
 
-    useEffect(() => {
-        setActivePage(props.activePage)
-        setEmployees(props.employees)
-    }, [props.activePage, props.employees])
-    const togglePopup = (res) => {
+    const togglePopup = (res: boolean) => {
         setShowingPopUp(res);
     }
     return (
@@ -29,7 +23,7 @@ const DryGoodsLive: React.FC<Props> = (props) => {
             <StartButton togglePopup={togglePopup}/>
             {showingPopUp ? (
                 <NewAislePopup
-                    togglePopup={togglePopup} updateTasks={props.updateTasks} employees={employees} activePage={props.activePage} />
+                    togglePopup={togglePopup} updateTasks={props.updateTasks} employees={props.employees} activePage={props.activePage} />
             ) : (null)
             }
             <GridTable updateTasks={props.updateTasks} newAisleActive={showingPopUp} tasks={props.tasks}/>

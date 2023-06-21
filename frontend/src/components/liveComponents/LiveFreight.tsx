@@ -3,66 +3,51 @@ import "../../styles/liveFreight.scss";
 import DryGoodsLive from './dryGoods/DryGoodsLive';
 import OtherLive from './perishables&bulk/OtherLive';
 import PerishablesLive from './perishables&bulk/PerishablesLive';
+import { Employee } from '../../types';
 
 type Props = {
     activePage: string,
     tasks: any,
-    employees: any,
-    taskSettings: any
+    employees: Employee[],
+    taskSettings: any,
+    updateTasks: (tas: any, id: string, type: string, subType: string) => void
 }
 
 const LiveFreight: React.FC<Props> = (props) => {
-    const [tasks, setTasks] = useState(props.tasks);
     const [activePage, setActivePage] = useState(props.activePage);
 
     useEffect(() => {
         setActivePage(props.activePage)
     }, [props.activePage])
     
-    const updateTasks = async(res: any) => {
-        let newId = res.id;
-        let tempTasks = {...tasks};
-        tempTasks["liveFreight"]["dryGoodsLive"][newId] = (res.task);
-        await fetch("/saveData", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(tempTasks)
-        });
-        setTasks(tempTasks)
-    }
     switch(activePage){
         case "dryGoodsLive":
             return (
-                <DryGoodsLive updateTasks={updateTasks} 
+                <DryGoodsLive updateTasks={props.updateTasks} 
                 activePage={"dryGoodsLive"} 
-                tasks={tasks}
+                tasks={props.tasks}
                 employees={props.employees}/>
             )
         case "perishablesLive":
             return (
-                // <OtherLive updateTasks={updateTasks} 
-                // activePage={"perishablesLive"} 
-                // taskSettings={props.taskSettings} 
-                // tasks={tasks}
-                // employees={props.employees}/>
                 <PerishablesLive title={"example"}
-                tasks={{}}/>
+                tasks={props.tasks}
+                employees={props.employees}
+                updateTasks={props.updateTasks}/>
             )
         case "bulkLive":
             return (
-                <OtherLive updateTasks={updateTasks} 
+                <OtherLive updateTasks={props.updateTasks} 
                 activePage={"bulkLive"} 
                 taskSettings={props.taskSettings} 
-                tasks={tasks}
+                tasks={props.tasks}
                 employees={props.employees}/>
             )
         default:
             return (
-                <DryGoodsLive updateTasks={updateTasks} 
+                <DryGoodsLive updateTasks={props.updateTasks} 
                 activePage={"dryGoodsLive"} 
-                tasks={tasks}
+                tasks={props.tasks}
                 employees={props.employees}/>
             )
     }

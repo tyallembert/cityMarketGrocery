@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import "../../../styles/perishablesVendor.scss";
-import { PerishablesLiveFreight } from '../../../types';
+import { Employee, PerishablesLiveFreight } from '../../../types';
 
 type Props = {
     vendorInfo: PerishablesLiveFreight,
+    employees: Employee[],
     id: string,
     changeTaskStatus: (task: PerishablesLiveFreight, id: string) => void
 }
@@ -19,11 +20,12 @@ const PerishablesVendor: React.FC<Props> = (props) => {
     const [vendorInfo, setVendorInfo] = useState<PerishablesLiveFreight>(props.vendorInfo);
 
     useEffect(() => {
+        console.log(id)
         props.changeTaskStatus(vendorInfo, id);
-    }, [vendorInfo])
+    }, [vendorInfo.status])
 
     useEffect(() => {
-        
+
     }, [animationType])
 
     const formatTime = (time: Date) => {
@@ -32,9 +34,15 @@ const PerishablesVendor: React.FC<Props> = (props) => {
         let ampm = hours >= 12 ? 'pm' : 'am';
         hours = hours % 12;
         hours = hours ? hours: 12;
-        minutes = minutes < 10 ? 0 + minutes: minutes;
-        let strTime = hours + ':' + minutes + ' ' + ampm;
+        let minutesString = minutes < 10 ? ("0" + minutes).toString(): minutes.toString();
+        let strTime = hours + ':' + minutesString + ' ' + ampm;
         return strTime;
+    }
+
+    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        let newInfo = {...vendorInfo};
+        newInfo.name = event.target.value;
+        setVendorInfo(newInfo);
     }
 
     const changeVendorStatus = () => {
@@ -59,7 +67,8 @@ const PerishablesVendor: React.FC<Props> = (props) => {
     }
 
     return (
-        <div className={`vendorContainer ${vendorInfo.status} ${animationType}`} onClick={changeVendorStatus}>
+        <div className={`vendorContainer ${vendorInfo.status} ${animationType}`} 
+        onClick={vendorInfo.status === VendorStatus.WAITING ? changeVendorStatus: undefined}>
             <div className='vendorHeaderContainer'>
                 <div className='statusIconContainer'>
 
@@ -76,7 +85,20 @@ const PerishablesVendor: React.FC<Props> = (props) => {
                         <p>Arrived at:</p>
                         <p className='timeElement'>{vendorInfo.arrival}</p>
                     </div>
-                    <button className="startButton">Start</button>
+                    <p className='nameHeader'>Name:</p>
+                    <div className='nameContainer'>
+                        <select className="nameInput" name="name" onChange={handleChange}>
+                            <option value="Select">Select</option>
+                            {
+                                Object.keys(props.employees).map((key: string) => {
+                                    var employee = props.employees[key];
+                                    return <option value={`${employee.firstName} ${employee.lastName[0]}`}>{`${employee.firstName} ${employee.lastName[0]}`}</option>
+                                }
+                                )
+                            }
+                        </select>
+                        <button className="startButton" onClick={changeVendorStatus}>Start</button>
+                    </div>
                 </div>
                 :
                 vendorInfo.status === VendorStatus.STARTED ?
@@ -89,7 +111,7 @@ const PerishablesVendor: React.FC<Props> = (props) => {
                         <p>Started at:</p>
                         <p className='timeElement'>{vendorInfo.start}</p>
                     </div>
-                    <button className="startButton">Finish</button>
+                    <button className="startButton" onClick={changeVendorStatus}>Finish</button>
                 </div>
                 :
                 <div className="vendorStatusContainer">
