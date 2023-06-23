@@ -80,7 +80,10 @@
                 border-top: solid 2px $headerGray;
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
+                border-bottom-right-radius: 0px;
+                border-bottom-left-radius: 0px;
                 margin: 0 2%;
+                box-shadow: none;
                 transform: translateY(2px);
                 transition: all ease 150ms;
                 &:hover{

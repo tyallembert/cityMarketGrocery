@@ -30,11 +30,7 @@ const TaskContainer: React.FC<Props> = (props) => {
         }
     }
     return (
-        <motion.div 
-        variants={showingTasks ? (animation__newTaskContainer): null}
-        initial="hidden"
-        animate="visible"
-        className={showingTasks ? ("tasksContainerWrapper activeTaskContainer "+activePage):("tasksContainerWrapper "+activePage)}>
+        <div className={showingTasks ? ("tasksContainerWrapper activeTaskContainer "+activePage):("tasksContainerWrapper "+activePage)}>
             <div className="taskHeaderContainer" onClick={toggleShowNewTasks}>
                 <h1 className="header">{taskSettings.dryGoods.components[activePage].title}</h1>
                 {showingTasks ? <AiOutlineMinus /> : <AiOutlinePlus />}
@@ -54,7 +50,7 @@ const TaskContainer: React.FC<Props> = (props) => {
                     })
                 ) : (null)
             }
-        </motion.div>
+        </div>
     )
 }
 
