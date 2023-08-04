@@ -1,0 +1,66 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {
+      "tzpl760u": {
+        "name": "Ty A",
+        "aisle": "2",
+        "start": "8:35 PM",
+        "boxes": "34",
+        "totes": "56",
+        "end": "8:55 PM",
+        "status": "Finished"
+      },
+      "u6aaau0e": {
+        "name": "Ty A",
+        "aisle": "2",
+        "start": "9:19 PM",
+        "boxes": "56",
+        "totes": "3",
+        "end": "9:19 PM",
+        "status": "Finished"
+      },
+      "hij7u5gt": {
+        "name": "Ty A",
+        "aisle": "1",
+        "boxes": "45",
+        "totes": "56",
+        "start": "9:21 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "perishablesLive": {},
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "z8tfsnp6": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "3:50 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "backstock": {
+      "fmbloeu0": {
+        "name": "Ty A",
+        "aisle": 2,
+        "start": "4:18 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

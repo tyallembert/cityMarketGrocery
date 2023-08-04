@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import "../../../styles/gridTable.scss";
 import GridRow from './GridRow';
+import { Employee } from '../../../types';
 
 type Props = {
     newAisleActive: boolean,
     tasks: any,
+    employees: {[key:string]: Employee},
     updateTasks: any
 }
 
@@ -20,11 +22,10 @@ const GridTable: React.FC<Props> = (props) => {
     }, [tasks]);
 
     const populateAisles = () => {
-        // setTasks(props.tasks)
         if(Object.keys(tasks.liveFreight.dryGoodsLive).length !== 0){
             var allRows = []
             for(var key in tasks.liveFreight.dryGoodsLive){
-                allRows.push(<GridRow updateTasks={props.updateTasks} aisle={tasks.liveFreight.dryGoodsLive[key]} id={key} key={key} />);
+                allRows.push(<GridRow employees={props.employees} updateTasks={props.updateTasks} aisle={tasks.liveFreight.dryGoodsLive[key]} id={key} key={key} />);
             }
             setRowObjects(allRows);
         }else{

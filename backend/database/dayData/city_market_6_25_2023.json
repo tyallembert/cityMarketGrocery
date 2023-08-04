@@ -1,0 +1,32 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {},
+    "perishablesLive": {},
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {},
+    "backstock": {},
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {
+    "frozenFruit": {
+      "ph4jxw8g": {
+        "name": "Ty A",
+        "aisle": "Strawberries",
+        "start": "9:32 AM",
+        "end": "",
+        "status": "In Progress"
+      }
+    }
+  },
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

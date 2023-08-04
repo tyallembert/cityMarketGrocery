@@ -3,12 +3,12 @@ import "../../../styles/dryGoodsLive.scss";
 import GridTable from './GridTable';
 import StartButton from './StartButton';
 import NewAislePopup from './NewAislePopup';
-import { Tasks } from '../../../types';
+import { Employee, Tasks } from '../../../types';
 
 type Props = {
     activePage: string,
     tasks: Tasks,
-    employees: any,
+    employees: {[key:string]: Employee},
     updateTasks: (task: any, id: string, type: string, subType: string) => void
 }
 
@@ -26,7 +26,7 @@ const DryGoodsLive: React.FC<Props> = (props) => {
                     togglePopup={togglePopup} updateTasks={props.updateTasks} employees={props.employees} activePage={props.activePage} />
             ) : (null)
             }
-            <GridTable updateTasks={props.updateTasks} newAisleActive={showingPopUp} tasks={props.tasks}/>
+            <GridTable employees={props.employees} updateTasks={props.updateTasks} newAisleActive={showingPopUp} tasks={props.tasks}/>
         </div>
     )
 }

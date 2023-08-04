@@ -42,16 +42,12 @@ export type BeerWine = Record<string, unknown>;
 export type ExtraNotes = Record<string, unknown>;
 
 export type Tasks = {
-  liveFreight: {
-    dryGoodsLive: DryGoodsLive;
-    perishablesLive: {[key:string]:PerishablesLiveFreight};
-    bulkLive: BulkLive;
-  };
-  dryGoods: DryGoods;
-  perishables: Perishables;
-  bulk: Bulk;
-  beerWine: BeerWine;
-  extraNotes: ExtraNotes;
+  liveFreight: {[key: string]: LiveFreight};
+  dryGoods: {[key: string]: DryGoods};
+  perishables: {[key: string]: Perishables};
+  bulk: {[key: string]: Bulk};
+  beerWine: {[key: string]: BeerWine};
+  extraNotes: {[key: string]: ExtraNotes};
 };
 
 

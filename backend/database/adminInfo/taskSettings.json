@@ -71,13 +71,15 @@
                     "type": "component",
                     "title": "Peri Castors",
                     "color": "#1E8AD9",
-                    "classes": "periCastors navChild subChild"
+                    "classes": "periCastors navChild subChild",
+                    "options": ["Hippy Cooler", "Cheese", "Beverages"]
                 },
                 "periBackstock": {
                     "type": "component",
                     "title": "Peri Backstock",
                     "color": "#1E8AD9",
-                    "classes": "periBackstock navChild subChild"
+                    "classes": "periBackstock navChild subChild",
+                    "options": ["Monument Farms Milk", "Beverages"]
                 }
             }
         },
@@ -91,13 +93,15 @@
                     "type": "component",
                     "title": "Frozen Fruit",
                     "color": "#1E8AD9",
-                    "classes": "frozenFruit navChild subChild"
+                    "classes": "frozenFruit navChild subChild",
+                    "options": ["Strawberries", "Blueberries", "Mango", "Pineapple", "Raspberries", "Mixed Berries", "Peaches"]
                 },
                 "bulkBackstock": {
                     "type": "component",
                     "title": "Bulk Backstock",
                     "color": "#1E8AD9",
-                    "classes": "bulkBackstock navChild subChild"
+                    "classes": "bulkBackstock navChild subChild",
+                    "options": ["Nuts", "Dried Fruit", "Candy", "Baking", "Spices", "Rice", "Coffee", "Grains"]
                 }
             }
         },
@@ -111,13 +115,15 @@
                     "type": "component",
                     "title": "Beer",
                     "color": "#1E8AD9",
-                    "classes": "beer navChild subChild"
+                    "classes": "beer navChild subChild",
+                    "options": ["Farrell", "Calmont", "Craft", "Baker", "12 packs", "Ciders"]
                 },
                 "wine": {
                     "type": "component",
                     "title": "Wine",
                     "color": "#1E8AD9",
-                    "classes": "wine navChild subChild"
+                    "classes": "wine navChild subChild",
+                    "options": ["White", "Red", "Boxed", "Full Cases"]
                 }
             }
         }

@@ -1,0 +1,65 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {},
+    "perishablesLive": {
+      "lpjqx28o": {
+        "name": "",
+        "distributerName": "UNFI",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      },
+      "oca65g6a": {
+        "name": "",
+        "distributerName": "AG",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      },
+      "xq2eszud": {
+        "name": "",
+        "distributerName": "Monument Farms",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      }
+    },
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {},
+    "backstock": {},
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {},
+    "periCastors": {
+      "dji4epbk": {
+        "name": "Ty A",
+        "aisle": "Hippy Cooler",
+        "start": "9:45 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "periBackstock": {
+      "f1jhlylo": {
+        "name": "Ty A",
+        "aisle": "Monument Farms Milk",
+        "start": "10:25 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    }
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

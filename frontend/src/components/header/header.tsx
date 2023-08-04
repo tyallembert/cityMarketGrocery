@@ -20,14 +20,16 @@ const Header: React.FC<Props> = (props) => {
     useEffect(() => {
         setInterval(() => setDateState(new Date()), 3000);
     }, []);
+
     useEffect(() => {
         getHeaderFromSettings();
     }, [props.taskSettings, props.activePage, props.activePageParent])
+
     const getHeaderFromSettings = () => {
-        if(props.activePageParent !== ""){
+        if(props.activePage !== ""){
             setPageTitle(props.taskSettings[props.activePageParent].components[props.activePage].title)
         }else{
-            setPageTitle(props.taskSettings[props.activePage].title);
+            setPageTitle(props.taskSettings[props.activePageParent].title);
         }
     }
     return (

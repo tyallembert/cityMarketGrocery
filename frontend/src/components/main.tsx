@@ -22,7 +22,7 @@ const Main: React.FC<Props> = (props) => {
                     <LiveFreight updateTasks={props.updateTasks} activePage={props.activePage} taskSettings={props.taskSettings} tasks={props.tasks} employees={props.employees}/>
                 ): 
                 (
-                    <AllDryGoods updateTasks={props.updateTasks} tasks={props.tasks} taskSettings={props.taskSettings} activePage={props.activePage} employees={props.employees}/>
+                    <AllDryGoods updateTasks={props.updateTasks} tasks={props.tasks} taskSettings={props.taskSettings} activePage={props.activePage} activePageParent={props.activePageParent} employees={props.employees}/>
                 )
             }
         </div>

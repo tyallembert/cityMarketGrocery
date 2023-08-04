@@ -1,7 +1,13 @@
 @import "variables.scss";
 .tasksContainerWrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: $grayBackground;
-    padding: 1% 2%;
+    min-width: 15%;
+    height: 40px;
+    padding: 0 2%;
     margin: 5px;
     border-radius: 50px;
     overflow-y: scroll;
@@ -10,13 +16,28 @@
     scrollbar-width: none;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     animation: shrink 300ms ease-in-out;
+    &.activeTaskContainer{
+        height: 300px;
+        width: 40%;
+        border-radius: 20px;
+        animation: grow 300ms ease-in-out;
+        .taskHeaderContainer{
+            padding: 0.5em;
+        }
+    }
     &::-webkit-scrollbar{
         display: none;
     }
     .taskHeaderContainer{
+        position: sticky;
+        width: 100%;
+        top: 0;
+        margin-top: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: $grayBackground;
+        z-index: 2;
         .header{
             font-size: 13pt;
         }
@@ -28,12 +49,6 @@
             cursor: pointer;
         }
     }
-}
-.activeTaskContainer{
-    height: 300px;
-    width: 40%;
-    border-radius: 20px;
-    animation: grow 300ms ease-in-out;
 }
 
 @keyframes grow{

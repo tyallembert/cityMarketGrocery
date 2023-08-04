@@ -15,6 +15,21 @@
         padding: 0.5em;
         width: (100%/6);
         border-right: solid 1px black;
+        &.name{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .resumePopup{
+                // position: absolute;
+                // inset: 0;
+            }
+        }
+        &.end{
+            display: flex;
+            justify-content: space-around;
+        }
     }
     .status{
         border-right: none;
@@ -30,16 +45,33 @@
         .Finished{
             background-color: $taskFinished;
         }
+        .Paused{
+            background-color: $taskPaused;
+        }
     }
-    .endButton{
-        background-color: $buttonRed;
+    .endButton, .pauseButton, .resumeButton{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $buttonGreen;
         color: white;
-        border: solid 2px white;
-        border-radius: 10px;
+        border: solid 3px white;
+        border-radius: 100px;
+        padding: 0;
         font-weight: 700;
-        padding: 10px;
-        width: 70%;
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
         box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
         cursor: pointer;
+    }
+    .resumeButton{
+        font-size: 1em;
+        width: auto;
+        height: auto;
+        padding: 0.5em;
+    }
+    .pauseButton{
+        background-color: $buttonRed;
     }
 }

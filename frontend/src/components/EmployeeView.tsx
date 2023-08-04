@@ -1,16 +1,14 @@
 // https://www.youtube.com/watch?v=9F8bzIlgJ4g
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router,Routes, Route, Link, BrowserRouter } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from "react";
 import Header from "./header/header.tsx";
 import LeftNav from "./leftNav.tsx";
 import Main from "./main.tsx";
 import { Employee, Tasks } from "../types.ts";
-import { typeOptions } from "@testing-library/user-event/dist/type/typeImplementation";
 
 const EmployeeView = () => {
 
-  const [activePage, setActivePage] = useState<string>("liveFreight");
-  const [activePageParent, setActivePageParent] = useState<string>("");
+  const [activePage, setActivePage] = useState<string>("");
+  const [activePageParent, setActivePageParent] = useState<string>("liveFreight");
   const [currentTasks, setCurrentTasks] = useState<Tasks>({} as Tasks);
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [dataFetched, setDataFetched] = useState<boolean>(false);
@@ -27,15 +25,25 @@ const EmployeeView = () => {
     fetchCurrentTasks();
   }, []);
 
+  const saveData = useCallback(async() => {
+    await fetch("/saveData", {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(currentTasks)
+    });
+  }, [currentTasks])
+
   useEffect(() => {
     if(Object.keys(currentTasks).length > 0){
       saveData();
     }
-  }, [currentTasks])
+  }, [saveData, currentTasks])
 
 
   const checkIfEmail = () => {
-    var date = new Date();
+    // var date = new Date();
     var send = true;
     // if (date.getHours() === 17 && date.getMinutes() === 32) {
     if (send) {
@@ -67,12 +75,14 @@ const EmployeeView = () => {
   }
 
   const updateTasks = async(task: any, id: string, type: string, subType: string) => {
+    console.log(type)
+    console.log(subType)
     setCurrentTasks((prevTasks) => ({
       ...prevTasks,
-      [type]: {
+      [type as keyof Tasks]: {
         ...prevTasks[type as keyof Tasks],
         [subType]: {
-          ...prevTasks[type][subType],
+          ...prevTasks[type as keyof typeof prevTasks][subType],
           [id]: {
             ...task,
           },
@@ -82,19 +92,10 @@ const EmployeeView = () => {
     saveData();
   }
 
-  const saveData = async() => {
-    await fetch("/saveData", {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(currentTasks)
-    });
-  }
-
   const updateActivePage = (res: any) => {
     var page = res.activePage;
     var parent = res.parent;
+    console.log(res)
     setActivePageParent(parent);
     setActivePage(page);
   }

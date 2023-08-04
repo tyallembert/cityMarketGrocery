@@ -1,9 +1,7 @@
-import React, { useState, useEffect, ChangeEvent, SelectHTMLAttributes } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { IoCheckmarkDoneSharp, IoCloseSharp } from "react-icons/io5";
 import "../../../styles/newAislePopup.scss";
-import {motion} from 'framer-motion';
-import {animation__newAisleContainer, animation__newAisleChild} from "../../animations.js";
-
+import EmployeeSelect from '../../EmployeeSelect';
 type Props = {
     togglePopup: any,
     employees: any,
@@ -54,7 +52,6 @@ const NewAislePopup: React.FC<Props> = (props) => {
     const fetchLiveSettings = async() => {
         const data = await fetch('/getLiveSettings');
         const tempLiveSettings = await data.json();
-        console.log(tempLiveSettings)
         setLiveSettings(tempLiveSettings);
     }
 
@@ -107,50 +104,45 @@ const NewAislePopup: React.FC<Props> = (props) => {
         <div className="newAislePopupContainer">
 
             <div className='background' onClick={closePopUp}></div>
-            <motion.form
-            variants={animation__newAisleContainer}
-            initial="hidden"
-            animate="visible"
+            <form
             className='formContainer' 
             onSubmit={handleSubmit}>
                 <h1 className='formTitle'>New Aisle</h1>
-                <motion.label variants={animation__newAisleChild}>
+                <label>
                     Name:
-                    <select className="nameInput" name="name" onChange={handleChange}>
-                        {employeeOptionObjects}
-                    </select>
-                </motion.label>
+                    <EmployeeSelect onSelect={handleChange} employees={props.employees}/>
+                </label>
 
-                <motion.label variants={animation__newAisleChild}>
+                <label>
                     Aisle Number:
                     <select className="aisleInput" name="aisle" onChange={handleChange}>
                         {liveSettingsOptions}
                     </select>
-                </motion.label>
+                </label>
 
-                <motion.label variants={animation__newAisleChild}>
+                <label>
                     Box Count:
                     <input type="text"
                     name="boxes" 
                     value={taskInfo.boxes} 
                     onChange={handleChange} 
                     maxLength={3}/>
-                </motion.label>
-                <motion.label variants={animation__newAisleChild}>
+                </label>
+                <label>
                     Tote Count:
                     <input type="text"
                     name="totes" 
                     value={taskInfo.totes} 
                     onChange={handleChange} 
                     maxLength={3}/>
-                </motion.label>
-                <motion.button variants={animation__newAisleChild} type="submit" disabled={submitDisabled}>
+                </label>
+                <button type="submit" disabled={submitDisabled}>
                     <IoCheckmarkDoneSharp />
-                </motion.button>
-                <motion.button variants={animation__newAisleChild} type='button' onClick={closePopUp}>
+                </button>
+                <button type='button' onClick={closePopUp}>
                     <IoCloseSharp />
-                </motion.button>
-            </motion.form>
+                </button>
+            </form>
         </div>
     )
 }
