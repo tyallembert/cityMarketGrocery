@@ -5,22 +5,18 @@ import AdminNav from './AdminNav';
 import LoginForm from './LoginForm';
 import AdminManageEmployees from './settings/AdminManageEmployees';
 import AdminOverview from './overview/AdminOverview';
+import AdminSettings from './settings/AdminSettings';
 
 const Admin = () => {
     const [loggedIn, setLoggedIn] = useState(false);
 
     const [activePage, setActivePage] = useState("");
     const [activePageObject, setActivePageObject] = useState(null);
-    const [navSettings, setNavSettings] = useState({});
 
     useEffect(() => {
         checkCookies();
-        fetchNavSettings();
     }, []);
 
-    useEffect(() => {
-        handlePageChange();
-    }, [navSettings])
     useEffect(() => {
         handlePageChange();
     }, [activePage, loggedIn])
@@ -38,25 +34,20 @@ const Admin = () => {
     const pageChange = (res: any) => {
         setActivePage(res);
     }
-    const fetchNavSettings = async() => {
-        const data = await fetch('/getNavSettings');
-        const settings = await data.json();
-        console.log(settings);
-        setNavSettings(settings);
-      }
+
     const handlePageChange = () => {
         var tempPage = null;
         switch(activePage){
             case 'overview':
-                tempPage = <AdminOverview navSettings={navSettings}/>;
+                tempPage = <AdminOverview/>;
                 break;
             case 'analytics':
                 break;
             case 'manage':
-                tempPage = <AdminManageEmployees navSettings={navSettings}/>;
+                tempPage = <AdminSettings/>;
                 break;
             default:
-                tempPage = <AdminOverview navSettings={navSettings}/>;
+                tempPage = <AdminOverview/>;
                 break;
         }
         setActivePageObject(tempPage);
@@ -68,7 +59,11 @@ const Admin = () => {
     }
     return (
         <div className="adminContainer">
-            {
+            <>
+                        <AdminNav pageChange={pageChange}/>
+                        {activePageObject}
+                    </>
+            {/* {
                 loggedIn ? (
                     <>
                         <AdminNav pageChange={pageChange}/>
@@ -79,8 +74,8 @@ const Admin = () => {
                     <LoginForm setLoggedIn={setLoggedIn}/>
                     </>
                 )
-            }
-            <button onClick={resetCookies}>Reset Cookies</button>
+            } */}
+            {/* <button onClick={resetCookies}>Reset Cookies</button> */}
         </div>
     )
 }

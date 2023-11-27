@@ -8,7 +8,7 @@ import { Employee } from '../../types';
 type Props = {
     activePage: string,
     tasks: any,
-    employees: Employee[],
+    employees: {[key: string]: Employee},
     taskSettings: any,
     updateTasks: (tas: any, id: string, type: string, subType: string) => void
 }

@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import AddTask from "../addTask/AddTask";
+import React, { useState, useEffect, useCallback } from "react";
 import "../../styles/header.scss";
-import { GiBrokenBottle } from "react-icons/gi";
 import ShrinkLog from "./ShrinkLog";
 import { Employee } from "../../types";
 import HelpPage from "./HelpPage";
@@ -10,7 +8,7 @@ type Props = {
     activePage: string,
     activePageParent: string,
     taskSettings: any,
-    employees: Employee[]
+    employees: {[key: string]: Employee}
 }
 
 const Header: React.FC<Props> = (props) => {
@@ -18,52 +16,65 @@ const Header: React.FC<Props> = (props) => {
     const [pageTitle, setPageTitle] = useState("");
 
     useEffect(() => {
-        setInterval(() => setDateState(new Date()), 3000);
+        const intervalId = setInterval(() => {
+            setDateState(new Date());
+        }, 3000);
+
+        return () => {
+            clearInterval(intervalId);
+        };
     }, []);
+
+    const getHeaderFromSettings = useCallback(() => {
+        if (props.activePage !== "") {
+            setPageTitle(props.taskSettings[props.activePageParent]?.components[props.activePage]?.title || "");
+        } else {
+            if (props.taskSettings[props.activePageParent]?.title !== undefined) {
+                setPageTitle(props.taskSettings[props.activePageParent].title);
+            } else {
+                setTimeout(() => {
+                    getHeaderFromSettings();
+                }, 300);
+            }
+        }
+    }, [props.taskSettings, props.activePage, props.activePageParent]);
 
     useEffect(() => {
         getHeaderFromSettings();
-    }, [props.taskSettings, props.activePage, props.activePageParent])
+    }, [getHeaderFromSettings]);
 
-    const getHeaderFromSettings = () => {
-        if(props.activePage !== ""){
-            setPageTitle(props.taskSettings[props.activePageParent].components[props.activePage].title)
-        }else{
-            setPageTitle(props.taskSettings[props.activePageParent].title);
-        }
-    }
     return (
-        <div className={"headerContainer "+props.activePage}>
+        <div className={"headerContainer " + props.activePage}>
             <div className="dateContainer">
                 <div className="top">
                     <p className="day">
-                    {dateState.toLocaleDateString('en-GB', {
-                        weekday: 'long'
-                    })},
+                        {dateState.toLocaleDateString('en-GB', {
+                            weekday: 'long'
+                        })},
                     </p>
                     <p className="fullDate">
-                    {dateState.toLocaleDateString('en-US', {
-                        date: 'short'
-                    })}
+                        {dateState.toLocaleDateString('en-US', {
+                            date: 'short'
+                        })}
                     </p>
                 </div>
                 <p className="time">
-                {dateState.toLocaleString('en-US', {
-                    hour: 'numeric',
-                    minute: 'numeric',
-                    hour12: true,
-                })}
+                    {dateState.toLocaleString('en-US', {
+                        hour: 'numeric',
+                        minute: 'numeric',
+                        hour12: true,
+                    })}
                 </p>
             </div>
             <div className="titleContainer">
                 <h1>{pageTitle}</h1>
                 <div className="buttonsContainer">
-                    <ShrinkLog employees={props.employees}/>
-                    <HelpPage/>
+                    <ShrinkLog employees={props.employees} />
+                    <HelpPage />
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Header
+export default Header;

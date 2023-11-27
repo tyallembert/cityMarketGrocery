@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 import "../../styles/helpPage.scss";
 
 type Props = {
 
 }
-const HelpPage: React.FC<Props> = (props) => {
+const HelpPage: React.FC<Props> = () => {
     const [showingPopup, setShowingPopup] = useState<boolean>(false);
 
     const togglePopup = () => {
@@ -12,7 +12,7 @@ const HelpPage: React.FC<Props> = (props) => {
     }
     return (
         <div className="helpPageContainer">
-            <button className="shrinkButton" onClick={togglePopup}>
+            <button className="helpButton" onClick={togglePopup}>
                 ?
             </button>
             {

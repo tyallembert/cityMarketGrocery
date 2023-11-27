@@ -1,0 +1,106 @@
+@import "variables.scss";
+.adminSettingsContainer{
+    display: flex;
+    gap: 1rem;
+    // justify-content: space-around;
+    width: 100%;
+    height: 95vh;
+    padding: 2%;
+    .manageEmployeesSettingsContainer {
+        width: 30%;
+        border-radius: 20px;
+        background-color: rgba($adminLight, 0.3);
+        padding: 0.5rem;
+        h1 {
+            text-align: left;
+        }
+    }
+    .manageTaskSettingsContainer {
+        width: 70%;
+        max-height: 90vh;
+        overflow-y: scroll;
+        h1 {
+            position: sticky;
+            top: 0;
+            text-align: left;
+            z-index: 2;
+            background-color: white;
+        }
+        .adminManageTaskSettingsContainer {
+            .taskSettingContainer {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                h2 {
+                    width: 100%;
+                    text-align: left;
+                    margin: 1rem 0;
+                    position: sticky;
+                    top: 2.3rem;
+                    background-color: white;
+                }
+                .settingContainer {
+                    padding: 1rem;
+                    background-color: rgba($adminLight, 0.3);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: left;
+                    border-radius: 10px;
+                    .optionContainer {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        width: 100%;
+                        margin: 0.5rem 0;
+                        border-radius: 100px;
+                        padding: 0;
+                        padding-left: 1rem;
+                        background-color: $adminLight;
+                        .button{
+                            color: white;
+                            width: 3rem;
+                            padding: 0.5rem;
+                            font-size: 11pt;
+                            font-weight: 600;
+                            border: none;
+                            background-color: $buttonRed;
+                            border-radius: 50px;
+                            transition: all 150ms ease;
+                            &:hover{
+                                transform: scale(1.1);
+                                cursor: pointer;
+                            }
+                            &.new {
+                                background-color: $buttonGreen;
+                            }
+                        }
+                        input[type="text"] {
+                            width: 100%;
+                            border: none;
+                            background-color: $adminLight;
+                            &:focus {
+                                outline: none;
+                            }
+                        
+                        }
+                    }
+                }
+                &.liveFreightSetting {
+                    .settingContainer {
+                        width: 30%;
+                    }
+                }
+                &.dryGoodsSetting {
+                    .settingContainer {
+                        width: 22%;
+                    }
+                }
+                &.perishablesSetting, &.bulkSetting, &.beerWineSetting {
+                    .settingContainer {
+                        width: 45%;
+                    }
+                }
+            }
+        }
+    }
+}

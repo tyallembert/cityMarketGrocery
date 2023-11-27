@@ -78,7 +78,7 @@ const TaskObject: React.FC<Props> = (props) => {
     }, [employees]);
     
     const createObject = useCallback(() => {
-        setClasses("taskObjectContainer " + type)
+        setClasses(`taskObjectContainer ${props.type}`)
         switch(task.status){
             case 'In Progress':
                 setInfoObject(

@@ -24,7 +24,6 @@ router.get("/currentTasks", async (req, res) => {
     res.send(JSON.stringify(tasks[0]));
 });
 router.post("/saveData", async(req, res) => {
-    console.log("HANDLER: saveData")
     var body = req.body;
     var date = new Date();
     var dateString = date.toLocaleDateString('en-us');
@@ -38,7 +37,6 @@ router.post("/saveData", async(req, res) => {
 // ===Retrieving Settings functions===
 //-------------------------------------------
 router.get("/getAddTaskSettings", async(req, res) => {
-    console.log("HANDLER: getAddTaskSettings")
     var destination = "settingsFile";
     var filename = "addTaskSettings";
     var settings = await database.readJSON(filename, destination);
@@ -53,19 +51,16 @@ router.get("/getNavSettings", async(req, res) => {
 router.get("/getTaskSettings", async(req, res) => {
     var destination = "settingsFile";
     var filename = "taskSettings";
-    console.log("HANDLER: getTaskSettings")
     var settings = await database.readJSON(filename, destination);
     res.send(JSON.stringify(settings[0]));
 });
 router.get("/getLiveSettings", async(req, res) => {
-    console.log("HANDLER: getLiveSettings")
     var destination = "settingsFile";
     var filename = "newLiveSettings";
     var settings = await database.readJSON(filename, destination);
     res.send(JSON.stringify(settings[0]));
 });
 router.get("/getCurrentEmployees", async(req, res) => {
-    console.log("HANDLER: getCurrentEmployees")
     var destination = "settingsFile";
     var filename = "currentEmployees";
     var settings = await database.readJSON(filename, destination);
@@ -75,7 +70,6 @@ router.get("/getCurrentEmployees", async(req, res) => {
 // ===Live functions===
 //-------------------------------------------
 router.get("/currentLiveAisles", (req, res) => {
-    console.log("HANDLER: currentLiveAisles")
     var date = new Date();
     var dateString = date.toLocaleDateString('en-us');
     var filename = dateString.replace(/\//g, "_");
@@ -85,7 +79,6 @@ router.get("/currentLiveAisles", (req, res) => {
     res.send(JSON.stringify(tasks[0]["liveFreight"]));
 });
 router.post('/saveLiveData', async(req, res) => {
-    console.log("HANDLER: saveLiveData")
     var body = req.body;
     const type = "liveFreight";
     var parent = "";
@@ -97,7 +90,6 @@ router.post('/saveLiveData', async(req, res) => {
     res.send(JSON.stringify(newId));
 });
 router.post('/saveFinishedLive', (req, res) => {
-    console.log("HANDLER: saveFinishedLive")
     var id = req.body[0]
     var information = JSON.parse(req.body[1]);
     const type = "liveFreight";
@@ -125,7 +117,6 @@ router.post('/saveNewTask', async(req, res) => {
 });
 
 router.post('/saveTask', async(req, res) => {
-    console.log("HANDLER: saveTask"); 
     const type = req.body.type;
     const id = req.body.id;
     var task = req.body.task;
@@ -140,7 +131,6 @@ router.post('/saveTask', async(req, res) => {
 // ===Admin functions===
 //-------------------------------------------
 router.post("/checkAdmin", async (req, res) => {
-    console.log("HANDLER: checkAdmin")
     var user = req.body;
     var filename = "adminUsers";
     var destination = "settingsFile";
@@ -159,7 +149,6 @@ router.post("/checkAdmin", async (req, res) => {
             response.username = true;
             // if(user.password === allAdmin[0][admin].password){
             var passCorrect = await bcrypt.compare(user.password, allAdmin[0][admin].password);
-            console.log(passCorrect)
             if(passCorrect){
                 response.password = true;
             }
@@ -190,7 +179,6 @@ router.post('/daysData', async(req, res) => {
     res.send(JSON.stringify(oneDay));
 });
 router.post("/saveNewEmployee", async (req, res) => {
-    console.log("HANDLER: saveNewEmployee")
     var body = req.body.employee;
     var destination = "settingsFile";
     var filename = "currentEmployees";
@@ -199,7 +187,6 @@ router.post("/saveNewEmployee", async (req, res) => {
     res.send(JSON.stringify(returnData));
 });
 router.post("/deleteEmployee", async (req, res) => {
-    console.log("HANDLER: deleteEmployee")
     var id = req.body.id;
     var destination = "settingsFile";
     var filename = "currentEmployees";
@@ -207,16 +194,39 @@ router.post("/deleteEmployee", async (req, res) => {
     if(employees[0].hasOwnProperty(id)){
         delete employees[0][id];
     }
-    console.log(employees)
     await database.writeJSON(filename, destination, employees[0]);
-    // res.send(JSON.stringify(newId));
+});
+router.post("/deleteSetting", async (req, res) => {
+    const subDepartment = req.body.subDepartment;
+    const type = req.body.type;
+    const option = req.body.option;
+    var destination = "settingsFile";
+    var filename = "taskSettings";
+    var settings = await database.readJSON(filename, destination);
+    console.log(settings[0][subDepartment].components[type].options[option]);
+    if(settings[0][subDepartment].components[type].options.hasOwnProperty(option)){
+        settings[0][subDepartment].components[type].options.splice(option, 1);
+    }
+    await database.writeJSON(filename, destination, settings[0]);
+    res.send(JSON.stringify(settings[0]));
+});
+router.post("/newSetting", async (req, res) => {
+    const subDepartment = req.body.subDepartment;
+    const type = req.body.type;
+    const newSetting = req.body.newSetting;
+    var destination = "settingsFile";
+    var filename = "taskSettings";
+    var settings = await database.readJSON(filename, destination);
+    if(!settings[0][subDepartment].components[type].options.hasOwnProperty(newSetting)){
+        settings[0][subDepartment].components[type].options.push(newSetting);
+    }
+    await database.writeJSON(filename, destination, settings[0]);
+    res.send(JSON.stringify(settings[0]));
 });
 //-------------------------------------------
 // ===Send Email===
 //-------------------------------------------
 router.post("/sendEmail", async (req, res) => {
-    console.log("HANDLER: sendEmail")
-    console.log(typeof req.body)
     mailHelper.sendEmail(req.body);
 });
 

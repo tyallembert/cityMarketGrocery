@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie';
 import "../../styles/loginForm.scss";
+import CityMarketIMG from "./../../images/onions3.png";
 
 type Props = {
     setLoggedIn: any
@@ -48,37 +49,42 @@ const LoginForm: React.FC<Props> = (props) => {
     };
     return (
         <div className="loginFormContainer">
-            <h1>Admin Login</h1>
-            <form>
-                {
-                    error ? (
-                        <div className='errorMessage'>
-                            <p>{errorMessage}</p>
-                        </div>
-                    ) : null
-                }
-                <div className='inputContainer'>
-                    <p>Username</p>
-                    <input type='text'
-                    name='username'
-                    className='inputUsername'
-                    maxLength={20}
-                    onChange={handleChange}/>
-                </div>
-                <div className='inputContainer'>
-                    <p>Password</p>
-                    <input type='password'
-                    name='password'
-                    className='inputUsername'
-                    maxLength={20}
-                    onChange={handleChange}/>
-                </div>
-                <input type='submit' 
-                name='submitButton'
-                className='submitButton'
-                value='Login'
-                onClick={handleSubmit}/>
-            </form>
+            <div className='leftSide'>
+                <h1>Admin Login</h1>
+                <form>
+                    {
+                        error ? (
+                            <div className='errorMessage'>
+                                <p>{errorMessage}</p>
+                            </div>
+                        ) : null
+                    }
+                    <div className='inputContainer'>
+                        <p>Username</p>
+                        <input type='text'
+                        name='username'
+                        className='inputUsername'
+                        maxLength={20}
+                        onChange={handleChange}/>
+                    </div>
+                    <div className='inputContainer'>
+                        <p>Password</p>
+                        <input type='password'
+                        name='password'
+                        className='inputUsername'
+                        maxLength={20}
+                        onChange={handleChange}/>
+                    </div>
+                    <input type='submit' 
+                    name='submitButton'
+                    className='submitButton'
+                    value='Login'
+                    onClick={handleSubmit}/>
+                </form>
+            </div>
+            <div className='rightSide'>
+                <img src={CityMarketIMG} alt='loginImage'/>
+            </div>
         </div>
     )
 }

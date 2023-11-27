@@ -1,0 +1,82 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {
+      "saqeosa8": {
+        "name": "Nate L",
+        "aisle": "2",
+        "boxes": "35",
+        "totes": "0",
+        "start": "1:52 PM",
+        "end": "1:52 PM",
+        "status": "Finished"
+      },
+      "7ny8v3f0": {
+        "name": "Colin G",
+        "aisle": "1",
+        "boxes": "45",
+        "totes": "0",
+        "start": "9:57 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "perishablesLive": {
+      "95ysgfaj": {
+        "name": "",
+        "distributerName": "UNFI",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      },
+      "f5zsklbo": {
+        "name": "",
+        "distributerName": "AG",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      },
+      "53c9t0qx": {
+        "name": "",
+        "distributerName": "Monument Farms",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      }
+    },
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "z4q5fyuz": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "9:31 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "backstock": {
+      "epu6chd4": {
+        "name": "Nate L",
+        "aisle": 3,
+        "start": "1:53 PM",
+        "end": "1:53 PM",
+        "status": "Finished"
+      }
+    },
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

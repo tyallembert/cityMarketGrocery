@@ -14,8 +14,7 @@
     overflow-x: hidden;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-    animation: shrink 300ms ease-in-out;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
     &.activeTaskContainer{
         height: 300px;
         width: 40%;
@@ -24,6 +23,9 @@
         .taskHeaderContainer{
             padding: 0.5em;
         }
+    }
+    &.shrinkAnimation{
+        animation: shrink 300ms ease-in-out;
     }
     &::-webkit-scrollbar{
         display: none;

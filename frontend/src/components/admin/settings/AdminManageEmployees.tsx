@@ -7,20 +7,13 @@ type Props = {
     employees: any
 }
 const AdminManageEmployees: React.FC<Props> = (props) => {
-    const [currentEmployees, setCurrentEmployees] = useState({});
+    const [currentEmployees, setCurrentEmployees] = useState(props.employees);
     const [showingPopup, setShowingPopup] = useState(false);
 
     useEffect(() => {
-        fetchCurrentEmployees();
-    }, [])
-    useEffect(() => {
+        setCurrentEmployees(props.employees);
+    }, [props.employees]);
 
-    }, [currentEmployees])
-    const fetchCurrentEmployees = async() => {
-        const data = await fetch('/getCurrentEmployees');
-        const employees = await data.json();
-        setCurrentEmployees(employees);
-    }
     const toggleNewEmployeePopup = () => {
         showingPopup ? setShowingPopup(false): setShowingPopup(true);
     }
@@ -35,11 +28,11 @@ const AdminManageEmployees: React.FC<Props> = (props) => {
             setCurrentEmployees({...currentEmployees});
         }
     }
-    const saveNewEmployee = async(res) => {
+    const saveNewEmployee = async(res: any) => {
         var newEmployee = res.employee;
         var id = (Math.random() + 1).toString(36).slice(2,10);
         updateCurrentEmployees({type: "add", id: id, employee: newEmployee});
-        const response = await fetch("/saveNewEmployee", {
+        await fetch("/saveNewEmployee", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -48,7 +41,7 @@ const AdminManageEmployees: React.FC<Props> = (props) => {
         });
         toggleNewEmployeePopup();
     }
-    const deleteEmployee = async(e) => {
+    const deleteEmployee = async(e: any) => {
         var id = e.target.parentNode.getAttribute("id");
         await fetch("/deleteEmployee", {
             method: 'POST',

@@ -12,7 +12,6 @@
         &.#{$page}{
             border: solid 1px $color;
             background-color: rgba($color, 0.3);
-            box-shadow: inset 0px 0px 4px $color;
         }
     }
     .type{

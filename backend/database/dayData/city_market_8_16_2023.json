@@ -1,0 +1,65 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {
+      "hfi8r0c1": {
+        "name": "Ty A",
+        "aisle": "1",
+        "boxes": "45",
+        "totes": "3",
+        "start": "9:52 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "perishablesLive": {
+      "jq6x8p2a": {
+        "name": "",
+        "distributerName": "UNFI",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      },
+      "27aad3h9": {
+        "name": "",
+        "distributerName": "AG",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      },
+      "emgibfox": {
+        "name": "",
+        "distributerName": "Monument Farms",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      }
+    },
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "stiycaf7": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "9:59 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "backstock": {},
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

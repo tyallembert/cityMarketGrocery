@@ -1,84 +1,85 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect, useCallback, ChangeEvent, FormEvent } from 'react';
 import { IoCheckmarkDoneSharp, IoCloseSharp } from "react-icons/io5";
 import "../../../styles/newAislePopup.scss";
 import EmployeeSelect from '../../EmployeeSelect';
+import { Employee } from '../../../types';
 type Props = {
     togglePopup: any,
-    employees: any,
+    employees: {[key: string]: Employee},
     activePage: string,
     updateTasks: (task: any, id: string, type: string, subType: string) => void
 }
 const NewAislePopup: React.FC<Props> = (props) => {
 
-    const [employees, setEmployees] = useState(props.employees);
-    const [employeeOptionObjects, setEmployeeOptionObjects] = useState([]);
-    const [liveSettings, setLiveSettings] = useState([]);
-    const [liveSettingsOptions, setLiveSettingsOptions] = useState([]);
+    const [showingPopUp, setShowingPopUp] = useState<boolean>(true);
+    const [liveSettings, setLiveSettings] = useState<{[key: string]: any}>({});
+    const [liveSettingsOptions, setLiveSettingsOptions] = useState<JSX.Element[]>([]);
     const [activePage, setActivePage] = useState(props.activePage);
     const [submitDisabled, setSubmitDisabled] = useState(true);
     const [taskInfo, setTaskInfo] = useState({
-        name: "",
-        aisle: "",
-        boxes: "",
-        totes: "",
+        name: "Choose",
+        aisle: "Choose",
+        boxes: "0",
+        totes: "0",
         start: "",
         end: "",
         status: "In Progress"
     });
 
-    useEffect(() => {
-        setEmployees(props.employees);
-        setActivePage(props.activePage);
-        fetchLiveSettings();
-    }, [props.employees])
-
-    useEffect(() => {
-        createEmployeeOptions();
-    }, [employees])
-
+    const createLiveSettings = useCallback(() => {
+        var tempObjects = [];
+        tempObjects.push(<option key={0} value="Choose">Choose</option>);
+        for(var value in liveSettings){
+            tempObjects.push(
+                <option key={liveSettings[value]} value={liveSettings[value]}>{liveSettings[value]}</option>
+            )
+        }
+        setLiveSettingsOptions(tempObjects);
+    }, [liveSettings, activePage]);
+    
     useEffect(() => {
         createLiveSettings();
-    }, [liveSettings, activePage])
+    }, [createLiveSettings]);
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
-        if(taskInfo.name !== "Choose" && taskInfo.aisle !== "Choose" && taskInfo.boxes !== "" && taskInfo.totes !== ""){
+    useEffect(() => {
+        if(!showingPopUp) {
+            setTimeout(() => {
+                props.togglePopup(false);
+            }, 300);
+        }
+    }
+    , [showingPopUp, props]);
+
+    useEffect(() => {
+        checkSubmitDisabled();
+    }, [taskInfo])
+
+    const checkSubmitDisabled = () => {
+
+        if(taskInfo.name !== "Choose" && taskInfo.aisle !== "Choose"){
             setSubmitDisabled(false);
         }else{
             setSubmitDisabled(true);
         }
-        setTaskInfo({ ...taskInfo, [event.target.name]: event.target.value });
+    }
+
+    useEffect(() => {
+        setActivePage(props.activePage);
+        fetchTaskSettings();
+    }, [props.employees, props.activePage])
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
+        setTaskInfo({ ...taskInfo,[event.target.name]: event.target.value});
     };
 
-    const fetchLiveSettings = async() => {
-        const data = await fetch('/getLiveSettings');
-        const tempLiveSettings = await data.json();
-        setLiveSettings(tempLiveSettings);
+    const fetchTaskSettings = async() => {
+        const data = await fetch('/getTaskSettings');
+        const settings = await data.json();
+        const liveSettings = settings.liveFreight.components.dryGoodsLive.options
+        setLiveSettings(liveSettings);
     }
 
-    const createEmployeeOptions = () => {
-        var tempObjects = [];
-        tempObjects.push(<option key={0} value="choose">Choose</option>);
-        for(var id in employees){
-            var firstLastInit = employees[id].firstName + " "+ employees[id].lastName[0];
-            tempObjects.push(
-                <option key={id} value={firstLastInit}>{firstLastInit}</option>
-            )
-        }
-        setEmployeeOptionObjects(tempObjects);
-    }
-
-    const createLiveSettings = () => {
-        var tempObjects = [];
-        tempObjects.push(<option key={0} value="choose">Choose</option>);
-        for(var value in liveSettings[activePage]){
-            tempObjects.push(
-                <option key={liveSettings[activePage][value]} value={liveSettings[activePage][value]}>{liveSettings[activePage][value]}</option>
-            )
-        }
-        setLiveSettingsOptions(tempObjects);
-    }
-
-    const handleSubmit = async(e) => {
+    const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         var today = new Date();
         var time = today.toLocaleString('en-US', {
@@ -91,21 +92,19 @@ const NewAislePopup: React.FC<Props> = (props) => {
 
         var id = (Math.random() + 1).toString(36).slice(2,10);
         props.updateTasks(tempTask, id, "liveFreight", "dryGoodsLive");
-        // props.updateTasks({id: id, task: tempTask});
-
         closePopUp();
     };
 
     const closePopUp = () => {
-        props.togglePopup(false);
+        setShowingPopUp(false);
     };
 
     return (
-        <div className="newAislePopupContainer">
+        <div className={showingPopUp ? 'newAislePopupContainer inAnimation': 'newAislePopupContainer outAnimation'}>
 
             <div className='background' onClick={closePopUp}></div>
             <form
-            className='formContainer' 
+            className={props.togglePopup ? 'formContainer inAnimation': 'formContainer outAnimation'}
             onSubmit={handleSubmit}>
                 <h1 className='formTitle'>New Aisle</h1>
                 <label>
@@ -120,21 +119,13 @@ const NewAislePopup: React.FC<Props> = (props) => {
                     </select>
                 </label>
 
-                <label>
-                    Box Count:
-                    <input type="text"
-                    name="boxes" 
-                    value={taskInfo.boxes} 
-                    onChange={handleChange} 
-                    maxLength={3}/>
+                <label className='sliderContainer'>
+                    Box Count: {taskInfo.boxes}
+                    <input type="range" min="0" max="100" value={taskInfo.boxes} name="boxes" className="slider" onChange={handleChange} />
                 </label>
-                <label>
-                    Tote Count:
-                    <input type="text"
-                    name="totes" 
-                    value={taskInfo.totes} 
-                    onChange={handleChange} 
-                    maxLength={3}/>
+                <label className='sliderContainer'>
+                    Tote Count: {taskInfo.totes}
+                    <input type="range" min="0" max="100" value={taskInfo.totes} name="totes" className="slider" onChange={handleChange} />
                 </label>
                 <button type="submit" disabled={submitDisabled}>
                     <IoCheckmarkDoneSharp />

@@ -21,13 +21,13 @@
         "status": "Finished"
       },
       "847ylabw": {
-        "name": "Ty",
+        "name": "Ty,Colin G",
         "aisle": "1",
         "boxes": "45",
         "totes": "66",
         "start": "5:03 PM",
         "end": "",
-        "status": "In Progress"
+        "status": "Paused"
       }
     },
     "perishablesLive": {
@@ -59,8 +59,24 @@
     "bulkLive": {}
   },
   "dryGoods": {
-    "upstock": {},
-    "backstock": {},
+    "upstock": {
+      "2oe939oq": {
+        "name": "Colin G",
+        "aisle": 1,
+        "start": "8:04 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "backstock": {
+      "p5c16pvv": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "8:04 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
     "sectors": {},
     "rounding": {}
   },

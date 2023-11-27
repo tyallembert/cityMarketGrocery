@@ -1,84 +1,105 @@
 @import "variables.scss";
+
 .loginFormContainer{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 100vh;
     background-color: #FFFFFF;
-    background: radial-gradient(circle, rgba(238,174,202,0.5) 0%, rgba(148,187,233,0.5) 100%);
-
-    h1{
-        margin: 0;
-        width: 32%;
-        text-align: left;
-        color: $headerGray;
-    }
-    form{
+    .leftSide, .rightSide{
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
-        width: 30%;
-        border: solid 2px $headerGray;
-        border-radius: 20px;
-        padding: 3%;
-        background-color: white;
-        .errorMessage{
-            border-radius: 10px;
-            padding: 10px;
-            background-color: #d64141;
-            color: white;
+        justify-content: center;
+        height: 100%;
+    }
+    .leftSide{
+        flex-direction: column;
+        width: 50%;
+        box-shadow: 2px 0px 10px 2px rgba(0,0,0,0.5);
+        z-index: 2;
+        h1{
+            margin: 0;
+            width: 32%;
+            text-align: left;
+            color: $headerGray;
         }
-        .inputContainer{
+        form{
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            width: 80%;
-            p{
-                font-size: 12pt;
-                background-color: white;
-                padding: 5px;
-                border-radius: 3px;
-                transform: translate(10px, 10px);
-                z-index: 3;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            border-radius: 10px;
+            padding: 3%;
+            background-color: white;
+            .errorMessage{
+                border-radius: 10px;
+                padding: 10px;
+                background-color: #d64141;
+                color: white;
             }
-            input[type=text], input[type=password]{
-                width: 100%;
-                border-radius: 5px;
-                border: solid 1px rgba(0,0,0,0.5);
-                font-size: 14pt;
-                padding: 5px;
-                height: 30px;
+            .inputContainer{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 80%;
+                p{
+                    font-size: 12pt;
+                    background-color: white;
+                    padding: 5px;
+                    border-radius: 3px;
+                    transform: translate(10px, 10px);
+                    z-index: 3;
+                }
+                input:active + p{
+                    transform: translate(10px, -10px);
+                }
+                input[type=text], input[type=password]{
+                    width: 100%;
+                    border-radius: 5px;
+                    border: solid 1px rgba(0,0,0,0.5);
+                    font-size: 14pt;
+                    padding: 5px;
+                    height: 30px;
+                    transition: all 200ms ease;
+                    &:focus{
+                        outline: none;
+                        box-shadow: 0px 3px 5px rgba(0,0,0,0.8);
+                        transform: translateY(-3px);
+                        border: solid 2px rgb(75, 180, 250);
+                    }
+                }
+            }
+            .submitButton{
+                margin-top: 20px;
+                padding: 10px;
+                width: 50%;
+                font-size: 13pt;
+                font-weight: 700;
+                color: $headerGray;
+                cursor: pointer;
+                border-radius: 100px;
+                border: solid 2px $headerGray;
+                background-color: white;
                 transition: all 200ms ease;
-                &:focus{
-                    outline: none;
+                &:hover{
                     box-shadow: 0px 3px 5px rgba(0,0,0,0.8);
-                    transform: translateY(-3px);
-                    border: solid 2px rgb(75, 180, 250);
+                    transform: scale(1.05);
+                    font-size: 14pt;
+                    color: white;
+                    background-color: $headerGray;
                 }
             }
         }
-        .submitButton{
-            margin-top: 20px;
-            padding: 10px;
-            width: 50%;
-            font-size: 13pt;
-            font-weight: 700;
-            color: $headerGray;
-            cursor: pointer;
-            border-radius: 100px;
-            border: solid 2px $headerGray;
-            background-color: white;
-            transition: all 200ms ease;
-            &:hover{
-                box-shadow: 0px 3px 5px rgba(0,0,0,0.8);
-                transform: scale(1.05);
-                font-size: 14pt;
-                color: white;
-                background-color: $headerGray;
-            }
+    }
+    .rightSide{
+        width: 50%;
+        overflow: hidden;
+        justify-content: flex-end;
+        img{
+            height: 100%;
+            transform: translateY();
         }
     }
 }

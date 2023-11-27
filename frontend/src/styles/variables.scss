@@ -17,12 +17,30 @@ $mainColors: (
   "beer": #8E4DC1,
   "wine": #9c70be
 );
+$liveFreight-color: #585858;
+$dryGoods-color: #585858;
+$perishables-color: #585858;
+$bulk-color: #585858;
+$beerWine-color: #585858;
+$all-color: #585858;
+$upstock-color: #EB3636;
+$backstock-color: #31B94F;
+$sectors-color: #D9D11E;
+$rounding-color: #cd50d9;
+$periCastors-color: #68a5d0;
+$periBackstock-color: #1E8AD9;
+$frozenFruit-color: #806021;
+$bulkBackstock-color: #ab8b4b;
+$beer-color: #8E4DC1;
+$wine-color: #9c70be;
+
 $grayBackground: #D9D9D9;
 $headerGray: #686868;
 
 // ===Live Variables===
 $liveGridHeader: #F6D970;
 $buttonGreen: #31B94F;
+$buttonOrange: #eba338;
 $buttonRed: #b93131;
 $gridRowDark: #c7c7c7;
 $gridRowLight: #e6e6e6;
@@ -37,6 +55,12 @@ $radioBackground: #f1f1f1;
 // ===Admin Variables===
 $adminDark: #6c6c6c;
 $adminLight: #dddddd;
+
+@each $key, $value in $mainColors {
+    .#{$key}-color {
+      background-color: $value;
+    }
+}
 
 .button{
     background-color: $radioActive;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import "../../../styles/gridTable.scss";
 import GridRow from './GridRow';
 import { Employee } from '../../../types';
@@ -11,33 +11,32 @@ type Props = {
 }
 
 const GridTable: React.FC<Props> = (props) => {
-    const [rowObjects, setRowObjects] = useState([]);
-    const [tasks, setTasks] = useState(props.tasks);
-    useEffect(() => {
-        setTasks(props.tasks);
-    }, [props.tasks])
+    const [rowObjects, setRowObjects] = useState<JSX.Element[]>([]);
 
-    useEffect(() => {
-        populateAisles();
-    }, [tasks]);
 
-    const populateAisles = () => {
-        if(Object.keys(tasks.liveFreight.dryGoodsLive).length !== 0){
-            var allRows = []
-            for(var key in tasks.liveFreight.dryGoodsLive){
-                allRows.push(<GridRow employees={props.employees} updateTasks={props.updateTasks} aisle={tasks.liveFreight.dryGoodsLive[key]} id={key} key={key} />);
+    const populateAisles = useCallback(() => {
+        if (Object.keys(props.tasks.liveFreight.dryGoodsLive).length !== 0) {
+            var allRows = [];
+            for (var key in props.tasks.liveFreight.dryGoodsLive) {
+                allRows.push(
+                    <GridRow employees={props.employees} updateTasks={props.updateTasks} aisle={props.tasks.liveFreight.dryGoodsLive[key]} id={key} key={key} />
+                );
             }
             setRowObjects(allRows);
-        }else{
+        } else {
             var placeholder = (
                 <div className='placeholderText'>
                     <h2>No Aisles have been started today</h2>
                 </div>
             );
-            setRowObjects(placeholder);
+            setRowObjects([placeholder]);
         }
-
-    }
+    }, [props.tasks, props.employees, props.updateTasks]);
+    
+    useEffect(() => {
+        populateAisles();
+    }, [populateAisles]);
+    
     return (
         <div className="gridTableContainer">
             <div className="headerRow">
@@ -49,6 +48,9 @@ const GridTable: React.FC<Props> = (props) => {
                 </div>
                 <div className="headerElement box">
                     <p>Box Count</p>
+                </div>
+                <div className="headerElement tote">
+                    <p>Tote Count</p>
                 </div>
                 <div className="headerElement start">
                     <p>Start Time</p>

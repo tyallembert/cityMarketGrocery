@@ -4,7 +4,7 @@ import { Employee, PerishablesLiveFreight } from '../../../types';
 
 type Props = {
     vendorInfo: PerishablesLiveFreight,
-    employees: Employee[],
+    employees: {[key: string]: Employee},
     id: string,
     changeTaskStatus: (task: PerishablesLiveFreight, id: string) => void
 }
@@ -16,17 +16,11 @@ enum VendorStatus {
 }
 const PerishablesVendor: React.FC<Props> = (props) => {
     const [animationType, setAnimationType] = useState("animateIn");
-    const [id, setId] = useState(props.id);
     const [vendorInfo, setVendorInfo] = useState<PerishablesLiveFreight>(props.vendorInfo);
 
     useEffect(() => {
-        console.log(id)
-        props.changeTaskStatus(vendorInfo, id);
-    }, [vendorInfo.status])
-
-    useEffect(() => {
-
-    }, [animationType])
+        props.changeTaskStatus(vendorInfo, props.id);
+    }, [vendorInfo, props.id])
 
     const formatTime = (time: Date) => {
         let hours = time.getHours();
@@ -60,7 +54,6 @@ const PerishablesVendor: React.FC<Props> = (props) => {
                     newInfo.status = VendorStatus.FINISHED;
                     newInfo.end = formatTime(new Date());
                 }
-                console.log(newInfo)
                 return newInfo;
             })
         }, 500)

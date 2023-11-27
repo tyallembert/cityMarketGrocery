@@ -29,7 +29,6 @@ class Database {
     Writes to and modifies the data of a certain days tasks
     */
     async writeJSON(filename, destination, newData){
-        console.log("WRITE FUNCTION")
         //constructs the local path
         var path = this.getLocalPath(filename, destination);
         // Creates and populates file with blank template
@@ -44,8 +43,6 @@ class Database {
             fs.writeFileSync(path, json, 'utf8', function(err){
                 if (err){
                     success = false;
-                    console.log("ERROR")
-                    console.log(err)
                 }
                 else success = true;
             });
@@ -55,7 +52,6 @@ class Database {
     Reads in json data from the specified day
     */
     async readJSON(filename, destination){
-        console.log("READ FUNCTION")
         var path = this.getLocalPath(filename, destination);
         
         this.checkFileExists(path);

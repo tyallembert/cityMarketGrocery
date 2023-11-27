@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import "../../../styles/gridRow.scss";
 import { IoCheckmarkDoneSharp, IoPause } from "react-icons/io5";
-import { DryGoodsLive, Employee } from '../../../types';
+import { Employee } from '../../../types';
 import EmployeeSelect from '../../EmployeeSelect';
 
 type Props = {
@@ -15,16 +15,15 @@ const GridRow: React.FC<Props> = (props) => {
     const [currentAisle, setCurrentAisle] = useState(props.aisle);
     const [dataLoaded, setDataLoaded] = useState(false);
     const [id, setId] = useState(props.id);
+    const [resumeName, setResumeName] = useState("");
 
     useEffect(() => {
         setId(props.id)
         setDataLoaded(true)
-    }, []);
+    }, [props.id]);
 
     const handleSelectChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
-        var tempAisle = {...currentAisle};
-        tempAisle.name = `${currentAisle.name},${event.target.value}`;
-        setCurrentAisle(tempAisle);
+        setResumeName(event.target.value);
     }
     const handlePause = async() => {
         var tempAisle = {...currentAisle};
@@ -39,6 +38,7 @@ const GridRow: React.FC<Props> = (props) => {
     }
     const handleResumeConfirm = async() => {
         var tempAisle = {...currentAisle};
+        tempAisle.name = `${tempAisle.name}, ${resumeName}`;
         tempAisle.status = "In Progress";        
         setCurrentAisle(tempAisle);
         props.updateTasks(tempAisle, id, "liveFreight", "dryGoodsLive");
@@ -75,7 +75,7 @@ const GridRow: React.FC<Props> = (props) => {
                                 <div className="resumePopup">
                                     <EmployeeSelect onSelect={handleSelectChange} employees={props.employees}/>
                                     <button onClick={handleResumeConfirm}>Confirm</button>
-                                    <button onClick={handleResumeCancel}>Cancek</button>
+                                    <button onClick={handleResumeCancel}>Cancel</button>
                                 </div>
                             ): null
                         }
@@ -92,6 +92,9 @@ const GridRow: React.FC<Props> = (props) => {
                     </div>
                     <div className="rowElement box">
                         <p>{currentAisle.boxes}</p>
+                    </div>
+                    <div className="rowElement tote">
+                        <p>{currentAisle.totes}</p>
                     </div>
                     <div className="rowElement start">
                         <p>{currentAisle.start}</p>

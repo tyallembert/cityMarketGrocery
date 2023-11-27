@@ -3,14 +3,16 @@ import React, { useState, useEffect, useCallback } from "react";
 import Header from "./header/header.tsx";
 import LeftNav from "./leftNav.tsx";
 import Main from "./main.tsx";
+// import IMAGE from "../images/onions3.png";
 import { Employee, Tasks } from "../types.ts";
+// import ToDo from "./toDo/ToDo.tsx";
 
 const EmployeeView = () => {
 
   const [activePage, setActivePage] = useState<string>("");
   const [activePageParent, setActivePageParent] = useState<string>("liveFreight");
   const [currentTasks, setCurrentTasks] = useState<Tasks>({} as Tasks);
-  const [employees, setEmployees] = useState<Employee[]>([]);
+  const [employees, setEmployees] = useState<{[key: string]: Employee}>({});
   const [dataFetched, setDataFetched] = useState<boolean>(false);
   const [taskSettings, setTaskSettings] = useState({});
 
@@ -42,20 +44,20 @@ const EmployeeView = () => {
   }, [saveData, currentTasks])
 
 
-  const checkIfEmail = () => {
-    // var date = new Date();
-    var send = true;
-    // if (date.getHours() === 17 && date.getMinutes() === 32) {
-    if (send) {
-      fetch("/sendEmail", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(currentTasks)
-      });
-    }
-  }
+  // const checkIfEmail = () => {
+  //   // var date = new Date();
+  //   var send = true;
+  //   // if (date.getHours() === 17 && date.getMinutes() === 32) {
+  //   if (send) {
+  //     fetch("/sendEmail", {
+  //       method: 'POST',
+  //       headers: {
+  //           'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify(currentTasks)
+  //     });
+  //   }
+  // }
   
   const fetchCurrentTasks = async() => {
     const data = await fetch('/currentTasks');
@@ -95,7 +97,6 @@ const EmployeeView = () => {
   const updateActivePage = (res: any) => {
     var page = res.activePage;
     var parent = res.parent;
-    console.log(res)
     setActivePageParent(parent);
     setActivePage(page);
   }
@@ -122,8 +123,15 @@ const EmployeeView = () => {
               employees={employees}
               updateTasks={updateTasks}/>
 
+              {/* <ToDo tasks={currentTasks}
+              taskSettings={taskSettings}
+              updateTasks={updateTasks}
+              employees={employees}
+              activePage={activePage}
+              activePageParent={activePageParent}/> */}
+
             </div>
-            <button onClick={checkIfEmail}>Send Email</button>
+            {/* <button onClick={checkIfEmail}>Send Email</button> */}
         </>
         ) : (<div>Error Fetching Data</div>)
       }

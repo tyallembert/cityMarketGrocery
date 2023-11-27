@@ -5,8 +5,6 @@
         align-items: center;
         justify-content: center;
         border: none;
-        box-shadow: 0px 3px 5px rgba(0,0,0,0.4);
-        background-color: white;
         height: 40px;
         width: 40px;
         border-radius: 100px;
@@ -17,112 +15,88 @@
         &:hover{
             transform: scale(1.1);
         }
+        svg{
+            transform: scale(1.7);
+        }
     }
     .shrinkLogPopup{
         position: absolute;
-        top: calc(40% - 150px);
-        left: calc(50% - 250px);
+        top: 18%;
+        left: calc(50% - 15%);
         z-index: 10;
-        padding: 1%;
         min-height: 300px;
-        width: 600px;
+        width: 30%;
         background-color: $grayBackground;
         border-radius: 15px;
         box-shadow: 2px 2px 3px rgba(0,0,0,0.4);
+        transition: all 300ms ease;
+        &.animateIn {
+            animation: animateIn-shrinkLog 400ms ease;
+        }
+        &.animateOut {
+            animation: animateOut-shrinkLog 300ms ease;
+        }
         .mainTitle{
             font-size: 30pt;
             font-weight: 900;
+            letter-spacing: 0;
             color: $headerGray;
             margin-bottom: 15px;
-        }
-        .newItemButton{
-            display: flex;
-            align-items: left;
+            padding: 1rem;
+            border: solid 1px black;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            background-color: $liveGridHeader;
         }
         .newShrinkContainer{
             display: flex;
+            flex-direction: column;
             justify-content: space-around;
-            padding: 2%;
-            background-color: white;
+            gap: 1rem;
+            padding: 1rem 3rem;
             border-radius: 7px;
             label{
                 display: flex;
                 flex-direction: column;
                 align-items: left;
                 text-align: left;
-                color: $headerGray;
+                color: black;
             }
-            .upcLabel{
-                width: 25%;
-            }
-            .sizeLabel{
-                width: 10%;
-            }
-            .quantityLabel{
-                width: 10%;
-            }
-        }
-        .headersContainer{
-            display: flex;
-            justify-content: left;
-            margin-top: 20px;
-            button{
-                background-color: rgba(0,0,0,0.1);
-                color: $headerGray;
-                font-size: 15pt;
-                font-weight: 800;
-                cursor: pointer;
+            input, select {
+                border-radius: 50px;
                 border: none;
-                z-index: 8;
-                padding: 1%;
-                border-left: solid 2px $headerGray;
-                border-right: solid 2px $headerGray;
-                border-top: solid 2px $headerGray;
-                border-top-left-radius: 5px;
-                border-top-right-radius: 5px;
-                border-bottom-right-radius: 0px;
-                border-bottom-left-radius: 0px;
-                margin: 0 2%;
-                box-shadow: none;
-                transform: translateY(2px);
-                transition: all ease 150ms;
-                &:hover{
-                    padding: 1% 2%;
-                }
-                &:active{
-                    transform: scaleX(0.9);
-                }
+                padding: 0.3rem;
+                margin-top: 2px;
             }
-            .activeButton{
-                background-color: white;
-                color: $headerGray;
-                z-index: 10;
-            }
-        }
-        .infoContainer{
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            background-color: white;
-            border: solid 2px $headerGray;
-            border-radius: 10px;
-            // border-top-left-radius: 0;
-            min-height: 200px;
-            z-index: 9;
-            .shrinkedItemContainer{
+            .buttonContainer {
                 display: flex;
                 justify-content: space-around;
-                color: black;
-                padding: 1%;
-                &:nth-child(even){
-                    background-color: rgba(0,0,0,0.1);
-                }
-                .shrinkItemParam {
+                width: 50%;
+                margin: auto;
+                .button {
                     display: flex;
-                    justify-content: center;
                     align-items: center;
-                    width: calc(100%/6)
+                    justify-content: center;
+                    height: 50px;
+                    width: 50px;
+                    padding: 0;
+                    border-radius: 100px;
+                    border: solid 1px black;
+                    font-size: 25px;
+                    color: white;
+                    transition: all 200ms ease;
+                    &:hover{
+                        box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+                        transform: translateY(-2px);
+                        font-size: 24pt;
+                        cursor: pointer;
+                    }
+                    &.save {
+                        background-color: $buttonGreen;
+                    }
+                    &.cancel {
+                        background-color: $buttonRed;
+                    }
                 }
             }
         }
@@ -133,7 +107,34 @@
         left: 0;
         height: 100%;
         width: 100%;
+        filter: grayscale(100%);
         background-color: rgba(0,0,0,0.5);
         z-index: 9;
+    }
+}
+
+@keyframes animateIn-shrinkLog {
+    0% {
+        transform: translateY(-200%);
+    }
+    60% {
+        transform: translateY(10%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes animateOut-shrinkLog {
+    0% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.1);
+        opacity: 0;
     }
 }

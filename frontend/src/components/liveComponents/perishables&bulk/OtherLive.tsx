@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import "../../../styles/otherLive.scss";
 import TaskLive from './TaskLive';
+import { Employee } from '../../../types';
 
 type Props = {
     activePage: string,
     tasks: any,
-    taskSettings: any
+    taskSettings: any,
+    employees: {[key: string]: Employee}
+    updateTasks: (task: any, id: string, type: string, subType: string) => void
 }
 
 const OtherLive:React.FC<Props> = (props) => {

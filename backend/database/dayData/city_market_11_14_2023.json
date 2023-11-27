@@ -1,0 +1,112 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {
+      "nukiekz4": {
+        "name": "Ty A",
+        "aisle": "3",
+        "boxes": "45",
+        "totes": "8",
+        "start": "12:25 PM",
+        "end": "12:26 PM",
+        "status": "Finished"
+      },
+      "d7vdhg51": {
+        "name": "Colin G",
+        "aisle": "1",
+        "boxes": "34",
+        "totes": "0",
+        "start": "12:26 PM",
+        "end": "9:27 PM",
+        "status": "Finished"
+      }
+    },
+    "perishablesLive": {
+      "vhf460tp": {
+        "name": "",
+        "distributerName": "UNFI",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      },
+      "j61pvlm8": {
+        "name": "",
+        "distributerName": "AG",
+        "arrival": "12:27 pm",
+        "start": "",
+        "end": "",
+        "status": "arrived"
+      },
+      "s0krdm1y": {
+        "name": "",
+        "distributerName": "Monument Farms",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      }
+    },
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "xikj04yy": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "12:27 PM",
+        "end": "",
+        "status": "In Progress"
+      },
+      "2bzsutvm": {
+        "name": "Ty A",
+        "aisle": 2,
+        "start": "12:27 PM",
+        "end": "12:27 PM",
+        "status": "Finished"
+      },
+      "eyhlupd2": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "10:43 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "backstock": {
+      "lw6v268f": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "12:27 PM",
+        "end": "12:27 PM",
+        "status": "Finished"
+      }
+    },
+    "sectors": {},
+    "rounding": {
+      "jtyx1993": {
+        "name": "Ty A",
+        "aisle": "Beverages",
+        "start": "12:27 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    }
+  },
+  "perishables": {
+    "castors": {
+      "oxdr56ov": {
+        "name": "Ty A",
+        "aisle": "Hippy Cooler",
+        "start": "6:45 PM",
+        "end": "6:45 PM",
+        "status": "Finished"
+      }
+    },
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

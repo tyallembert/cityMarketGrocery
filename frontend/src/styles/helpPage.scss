@@ -1,6 +1,12 @@
 @import "variables.scss";
 
 .helpPageContainer{
+    .helpButton{
+        font-weight: 800;
+        height: 40px;
+        width: 40px;
+        border: none;
+    }
     .helpPopup{
         position: absolute;
         top: 0;

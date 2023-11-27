@@ -53,12 +53,9 @@
             display: flex;
             justify-content: space-around;
             align-items: flex-end;
-            width: 20%;
+            width: 15%;
+            min-width: 100px;
             margin-right: 40px;
-            button{
-                height: 40px;
-                width: 40px;
-            }
         }
     }
 }

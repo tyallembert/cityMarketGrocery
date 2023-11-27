@@ -1,0 +1,92 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {
+      "dymo9rvy": {
+        "name": "Ty A,Nate L",
+        "aisle": "2",
+        "boxes": "45",
+        "totes": "0",
+        "start": "11:03 AM",
+        "end": "11:04 AM",
+        "status": "Finished"
+      },
+      "jbviypyj": {
+        "name": "Ty A, Colin G",
+        "aisle": "3",
+        "boxes": "37",
+        "totes": "43",
+        "start": "9:05 PM",
+        "end": "",
+        "status": "In Progress"
+      },
+      "lj2nc5zg": {
+        "name": "Colin G",
+        "aisle": "3",
+        "boxes": "48",
+        "totes": "0",
+        "start": "9:05 PM",
+        "end": "",
+        "status": "In Progress"
+      },
+      "9rxrr38a": {
+        "name": "Colin G",
+        "aisle": "1",
+        "boxes": "39",
+        "totes": "0",
+        "start": "9:06 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "perishablesLive": {
+      "krj59fyd": {
+        "name": "Ty A",
+        "distributerName": "UNFI",
+        "arrival": "9:45 pm",
+        "start": "9:45 pm",
+        "end": "",
+        "status": "started"
+      },
+      "vuudmee7": {
+        "name": "",
+        "distributerName": "AG",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      },
+      "jbhpewop": {
+        "name": "",
+        "distributerName": "Monument Farms",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      }
+    },
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "iqn7whvy": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "9:42 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "backstock": {},
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

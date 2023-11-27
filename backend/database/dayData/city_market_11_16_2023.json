@@ -1,0 +1,99 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {
+      "axofu4h0": {
+        "name": "Ty A",
+        "aisle": "2",
+        "boxes": "40",
+        "totes": "0",
+        "start": "6:21 AM",
+        "end": "",
+        "status": "In Progress"
+      },
+      "lolij9hz": {
+        "name": "Colin G",
+        "aisle": "3",
+        "boxes": "38",
+        "totes": "16",
+        "start": "6:22 AM",
+        "end": "",
+        "status": "In Progress"
+      },
+      "3r3863o4": {
+        "name": "Ty A, Colin G",
+        "aisle": "4",
+        "boxes": "34",
+        "totes": "0",
+        "start": "8:57 AM",
+        "end": "8:58 AM",
+        "status": "Finished"
+      }
+    },
+    "perishablesLive": {
+      "9tpz1fdv": {
+        "name": "Ty A",
+        "distributerName": "UNFI",
+        "arrival": "9:00 am",
+        "start": "9:01 am",
+        "end": "9:01 am",
+        "status": "finished"
+      },
+      "9emogt8j": {
+        "name": "",
+        "distributerName": "AG",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      },
+      "lcn5gl0l": {
+        "name": "",
+        "distributerName": "Monument Farms",
+        "arrival": "",
+        "start": "",
+        "end": "",
+        "status": "waiting"
+      }
+    },
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "x4hmcer4": {
+        "name": "Ty A",
+        "aisle": 2,
+        "start": "9:02 AM",
+        "end": "9:03 AM",
+        "status": "Finished"
+      }
+    },
+    "backstock": {
+      "uxlfayrf": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "9:03 AM",
+        "end": "",
+        "status": "In Progress"
+      }
+    },
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {
+      "99kq335w": {
+        "name": "Ty A",
+        "aisle": "Monument Farms Milk",
+        "start": "9:03 AM",
+        "end": "",
+        "status": "In Progress"
+      }
+    }
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

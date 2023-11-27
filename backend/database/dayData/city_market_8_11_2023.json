@@ -1,0 +1,121 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {
+      "pidrvyyv": {
+        "name": "Ty A,Colin G",
+        "aisle": "4",
+        "boxes": "45",
+        "totes": "67",
+        "start": "9:56 AM",
+        "end": "9:56 AM",
+        "status": "Finished"
+      },
+      "9v2kcbd9": {
+        "name": "Colin G",
+        "aisle": "3",
+        "boxes": "87",
+        "totes": "45",
+        "start": "9:56 AM",
+        "end": "",
+        "status": "In Progress"
+      },
+      "ts222csu": {
+        "name": "Ty A,Colin G",
+        "aisle": "2",
+        "boxes": "45",
+        "totes": "2",
+        "start": "3:05 PM",
+        "end": "3:06 PM",
+        "status": "Finished"
+      }
+    },
+    "perishablesLive": {
+      "bgf5k6tg": {
+        "name": "",
+        "distributerName": "UNFI",
+        "arrival": "12:12 pm",
+        "start": "12:12 pm",
+        "end": "3:07 pm",
+        "status": "finished"
+      },
+      "2x9iw3rc": {
+        "name": "Ty A",
+        "distributerName": "AG",
+        "arrival": "3:06 pm",
+        "start": "3:06 pm",
+        "end": "",
+        "status": "started"
+      },
+      "72fu0kat": {
+        "name": "",
+        "distributerName": "Monument Farms",
+        "arrival": "12:12 pm",
+        "start": "",
+        "end": "",
+        "status": "arrived"
+      }
+    },
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "s76ar8sx": {
+        "name": "Ty A",
+        "aisle": 2,
+        "start": "9:57 AM",
+        "end": "9:58 AM",
+        "status": "Finished"
+      },
+      "4dv5vc14": {
+        "name": "Colin G",
+        "aisle": 2,
+        "start": "9:57 AM",
+        "end": "9:57 AM",
+        "status": "Finished"
+      },
+      "y69ogtko": {
+        "name": "Ty A",
+        "aisle": 2,
+        "start": "3:07 PM",
+        "end": "3:08 PM",
+        "status": "Finished"
+      },
+      "7gmpuj60": {
+        "name": "Ty A",
+        "aisle": 1,
+        "start": "8:41 PM",
+        "end": "8:41 PM",
+        "status": "Finished"
+      }
+    },
+    "backstock": {
+      "5f0q96kb": {
+        "name": "Ty A",
+        "aisle": 2,
+        "start": "9:57 AM",
+        "end": "3:08 PM",
+        "status": "Finished"
+      }
+    },
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {},
+    "periCastors": {
+      "z9di1vom": {
+        "name": "Ty A",
+        "aisle": "Cheese",
+        "start": "3:08 PM",
+        "end": "",
+        "status": "In Progress"
+      }
+    }
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]

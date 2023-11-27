@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import "../../../styles/perishablesLive.scss";
 import PerishablesVendor from './PerishablesVendor';
 import { Employee, PerishablesLiveFreight, Tasks } from '../../../types';
@@ -6,92 +6,75 @@ import { Employee, PerishablesLiveFreight, Tasks } from '../../../types';
 type Props = {
     title: string,
     tasks: Tasks,
-    employees: Employee[],
+    employees: {[key: string]: Employee},
     updateTasks: (task: any, id: string, type: string, subType: string) => void
 }
 const PerishablesLive: React.FC<Props> = (props) => {
-    const [tasks, setTasks] = useState<Tasks>(props.tasks);
+    const [tasks] = useState<Tasks>(props.tasks);
 
     const [waitingTasks, setWaitingTasks] = useState<{[key:string]: PerishablesLiveFreight}>({});
     const [arrivedTasks, setArrivedTasks] = useState<{[key:string]: PerishablesLiveFreight}>({});
     const [startedTasks, setStartedTasks] = useState<{[key:string]: PerishablesLiveFreight}>({});
     const [finishedTasks, setFinishedTasks] = useState<{[key:string]: PerishablesLiveFreight}>({});
 
-    // useEffect(() => {
-    //     if(Object.keys(waitingTasks).length === 0){
-    //         fetchTodaysVendors();
-    //     }
-    //     // setTodaysVendors();
-    // }, [])
-
-    // useEffect(() => {
-    //     setTasks(props.tasks);
-    // }, [arrivedTasks, startedTasks, finishedTasks])
-
-    useEffect(() => {
-        populateTasks();
-        console.log("tasks")
-    }, [tasks])
-
-    const populateTasks = () => {
+    const populateTasks = useCallback(() => {
         let tempVendors = ["UNFI", "AG", "Monument Farms"];
 
-        setWaitingTasks({});
-        setArrivedTasks({});
-        setStartedTasks({});
-        setFinishedTasks({});
+        const newWaitingTasks: {[key: string]: PerishablesLiveFreight} = {};
+        const newArrivedTasks: {[key: string]: PerishablesLiveFreight} = {};
+        const newStartedTasks: {[key: string]: PerishablesLiveFreight} = {};
+        const newFinishedTasks: {[key: string]: PerishablesLiveFreight} = {};
 
         if((Object.keys(waitingTasks).length + 
         Object.keys(arrivedTasks).length + 
         Object.keys(startedTasks).length +
         Object.keys(finishedTasks).length) === 0){
 
-            tempVendors.forEach((value:string) => {
+            tempVendors.forEach((value: string) => {
                 var vendorStatus = "waiting";
-                var isVendorSaved = false;
                 var vendorKey = "";
-                for(var key in tasks.liveFreight.perishablesLive){
-                    var task = tasks.liveFreight.perishablesLive[key];
-                    if(task.distributerName === value){
+                var task = {} as PerishablesLiveFreight;
+                for(const key in tasks.liveFreight.perishablesLive){
+                    if(tasks.liveFreight.perishablesLive[key].distributerName === value){
+                        task = tasks.liveFreight.perishablesLive[key] as PerishablesLiveFreight;
                         vendorStatus = task.status;
-                        isVendorSaved = true;
                         vendorKey = key;
                         break;
                     }
                 }
-                if(vendorStatus === "waiting" && Object.values(waitingTasks).some((task:PerishablesLiveFreight) => task.distributerName === value) === false){
-                    if(isVendorSaved === false){
-                        vendorKey = (Math.random() + 1).toString(36).slice(2,10);
-                    }
-                    setWaitingTasks(prevTasks => {
-                        return {...prevTasks, [vendorKey]: {
-                            name: "",
-                            distributerName: value,
-                            arrival: "",
-                            start: "",
-                            end: "",
-                            status: "waiting"
-                        }}
-                    })
+                if(vendorKey === ""){
+                    vendorKey = (Math.random() + 1).toString(36).slice(2, 10);
                 }
-                else if(vendorStatus === "arrived"){
-                    setArrivedTasks(prevTasks => {
-                        return {...prevTasks, [vendorKey]: task}
-                    })
+                if (vendorStatus === "waiting") {
+                    newWaitingTasks[vendorKey] = {
+                        name: "",
+                        distributerName: value,
+                        arrival: "",
+                        start: "",
+                        end: "",
+                        status: "waiting"
+                    };
                 }
-                else if(vendorStatus === "started"){
-                    setStartedTasks(prevTasks => {
-                        return {...prevTasks, [vendorKey]: task}
-                    })
+                else if (vendorStatus === "arrived") {
+                    newArrivedTasks[vendorKey] = task;
                 }
-                else if(vendorStatus === "finished"){
-                    setFinishedTasks(prevTasks => {
-                        return {...prevTasks, [vendorKey]: task}
-                    })
+                else if (vendorStatus === "started") {
+                    newStartedTasks[vendorKey] = task;
                 }
+                else if (vendorStatus === "finished") {
+                    newFinishedTasks[vendorKey] = task;
+                }
+                setWaitingTasks(newWaitingTasks);
+                setArrivedTasks(newArrivedTasks);
+                setStartedTasks(newStartedTasks);
+                setFinishedTasks(newFinishedTasks);
             })
         }
-    }
+    },[tasks.liveFreight.perishablesLive, waitingTasks, arrivedTasks, startedTasks, finishedTasks])
+
+    useEffect(() => {
+        populateTasks();
+    }, [populateTasks])
 
     const fetchTodaysVendors = () => {
         console.log("fetching vendors");

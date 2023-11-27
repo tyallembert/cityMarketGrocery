@@ -1,0 +1,37 @@
+[
+{
+  "liveFreight": {
+    "dryGoodsLive": {},
+    "perishablesLive": {},
+    "bulkLive": {}
+  },
+  "dryGoods": {
+    "upstock": {
+      "s76ar8sx": {
+        "name": "",
+        "aisle": 2,
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      },
+      "4dv5vc14": {
+        "name": "",
+        "aisle": 4,
+        "start": "",
+        "end": "",
+        "status": "To Do"
+      }
+    },
+    "backstock": {},
+    "sectors": {},
+    "rounding": {}
+  },
+  "perishables": {
+    "castors": {},
+    "backstock": {}
+  },
+  "bulk": {},
+  "beerWine": {},
+  "extraNotes": {}
+}
+]
